@@ -1,0 +1,27 @@
+var class_soft_i2c_master =
+[
+    [ "SoftI2cMaster", "class_soft_i2c_master.html#a0f66140cabee79a0808cbb787c400ede", null ],
+    [ "checkAddress", "class_soft_i2c_master.html#a62833e2fc5f4786b5def66d13dd253ab", null ],
+    [ "getDeviceID", "class_soft_i2c_master.html#adddf8de6aba30a49b85a438ac9f3fc22", null ],
+    [ "getFirmwareVersion", "class_soft_i2c_master.html#a98a396e17232562c58c7b69529ef173d", null ],
+    [ "getVendorID", "class_soft_i2c_master.html#a7f8e401b7954d26feffc35dc8b372801", null ],
+    [ "getWriteErrorCode", "class_soft_i2c_master.html#afb577969af4dd9ff2dd151995fe0abed", null ],
+    [ "initProtocol", "class_soft_i2c_master.html#aa24d152f5c3731e4c2e62727a63308ac", null ],
+    [ "read", "class_soft_i2c_master.html#a56993378a66a702113eef640d8c82ea9", null ],
+    [ "readByte", "class_soft_i2c_master.html#a8748cc831e388dd54dbb1dde1979494b", null ],
+    [ "readInteger", "class_soft_i2c_master.html#a4901745d1f01c61103903d4b0f7d69d3", null ],
+    [ "readLong", "class_soft_i2c_master.html#a9b3218c20426f37b6ec5e07564efd224", null ],
+    [ "readRegisters", "class_soft_i2c_master.html#ac6c75241a8bd558f78bd606eca55744e", null ],
+    [ "readString", "class_soft_i2c_master.html#abfcb8a7e7873e907f9a82b849bc62534", null ],
+    [ "restart", "class_soft_i2c_master.html#a5b05701c7ba1b7cccb2420ec2b302e1b", null ],
+    [ "setAddress", "class_soft_i2c_master.html#a797f72d6a39d718a3af8bfc536075055", null ],
+    [ "start", "class_soft_i2c_master.html#ab75987e5c66784705a8d24415f13ae1a", null ],
+    [ "stop", "class_soft_i2c_master.html#ad8f52e1cbf15894472881afe439afa02", null ],
+    [ "write", "class_soft_i2c_master.html#a1d018fd6ce8520e42f9a6bb22a564293", null ],
+    [ "writeByte", "class_soft_i2c_master.html#a74ad7f13d13606b8d5c8caf6b045c79d", null ],
+    [ "writeInteger", "class_soft_i2c_master.html#a2c1c4cbd49819647b153efd682cc27dd", null ],
+    [ "writeLong", "class_soft_i2c_master.html#a22e0660fa387a6e2c8b2875fd7c4ed72", null ],
+    [ "writeRegisters", "class_soft_i2c_master.html#a2ffec80191a07d54b6eea197f53fad21", null ],
+    [ "writeRegistersWithLocation", "class_soft_i2c_master.html#ab831e67e1da5f14586bfe2ce6fab68aa", null ],
+    [ "_so_buffer", "class_soft_i2c_master.html#a15bf802b18606d9eac5352c39fbb1e7f", null ]
+];
