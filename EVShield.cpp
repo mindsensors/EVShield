@@ -727,6 +727,7 @@ void pingEV()
     while ((TWCR & (1<<TWINT)) == 0);
     TWCR = (1<<TWINT)|(1<<TWSTO)|(1<<TWEN);
     TCNT2  = 0;//initialize counter value to 0
+    /*
     if (toggle2)
     {
       digitalWrite(13, HIGH);
@@ -737,6 +738,7 @@ void pingEV()
       digitalWrite(13, LOW);
       toggle2 = 1; 
     }
+    */
 }
 
 #if defined(__AVR__)

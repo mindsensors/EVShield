@@ -21,6 +21,7 @@
 */
 
 #include "BaseI2CDevice.h"
+#include "MSTimer2.h"
 #include <Wire.h>
 
 extern "C" {
@@ -69,6 +70,7 @@ uint8_t* BaseI2CDevice::readRegisters(
   uint8_t  buffer_length,    // (optional) length of user-supplied buffer
   bool     clear_buffer)    // should we zero out the buffer first? (optional)
 {
+  MsTimer2::reset();
   if (!buffer)
   {
     buffer = _buffer;
@@ -110,6 +112,7 @@ uint8_t* BaseI2CDevice::readRegisters(
 
     _write_error_code = Wire.endTransmission();
         
+  MsTimer2::reset();
   return buffer;
 }
 

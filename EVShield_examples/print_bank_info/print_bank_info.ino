@@ -53,6 +53,7 @@ void setup()
 
 }
 
+static int counter;
 void
 loop()
 {
@@ -62,7 +63,7 @@ loop()
     bool touchPressed;
     bool status;
 
-    while (true) {  
+    while (true) {
 
         if (Serial.available() > 0) {
             //
@@ -92,6 +93,10 @@ loop()
                     break;
             }
         } else {
+            counter ++;
+            sprintf (str,"counter: %d", counter);
+            Serial.println(str);
+
             strcpy (str, "BA ... ");
             strcat (str, "F/w Version: ");
             strcat (str, evshield.bank_a.getFirmwareVersion());
@@ -121,6 +126,6 @@ loop()
             Serial.println ( voltage );
 
         }
-        delay (1000);
+        delay (200);
     }
 }
