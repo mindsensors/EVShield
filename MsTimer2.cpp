@@ -133,6 +133,10 @@ void MsTimer2::stop() {
 #endif
 }
 
+void MsTimer2::reset() {
+  count = 0;
+}
+
 void MsTimer2::_overflow() {
 	count += 1;
 	
