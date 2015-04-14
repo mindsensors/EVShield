@@ -38,9 +38,9 @@
 #define PF_Channel_4              4
 
 #define PF_Control                0x43
-#define PF_Contol_Both            0   
-#define PF_Contol_A               1
-#define PF_Contol_B               2
+#define PF_Control_Both            0   
+#define PF_Control_A               1
+#define PF_Control_B               2
 
 #define PF_Speed_A                0x45
 #define PF_Speed_B                0x47
