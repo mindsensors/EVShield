@@ -76,12 +76,13 @@ bool EVs_PFMate::setSpeedB(uint8_t speed)
 
 void EVs_PFMate::controlMotor(
 		uint8_t channel,			    // PF_Channel_1, 2, 3, or 4
-		uint8_t control,				// PF_Contol_Both, A, or B
+		uint8_t control,				// PF_Control_Both, A, or B
 		uint8_t operation,				// PF_Operation_Forward, Reverse, Float, or Brake
 		uint8_t speed)		     		// [1, 7] or PF_Speed_Full, Medium, or Slow
 
 {
-	if (control == PF_Contol_Both)
+	setChannel(channel);
+	if (control == PF_Control_Both)
 	{
 		setOperationA(operation);
 		setSpeedA(speed);
@@ -89,17 +90,18 @@ void EVs_PFMate::controlMotor(
 		setSpeedB(speed);
 	}
 
-	else if (control == PF_Contol_A)
+	else if (control == PF_Control_A)
 	{
 		setOperationA(operation);
 		setSpeedA(speed);
 	}
 
-	else if (control == PF_Contol_B)
+	else if (control == PF_Control_B)
 	{
 		setOperationB(operation);
 		setSpeedB(speed);
 	
 	}
+	sendSignal();
 }
 
