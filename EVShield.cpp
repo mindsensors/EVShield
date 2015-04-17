@@ -90,12 +90,9 @@ void EVShield::initProtocols(SH_Protocols protocol)
 
   strcpy(d, bank_a.getDeviceID());
   strcpy(v, bank_a.getFirmwareVersion());
-  if ((strcmp(d, "PiStorms") == 0 ||
-       strcmp(d, "EVShld") == 0 ) &&
-      (strcmp(v, "V1.04") == 0 ||
-       strcmp(v, "V1.06") == 0 ||
-       strcmp(v, "V1.07") == 0 ||
-       strcmp(v, "V1.05") == 0 ) )
+
+  if ( ( strcmp(d, "PiStorms") == 0 && (strcmp(v, "V1.09") >= 0 )) ||
+       ( strcmp(d, "EVShld")   == 0 && (strcmp(v, "V1.09") >= 0)) )
   {
      // firmware is ok for this library
   } else {

@@ -126,6 +126,6 @@ loop()
             Serial.println ( voltage );
 
         }
-        delay (200);
+        delay (1000);
     }
 }
