@@ -32,7 +32,7 @@
 
 /*
  * EVShield interface library
- * Copyright (C) 2015initProtocols mindsensors.com
+ * Copyright (C) 2015 mindsensors.com
  * 12/18/2014  Nitin Patil --  modified to work with EVshield 
  *
  * This file is part of EVShield interface library.
@@ -199,16 +199,20 @@ typedef enum {
 #define SH_Type_SWITCH    0x01
  
 /*!
-  \def SH_Type_ANALOG_PASSIVE
+  \def SH_Type_ANALOG
 	In this type the sensor port is not powered (for sensors like touch sensor).
 */
 #define SH_Type_ANALOG   0x02
 
 
+/*!
+  \def SH_Type_LIGHT_REFLECTED
+	Used for detection of Refelected Light from Light sensors, 
+*/
 #define SH_Type_LIGHT_REFLECTED      0x03
 /*!
-  \def SH_Type_LIGHT_ACTIVE
-	Useed for Refelected Light sensors, 
+  \def SH_Type_LIGHT_AMBIENT
+	Used for detection of ambient Light using the light sensors, 
 */
 #define SH_Type_LIGHT_AMBIENT      0x04
 /*!
@@ -252,8 +256,6 @@ typedef enum {
 	In this type the sensor connected is EV3 UART sensor
 */
 #define SH_Type_EV3                  19
-
-
 
 
 
