@@ -9,7 +9,7 @@
 
    <b>Arduino boards:</b>\n
       Uno, Uno R3\n
-			Duemilanove\n
+      Duemilanove\n
 		 
 
  \section getting_started  Getting Started
@@ -27,7 +27,7 @@
  To install this library in your Arduino IDE, download the latest zip file from following location:
  http://www.openelectrons.com/evshield
 
- And follow the instructions at that url to install it on your computer.
+ And follow the instructions at this url to install it on your computer.
 */
 
 /*
