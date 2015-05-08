@@ -65,7 +65,7 @@ setup()
     //
     //  initialize the touch sensor, and tell where it is connected.
     //
-    touch1.init( &evshield, SH_BAS2);
+    touch1.init( &evshield, SH_BAS1);
 
 
     Serial.println("setup done");
