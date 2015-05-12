@@ -32,6 +32,7 @@ static void pingEV();
 	uint32_t callbackLED(uint32_t);
 #endif
 
+byte initCounter = 0;
 bool btnState_go, btnState_left, btnState_right;
 uint8_t redLED, redLED_cp;
 uint8_t greenLED, greenLED_cp;
@@ -64,8 +65,11 @@ EVShield::EVShield(uint8_t i2c_address_a, uint8_t i2c_address_b)
 
 void EVShield::init(SH_Protocols protocol)
 {
+    while (initCounter < 5){
+    //Serial.println(initCounter);
     I2CTimer();
-	initProtocols(protocol);
+	initProtocols(protocol);  
+    }
 }
 
 void EVShield::initProtocols(SH_Protocols protocol)
@@ -96,14 +100,18 @@ void EVShield::initProtocols(SH_Protocols protocol)
   {
      // firmware is ok for this library
   } else {
+    ++initCounter;
+    if (initCounter == 5){
     sprintf (str,"ERROR: Device-ID or Version mismatch. Device-ID: %s, Version: %s", d, v);
     Serial.println(str);
-    while (true) { // stop here with red blinking light.
-      ledSetRGB(8, 0, 0);
-      delay(500);
-      ledSetRGB(0, 0, 0);
-      delay(500);
+      while (true) { // stop here with red blinking light.
+        ledSetRGB(8, 0, 0);
+        delay(500);
+        ledSetRGB(0, 0, 0);
+        delay(500);
+      }
     }
+    delay(100);
   }
   // end of firmware compatibility check
 }
