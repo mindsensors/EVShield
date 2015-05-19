@@ -1,4 +1,3 @@
-
 // EVShield.cpp
 
 // Initial version: 2010-06-07 by Clinton Blackmore
@@ -10,12 +9,10 @@
   modify it under the terms of the GNU Lesser General Public
   License as published by the Free Software Foundation; either
   version 2.1 of the License, or (at your option) any later version.
-
   This library is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
   Lesser General Public License for more details.
-
   You should have received a copy of the GNU Lesser General Public
   License along with this library; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
@@ -68,8 +65,8 @@ void EVShield::init(SH_Protocols protocol)
     while (initCounter < 5){
     //Serial.println(initCounter);
     I2CTimer();
-	initProtocols(protocol);  
-    }
+	initProtocols(protocol);    
+   }
 }
 
 void EVShield::initProtocols(SH_Protocols protocol)
@@ -90,15 +87,15 @@ void EVShield::initProtocols(SH_Protocols protocol)
 // it's adequate to check on one of the banks
   char v[10];
   char d[10];
-  char str[100];
-
+  char str[80];
+  
   strcpy(d, bank_a.getDeviceID());
   strcpy(v, bank_a.getFirmwareVersion());
-
   if ( ( strcmp(d, "PiStorms") == 0 && (strcmp(v, "V1.09") >= 0 )) ||
        ( strcmp(d, "EVShld")   == 0 && (strcmp(v, "V1.09") >= 0)) )
   {
      // firmware is ok for this library
+     initCounter = 6;
   } else {
     ++initCounter;
     if (initCounter == 5){
@@ -170,7 +167,7 @@ int EVShieldBank::nxshieldGetBatteryVoltage()
 int EVShieldBank::evshieldGetBatteryVoltage()
 {
   int v;
-  int factor = 47;
+  int factor = 40;
   v = readByte(SH_VOLTAGE);
   return (v * factor);
 }
@@ -401,7 +398,7 @@ bool EVShieldBank::motorSetEncoderSpeedTimeAndControl(
   {
     // The motor control registers are back to back, and both can be written in one command
     control &= ~SH_CONTROL_GO;  // Clear the 'go right now' flag
-    evshieldSetEncoderSpeedTimeAndControlInBuffer(_i2c_buffer + 0, encoder, speed, duration, control);
+    evshieldSetEncoderSpeedTimeAndControlInBuffer(_i2c_buffer, encoder, speed, duration, control);
     evshieldSetEncoderSpeedTimeAndControlInBuffer(_i2c_buffer + 8, encoder, speed, duration, control);
     bool success = writeRegisters(SH_SETPT_M1, 16);
     motorStartBothInSync();
@@ -422,6 +419,7 @@ uint8_t EVShieldBank::motorIsTimeDone(SH_Motor which_motors)
   {
     s1 = motorGetStatusByte(SH_Motor_1);
     s2 = motorGetStatusByte(SH_Motor_2);
+    
     if ( (s1 & SH_STATUS_TIME) == 0 && (s2 & SH_STATUS_TIME) == 0 )
     {
       // if stall bit was on there was an error
@@ -453,7 +451,6 @@ uint8_t EVShieldBank::motorWaitUntilTimeDone(SH_Motor which_motors)
   delay(50);  // this delay is required for the status byte to be available for reading.
   s = motorIsTimeDone(which_motors);  // fixed.
   while (( s & SH_STATUS_TIME ) != 0 ) {
-    //if ( (s & SH_STATUS_STALL) != 0 ) return SH_STATUS_STALL;
     delay (50);
     s = motorIsTimeDone(which_motors);  // fixed.
   }
@@ -467,6 +464,7 @@ uint8_t EVShieldBank::motorIsTachoDone(SH_Motor which_motors)
   {
     s1 = motorGetStatusByte(SH_Motor_1);
     s2 = motorGetStatusByte(SH_Motor_2);
+    
     if ( (s1 & SH_STATUS_TACHO) == 0 && (s2 & SH_STATUS_TACHO) == 0 )
     {
       // if stall bit was on there was an error
@@ -497,7 +495,6 @@ uint8_t EVShieldBank::motorWaitUntilTachoDone(SH_Motor which_motors)
   delay(50);  // this delay is required for the status byte to be available for reading.
   s = motorIsTachoDone(which_motors);
   while (( s & SH_STATUS_TACHO ) != 0 ) {
-    //if ( (s & SH_STATUS_STALL) != 0 ) return SH_STATUS_STALL;
     delay (50);
     s = motorIsTachoDone(which_motors);
   }
@@ -589,6 +586,7 @@ uint8_t EVShieldBank::motorRunTachometer(
 
   if (wait_for_completion == SH_Completion_Wait_For)
   {
+    //delay(50);
     s = motorWaitUntilTachoDone(which_motors);
   }
   return s;
@@ -871,9 +869,9 @@ void EVShield::ledBreathingPattern() {
 void EVShield::ledSetRGB(uint8_t red, uint8_t green, uint8_t blue)
 {
   bank_a.ledSetRGB(red,green,blue);
-  delay(100);
+  //delay(100);
   bank_b.ledSetRGB(red,green,blue);
-  delay(100);
+  //delay(100);
 }
 
 void EVShield::ledHeartBeatPattern() {
@@ -899,4 +897,3 @@ void EVShield::ledHeartBeatPattern() {
   }
   breathNow ++;
 }
-
