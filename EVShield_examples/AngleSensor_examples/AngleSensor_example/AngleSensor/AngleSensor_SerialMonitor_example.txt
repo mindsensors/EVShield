@@ -1,7 +1,0 @@
-Press GO button to continue
-angsens: getFirmwareVersion: V1.00
-angsens: DeviceID: AngSens
-angsens: VendorID: mndsnsrs
-angsens: Angle:       6
-angsens: Raw Reading: 13
--------------
