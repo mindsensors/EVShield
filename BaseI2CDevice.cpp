@@ -21,7 +21,7 @@
 */
 
 #include "BaseI2CDevice.h"
-#include "MSTimer2.h"
+#include "MsTimer2.h"
 #include <Wire.h>
 
 extern "C" {
