@@ -3,9 +3,9 @@
 * EVShield.h defines main interfaces used in the EVShield library.
  \mainpage  EVShield Library Reference
  \section intro_sec Introduction
- EVShield library provides interfaces to use EVShield by OpenElectrons.com on Arduino.
+ EVShield library provides interfaces to use EVShield by mindsensors.com on Arduino.
  
- At the time of this writing, EVShield and this library can be used with following boards:
+ At the time of this writing, EVShield and this library can be used with the following boards:
 
    <b>Arduino boards:</b>\n
       Uno, Uno R3\n
@@ -14,18 +14,18 @@
 
  \section getting_started  Getting Started
  If you need help to begin with your first program, please download and review <b>EVShield-AVR-Library-Tutorial.pdf</b>
- from following url: http://www.openelectrons.com/docs/viewdoc/25
+ from following url: http://www.mindsensors.com/index.php?controller=attachment&id_attachment=136
 
  \section more_info  More Information
- More information about EVShield is available at: http://www.openelectrons.com/evshield
+ More information about EVShield is available at: http://www.mindsensors.com/arduino/16-evshield-for-arduino-duemilanove-or-uno
 
  Online documentation of this Library Reference is available at:
- http://www.openelectrons.com/EVShield/html/
+ http://www.mindsensors.com/reference/EVShield/html/
  (Note however, the online version may not match exactly with the library files you have installed on your computer).
 
  \section install_sec Installation Instructions
  To install this library in your Arduino IDE, download the latest zip file from following location:
- http://www.openelectrons.com/evshield
+ https://github.com/openelectrons/EVShield
 
  And follow the instructions at this url to install it on your computer.
 */
