@@ -244,7 +244,7 @@ char* SoftI2cMaster::readString(uint8_t startRegister, uint8_t bytes,
 	char *x;
 	x = (char *) readRegisters(startRegister, bytes, buf);
 	if ( x == false ) {
-	  return "";
+	  return (char *) "";
 	}
   return (char *) x;
 }
@@ -272,7 +272,10 @@ int16_t SoftI2cMaster::readInteger (uint8_t location){
 uint32_t SoftI2cMaster::readLong (uint8_t location){
 
   if ( readRegisters(location, 4) != false ) {
-		return _so_buffer[0] | (_so_buffer[1] << 8) | (_so_buffer[2] << 16) | (_so_buffer[3] << 24);
+		return (uint32_t)_so_buffer[0] |
+               (((uint32_t)_so_buffer[1]) << 8) |
+               (((uint32_t)_so_buffer[2]) << 16) |
+               (((uint32_t)_so_buffer[3]) << 24);
   } else {
 	  return 0;
 	}

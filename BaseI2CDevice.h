@@ -48,7 +48,11 @@ inline uint16_t readIntFromBuffer(uint8_t* buf)
 /** parse the four bytes in the buffer into an integer of type long */
 inline uint32_t readLongFromBuffer(uint8_t* buf)
 {
-	return buf[0] | (buf[1] << 8) | (buf[2] << 16) | (buf[3] << 24);
+    /* typecasts added to make it compatible with 1.6.8 */
+	return (uint32_t)buf[0] |
+           (((uint32_t)buf[1]) << 8) |
+           (((uint32_t)buf[2]) << 16) |
+           (((uint32_t)buf[3]) << 24);
 }
 
 /** write the data as a byte to the supplied buffer */

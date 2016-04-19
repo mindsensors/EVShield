@@ -69,7 +69,7 @@ public:
 	SoftI2cMaster(uint8_t devAddr);
 	
 	/** init bus custom scl and sda pins are optional */
-	void initProtocol(uint8_t sclPin = NULL, uint8_t sdaPin = NULL);
+	void initProtocol(uint8_t sclPin = (uint8_t)NULL, uint8_t sdaPin = (uint8_t)NULL);
 	
 	/** read number of bytes from start register and return values; optional buffer */
 	uint8_t* readRegisters(uint8_t startRegister, uint8_t bytes, uint8_t* buf = NULL);
