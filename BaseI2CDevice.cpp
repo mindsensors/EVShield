@@ -25,7 +25,7 @@
 #include <Wire.h>
 
 extern "C" {
-#include "../Wire/utility/twi.h"
+#include "../../hardware/arduino/avr/libraries/Wire/src/utility/twi.h"
 }
 
 // Max I2C message length is 16 bytes.  
