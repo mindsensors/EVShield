@@ -99,10 +99,10 @@ void EVShield::initProtocols(SH_Protocols protocol)
   } else {
     ++initCounter;
     if (initCounter == 5){
-    sprintf (str,"ERROR: Version mismatch. Version: %s",  v);
+    sprintf (str,"ERROR: Version mismatch. Reported Device: %s, Version: %s", d, v);
     Serial.println(str);
     Serial.println("V1.09 or later expected");
-    Serial.println("Please upgrade your EVshield Firmware");
+    Serial.println("Please upgrade your EVShield Firmware");
       while (true) { // stop here with red blinking light.
         ledSetRGB(100, 0, 0);
         delay(500);
