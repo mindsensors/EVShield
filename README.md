@@ -9,4 +9,6 @@ and open sketch print_bank_info.ino
 <br>
 <br>
 Compile and download this sketch to your arduino. Open Serial terminal and see the output of this sketch. (Be sure that EVShield is attached to your Arduino).
-
+<br>
+<br>
+As a next step, follow the examples from EVShield_examples folder.
