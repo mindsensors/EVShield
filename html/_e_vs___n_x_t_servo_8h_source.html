@@ -28,10 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo-with-transparent-bg-w400.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo-with-transparent-bg-w300.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">EVShield
-   &#160;<span id="projectnumber">v1.01</span>
+   &#160;<span id="projectnumber">v1.2</span>
    </div>
    <div id="projectbrief">EVShield Library Reference by mindsensors.com</div>
   </td>
@@ -181,7 +181,7 @@ $(document).ready(function(){initNavTree('_e_vs___n_x_t_servo_8h_source.html',''
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        </div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  uint8_t <a class="code" href="class_e_vs___n_x_t_servo.html#ace1e39ba825a1903b34eab23780f65fc">getBatteryVoltage</a>();</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_e_vs___n_x_t_servo.html#ac20bb79c2b1977c06a6d25e8c9ec43e8">storeInitial</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_e_vs___n_x_t_servo.html#a8a6e2e38e8c5907033bddafb43b45da6">storeInitial</a>(uint8_t number);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        </div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_e_vs___n_x_t_servo.html#a7681e5a2b7e4ea7ed1c74e6038cfc8fb">reset</a>();</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        </div>
@@ -189,7 +189,7 @@ $(document).ready(function(){initNavTree('_e_vs___n_x_t_servo_8h_source.html',''
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        </div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_e_vs___n_x_t_servo.html#a6bbe55318077bf1eadf6cbab49ac1490">resumeMacro</a>();</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_e_vs___n_x_t_servo.html#a59f0699c4910b03bd62b3db8f8748ece">gotoEEPROM</a>();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_e_vs___n_x_t_servo.html#ae1d0c2c79838a2e562ddfe77636148fb">gotoEEPROM</a>(uint8_t position);</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        </div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_e_vs___n_x_t_servo.html#a0c04b79441cde46854b9f93ca214d699">editMacro</a>();</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        </div>
@@ -206,26 +206,26 @@ $(document).ready(function(){initNavTree('_e_vs___n_x_t_servo_8h_source.html',''
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_e_vs___n_x_t_servo_html_ac1ad10ba093e838627df53070a26255f"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#ac1ad10ba093e838627df53070a26255f">EVs_NXTServo::issueCommand</a></div><div class="ttdeci">uint8_t issueCommand(char command)</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:43</div></div>
 <div class="ttc" id="class_e_vs___n_x_t_servo_html_ace1e39ba825a1903b34eab23780f65fc"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#ace1e39ba825a1903b34eab23780f65fc">EVs_NXTServo::getBatteryVoltage</a></div><div class="ttdeci">uint8_t getBatteryVoltage()</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:38</div></div>
-<div class="ttc" id="class_e_vs___n_x_t_servo_html_a59f0699c4910b03bd62b3db8f8748ece"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#a59f0699c4910b03bd62b3db8f8748ece">EVs_NXTServo::gotoEEPROM</a></div><div class="ttdeci">bool gotoEEPROM()</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:66</div></div>
-<div class="ttc" id="class_e_vs___n_x_t_servo_html_a05932335c65899a40c1d75c7fda3a319"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#a05932335c65899a40c1d75c7fda3a319">EVs_NXTServo::setSpeed</a></div><div class="ttdeci">bool setSpeed(uint8_t number, uint8_t speed)</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:80</div></div>
-<div class="ttc" id="class_e_vs___n_x_t_servo_html_a0c04b79441cde46854b9f93ca214d699"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#a0c04b79441cde46854b9f93ca214d699">EVs_NXTServo::editMacro</a></div><div class="ttdeci">bool editMacro()</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:71</div></div>
+<div class="ttc" id="class_e_vs___n_x_t_servo_html_a05932335c65899a40c1d75c7fda3a319"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#a05932335c65899a40c1d75c7fda3a319">EVs_NXTServo::setSpeed</a></div><div class="ttdeci">bool setSpeed(uint8_t number, uint8_t speed)</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:83</div></div>
+<div class="ttc" id="class_e_vs___n_x_t_servo_html_a0c04b79441cde46854b9f93ca214d699"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#a0c04b79441cde46854b9f93ca214d699">EVs_NXTServo::editMacro</a></div><div class="ttdeci">bool editMacro()</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:73</div></div>
 <div class="ttc" id="class_e_vs___n_x_t_servo_html"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html">EVs_NXTServo</a></div><div class="ttdoc">This class interfaces with NXTServo attached to EVShield. </div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.h:69</div></div>
-<div class="ttc" id="class_e_vs___n_x_t_servo_html_ac20bb79c2b1977c06a6d25e8c9ec43e8"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#ac20bb79c2b1977c06a6d25e8c9ec43e8">EVs_NXTServo::storeInitial</a></div><div class="ttdeci">bool storeInitial()</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:48</div></div>
-<div class="ttc" id="class_e_vs___n_x_t_servo_html_a6bbe55318077bf1eadf6cbab49ac1490"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#a6bbe55318077bf1eadf6cbab49ac1490">EVs_NXTServo::resumeMacro</a></div><div class="ttdeci">bool resumeMacro()</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:61</div></div>
+<div class="ttc" id="class_e_vs___n_x_t_servo_html_a8a6e2e38e8c5907033bddafb43b45da6"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#a8a6e2e38e8c5907033bddafb43b45da6">EVs_NXTServo::storeInitial</a></div><div class="ttdeci">bool storeInitial(uint8_t number)</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:48</div></div>
+<div class="ttc" id="class_e_vs___n_x_t_servo_html_a6bbe55318077bf1eadf6cbab49ac1490"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#a6bbe55318077bf1eadf6cbab49ac1490">EVs_NXTServo::resumeMacro</a></div><div class="ttdeci">bool resumeMacro()</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:62</div></div>
+<div class="ttc" id="class_e_vs___n_x_t_servo_html_ae1d0c2c79838a2e562ddfe77636148fb"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#ae1d0c2c79838a2e562ddfe77636148fb">EVs_NXTServo::gotoEEPROM</a></div><div class="ttdeci">bool gotoEEPROM(uint8_t position)</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:67</div></div>
 <div class="ttc" id="class_e_v_shield_i2_c_html"><div class="ttname"><a href="class_e_v_shield_i2_c.html">EVShieldI2C</a></div><div class="ttdoc">This class implements I2C interfaces used by EVShield. </div><div class="ttdef"><b>Definition:</b> EVShieldI2C.h:32</div></div>
 <div class="ttc" id="class_e_vs___n_x_t_servo_html_ab083aa7404bef94a0f2ee0a7aa1aa313"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#ab083aa7404bef94a0f2ee0a7aa1aa313">EVs_NXTServo::EVs_NXTServo</a></div><div class="ttdeci">EVs_NXTServo(uint8_t i2c_address=0xb0)</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:33</div></div>
-<div class="ttc" id="class_e_vs___n_x_t_servo_html_a757af892cc56fb483a842b51ff11d782"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#a757af892cc56fb483a842b51ff11d782">EVs_NXTServo::setPosition</a></div><div class="ttdeci">bool setPosition(uint8_t number, uint8_t position)</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:85</div></div>
-<div class="ttc" id="class_e_vs___n_x_t_servo_html_a9473d6091eaa3ac25da5325363bd1674"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#a9473d6091eaa3ac25da5325363bd1674">EVs_NXTServo::haltMacro</a></div><div class="ttdeci">bool haltMacro()</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:56</div></div>
-<div class="ttc" id="class_e_vs___n_x_t_servo_html_af50b793e356b6c3c9614250803ffd783"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#af50b793e356b6c3c9614250803ffd783">EVs_NXTServo::runServo</a></div><div class="ttdeci">void runServo(uint8_t number, uint8_t position, uint8_t speed)</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:90</div></div>
-<div class="ttc" id="class_e_vs___n_x_t_servo_html_a7681e5a2b7e4ea7ed1c74e6038cfc8fb"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#a7681e5a2b7e4ea7ed1c74e6038cfc8fb">EVs_NXTServo::reset</a></div><div class="ttdeci">bool reset()</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:52</div></div>
-<div class="ttc" id="class_e_vs___n_x_t_servo_html_a24818e5eda8bd0089e087d57f900c48d"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#a24818e5eda8bd0089e087d57f900c48d">EVs_NXTServo::pauseMacro</a></div><div class="ttdeci">bool pauseMacro()</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:76</div></div>
+<div class="ttc" id="class_e_vs___n_x_t_servo_html_a757af892cc56fb483a842b51ff11d782"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#a757af892cc56fb483a842b51ff11d782">EVs_NXTServo::setPosition</a></div><div class="ttdeci">bool setPosition(uint8_t number, uint8_t position)</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:88</div></div>
+<div class="ttc" id="class_e_vs___n_x_t_servo_html_a9473d6091eaa3ac25da5325363bd1674"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#a9473d6091eaa3ac25da5325363bd1674">EVs_NXTServo::haltMacro</a></div><div class="ttdeci">bool haltMacro()</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:57</div></div>
+<div class="ttc" id="class_e_vs___n_x_t_servo_html_af50b793e356b6c3c9614250803ffd783"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#af50b793e356b6c3c9614250803ffd783">EVs_NXTServo::runServo</a></div><div class="ttdeci">void runServo(uint8_t number, uint8_t position, uint8_t speed)</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:93</div></div>
+<div class="ttc" id="class_e_vs___n_x_t_servo_html_a7681e5a2b7e4ea7ed1c74e6038cfc8fb"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#a7681e5a2b7e4ea7ed1c74e6038cfc8fb">EVs_NXTServo::reset</a></div><div class="ttdeci">bool reset()</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:53</div></div>
+<div class="ttc" id="class_e_vs___n_x_t_servo_html_a24818e5eda8bd0089e087d57f900c48d"><div class="ttname"><a href="class_e_vs___n_x_t_servo.html#a24818e5eda8bd0089e087d57f900c48d">EVs_NXTServo::pauseMacro</a></div><div class="ttdeci">bool pauseMacro()</div><div class="ttdef"><b>Definition:</b> EVs_NXTServo.cpp:79</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>EVs_NXTServo.h</b></li>
-    <li class="footer">Generated on Fri Oct 16 2015 16:24:18 for EVShield by
+    <li class="footer">Generated on Wed Apr 20 2016 15:24:45 for EVShield by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

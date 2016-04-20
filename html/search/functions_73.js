@@ -22,7 +22,7 @@ var searchData=
   ['setkp',['setKp',['../class_e_vs___line_leader.html#af9139b98564eab961047feffc0844c09',1,'EVs_LineLeader']]],
   ['setkpfactor',['setKpFactor',['../class_e_vs___line_leader.html#af203e002020665991443b552434d17c0',1,'EVs_LineLeader']]],
   ['setlongrange',['setLongRange',['../class_e_vs___sumo_eyes.html#ab1b5fcd60f8be78228159c2f87ead375',1,'EVs_SumoEyes']]],
-  ['setmode',['setMode',['../class_e_v_shield_u_a_r_t.html#af672376bf0640f97a169fb6c09fe0d78',1,'EVShieldUART']]],
+  ['setmode',['setMode',['../class_e_vs___e_v3_sensor_mux.html#a732dbd607116140511fff25daa80a64c',1,'EVs_EV3SensorMux::setMode()'],['../class_e_v_shield_u_a_r_t.html#af672376bf0640f97a169fb6c09fe0d78',1,'EVShieldUART::setMode()']]],
   ['setoperationa',['setOperationA',['../class_e_vs___p_f_mate.html#adab606da4f300960b4c2d29e0f4185c8',1,'EVs_PFMate']]],
   ['setoperationb',['setOperationB',['../class_e_vs___p_f_mate.html#af8924c7a534df5f896183e9b3042e03e',1,'EVs_PFMate']]],
   ['setpasscount',['setPassCount',['../class_e_vs___n_x_t_m_m_x.html#acbbf9dd22f504603a2ee8c8c006f3a9e',1,'EVs_NXTMMX']]],
@@ -50,5 +50,5 @@ var searchData=
   ['start',['start',['../class_soft_i2c_master.html#ab75987e5c66784705a8d24415f13ae1a',1,'SoftI2cMaster']]],
   ['startmotorsinsync',['startMotorsInSync',['../class_e_vs___n_x_t_m_m_x.html#a4e3a2ad104e14663abf69caba0ea455c',1,'EVs_NXTMMX']]],
   ['stop',['stop',['../class_e_vs___n_x_t_m_m_x.html#a699f3fee661c753e34db89825654cc6b',1,'EVs_NXTMMX::stop()'],['../class_soft_i2c_master.html#ad8f52e1cbf15894472881afe439afa02',1,'SoftI2cMaster::stop()']]],
-  ['storeinitial',['storeInitial',['../class_e_vs___n_x_t_servo.html#ac20bb79c2b1977c06a6d25e8c9ec43e8',1,'EVs_NXTServo']]]
+  ['storeinitial',['storeInitial',['../class_e_vs___n_x_t_servo.html#a8a6e2e38e8c5907033bddafb43b45da6',1,'EVs_NXTServo']]]
 ];

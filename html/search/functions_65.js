@@ -8,6 +8,7 @@ var searchData=
   ['evs_5fanglesensor',['EVs_AngleSensor',['../class_e_vs___angle_sensor.html#a8cb3459b4a28d7f1360a90804dbb1e4b',1,'EVs_AngleSensor']]],
   ['evs_5fcurrentmeter',['EVs_CurrentMeter',['../class_e_vs___current_meter.html#ac7ad196cf69b8ba3220b65648533d7cc',1,'EVs_CurrentMeter']]],
   ['evs_5fdistnx',['EVs_DISTNx',['../class_e_vs___d_i_s_t_nx.html#aed6d1c464190d1341a0c3f5c638acefe',1,'EVs_DISTNx']]],
+  ['evs_5fev3sensormux',['EVs_EV3SensorMux',['../class_e_vs___e_v3_sensor_mux.html#acf62bd490da75ccbbbd8b1aa3bea96d6',1,'EVs_EV3SensorMux']]],
   ['evs_5flightsensorarray',['EVs_LightSensorArray',['../class_e_vs___light_sensor_array.html#abd2afef149cf173f79bde3fea3d468be',1,'EVs_LightSensorArray']]],
   ['evs_5flineleader',['EVs_LineLeader',['../class_e_vs___line_leader.html#a9970850b5cf09ac5700858f3d9a58819',1,'EVs_LineLeader']]],
   ['evs_5fmagicwand',['EVs_MagicWand',['../class_e_vs___magic_wand.html#a7a6967a2dfab86b8688eef028937f874',1,'EVs_MagicWand']]],

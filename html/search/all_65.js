@@ -12,6 +12,7 @@ var searchData=
   ['evs_5fev3color',['EVs_EV3Color',['../class_e_vs___e_v3_color.html',1,'']]],
   ['evs_5fev3gyro',['EVs_EV3Gyro',['../class_e_vs___e_v3_gyro.html',1,'']]],
   ['evs_5fev3infrared',['EVs_EV3Infrared',['../class_e_vs___e_v3_infrared.html',1,'']]],
+  ['evs_5fev3sensormux',['EVs_EV3SensorMux',['../class_e_vs___e_v3_sensor_mux.html',1,'EVs_EV3SensorMux'],['../class_e_vs___e_v3_sensor_mux.html#acf62bd490da75ccbbbd8b1aa3bea96d6',1,'EVs_EV3SensorMux::EVs_EV3SensorMux()']]],
   ['evs_5fev3touch',['EVs_EV3Touch',['../class_e_vs___e_v3_touch.html',1,'']]],
   ['evs_5fev3ultrasonic',['EVs_EV3Ultrasonic',['../class_e_vs___e_v3_ultrasonic.html',1,'']]],
   ['evs_5flightsensorarray',['EVs_LightSensorArray',['../class_e_vs___light_sensor_array.html',1,'EVs_LightSensorArray'],['../class_e_vs___light_sensor_array.html#abd2afef149cf173f79bde3fea3d468be',1,'EVs_LightSensorArray::EVs_LightSensorArray()']]],

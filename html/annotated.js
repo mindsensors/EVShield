@@ -11,6 +11,7 @@ var annotated =
     [ "EVs_EV3Color", "class_e_vs___e_v3_color.html", "class_e_vs___e_v3_color" ],
     [ "EVs_EV3Gyro", "class_e_vs___e_v3_gyro.html", "class_e_vs___e_v3_gyro" ],
     [ "EVs_EV3Infrared", "class_e_vs___e_v3_infrared.html", "class_e_vs___e_v3_infrared" ],
+    [ "EVs_EV3SensorMux", "class_e_vs___e_v3_sensor_mux.html", "class_e_vs___e_v3_sensor_mux" ],
     [ "EVs_EV3Touch", "class_e_vs___e_v3_touch.html", "class_e_vs___e_v3_touch" ],
     [ "EVs_EV3Ultrasonic", "class_e_vs___e_v3_ultrasonic.html", "class_e_vs___e_v3_ultrasonic" ],
     [ "EVs_LightSensorArray", "class_e_vs___light_sensor_array.html", "class_e_vs___light_sensor_array" ],

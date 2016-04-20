@@ -25,14 +25,14 @@
 
  \section install_sec Installation Instructions
  To install this library in your Arduino IDE, download the latest zip file from following location:
- https://github.com/openelectrons/EVShield
+ https://github.com/mindsensors/EVShield
 
  And follow the instructions at this url to install it on your computer.
 */
 
 /*
  * EVShield interface library
- * Copyright (C) 2015 mindsensors.com
+ * Copyright (C) 2016 mindsensors.com
  * 12/18/2014  Nitin Patil --  modified to work with EVshield 
  *
  * This file is part of EVShield interface library.

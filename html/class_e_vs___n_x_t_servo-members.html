@@ -28,10 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo-with-transparent-bg-w400.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo-with-transparent-bg-w300.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">EVShield
-   &#160;<span id="projectnumber">v1.01</span>
+   &#160;<span id="projectnumber">v1.2</span>
    </div>
    <div id="projectbrief">EVShield Library Reference by mindsensors.com</div>
   </td>
@@ -130,11 +130,11 @@ $(document).ready(function(){initNavTree('class_e_vs___n_x_t_servo.html','');});
   <tr><td class="entry"><a class="el" href="class_e_v_shield_i2_c.html#ae8284ef8911b27a117573be11c9de3ef">getVendorID</a>()</td><td class="entry"><a class="el" href="class_e_v_shield_i2_c.html">EVShieldI2C</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_base_i2_c_device.html#ae0bb486dda6232cc3bd4e7b95521af95">BaseI2CDevice::getWriteErrorCode</a>()</td><td class="entry"><a class="el" href="class_base_i2_c_device.html">BaseI2CDevice</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_soft_i2c_master.html#afb577969af4dd9ff2dd151995fe0abed">SoftI2cMaster::getWriteErrorCode</a>()</td><td class="entry"><a class="el" href="class_soft_i2c_master.html">SoftI2cMaster</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_e_vs___n_x_t_servo.html#a59f0699c4910b03bd62b3db8f8748ece">gotoEEPROM</a>()</td><td class="entry"><a class="el" href="class_e_vs___n_x_t_servo.html">EVs_NXTServo</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_e_vs___n_x_t_servo.html#ae1d0c2c79838a2e562ddfe77636148fb">gotoEEPROM</a>(uint8_t position)</td><td class="entry"><a class="el" href="class_e_vs___n_x_t_servo.html">EVs_NXTServo</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_e_vs___n_x_t_servo.html#a9473d6091eaa3ac25da5325363bd1674">haltMacro</a>()</td><td class="entry"><a class="el" href="class_e_vs___n_x_t_servo.html">EVs_NXTServo</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_e_v_shield_i2_c.html#a4e52d5923c11b593d63a6bbfe7d23632">init</a>(void *shield, SH_BankPort bp)</td><td class="entry"><a class="el" href="class_e_v_shield_i2_c.html">EVShieldI2C</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_base_i2_c_device.html#acc95ab6f1986f38403daead419e316ac">BaseI2CDevice::initProtocol</a>()</td><td class="entry"><a class="el" href="class_base_i2_c_device.html">BaseI2CDevice</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_soft_i2c_master.html#aa24d152f5c3731e4c2e62727a63308ac">SoftI2cMaster::initProtocol</a>(uint8_t sclPin=NULL, uint8_t sdaPin=NULL)</td><td class="entry"><a class="el" href="class_soft_i2c_master.html">SoftI2cMaster</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_soft_i2c_master.html#ab27042aece534bc94e2ca5ff9762dfff">SoftI2cMaster::initProtocol</a>(uint8_t sclPin=(uint8_t) NULL, uint8_t sdaPin=(uint8_t) NULL)</td><td class="entry"><a class="el" href="class_soft_i2c_master.html">SoftI2cMaster</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_e_vs___n_x_t_servo.html#ac1ad10ba093e838627df53070a26255f">issueCommand</a>(char command)</td><td class="entry"><a class="el" href="class_e_vs___n_x_t_servo.html">EVs_NXTServo</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_e_v_shield_i2_c.html#a00cbb323f81b9756c278ea734604e233">m_protocol</a></td><td class="entry"><a class="el" href="class_e_v_shield_i2_c.html">EVShieldI2C</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_e_v_shield_i2_c.html#a623b1fa3636c5f6630f82ca1091f6ae9">mp_shield</a></td><td class="entry"><a class="el" href="class_e_v_shield_i2_c.html">EVShieldI2C</a></td><td class="entry"></td></tr>
@@ -157,7 +157,7 @@ $(document).ready(function(){initNavTree('class_e_vs___n_x_t_servo.html','');});
   <tr class="even"><td class="entry"><a class="el" href="class_soft_i2c_master.html#a0f66140cabee79a0808cbb787c400ede">SoftI2cMaster</a>(uint8_t devAddr)</td><td class="entry"><a class="el" href="class_soft_i2c_master.html">SoftI2cMaster</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_soft_i2c_master.html#ab75987e5c66784705a8d24415f13ae1a">start</a>(uint8_t addressRW)</td><td class="entry"><a class="el" href="class_soft_i2c_master.html">SoftI2cMaster</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_soft_i2c_master.html#ad8f52e1cbf15894472881afe439afa02">stop</a>(void)</td><td class="entry"><a class="el" href="class_soft_i2c_master.html">SoftI2cMaster</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_e_vs___n_x_t_servo.html#ac20bb79c2b1977c06a6d25e8c9ec43e8">storeInitial</a>()</td><td class="entry"><a class="el" href="class_e_vs___n_x_t_servo.html">EVs_NXTServo</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_e_vs___n_x_t_servo.html#a8a6e2e38e8c5907033bddafb43b45da6">storeInitial</a>(uint8_t number)</td><td class="entry"><a class="el" href="class_e_vs___n_x_t_servo.html">EVs_NXTServo</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_soft_i2c_master.html#a1d018fd6ce8520e42f9a6bb22a564293">write</a>(uint8_t b)</td><td class="entry"><a class="el" href="class_soft_i2c_master.html">SoftI2cMaster</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_e_v_shield_i2_c.html#aacefc55a3fc1cbea07b4f6049ec411d1">writeByte</a>(uint8_t location, uint8_t data)</td><td class="entry"><a class="el" href="class_e_v_shield_i2_c.html">EVShieldI2C</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_e_v_shield_i2_c.html#a84faede3d1dc4b87a31ed41f56ba8cf7">writeInteger</a>(uint8_t location, uint16_t data)</td><td class="entry"><a class="el" href="class_e_v_shield_i2_c.html">EVShieldI2C</a></td><td class="entry"></td></tr>
@@ -169,7 +169,7 @@ $(document).ready(function(){initNavTree('class_e_vs___n_x_t_servo.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Oct 16 2015 16:24:19 for EVShield by
+    <li class="footer">Generated on Wed Apr 20 2016 15:24:45 for EVShield by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

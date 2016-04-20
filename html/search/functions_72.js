@@ -19,7 +19,7 @@ var searchData=
   ['readraw',['readRaw',['../class_e_v_shield_a_g_s.html#a582b49a30aa85da8d4c4025165e9e29b',1,'EVShieldAGS']]],
   ['readregisters',['readRegisters',['../class_base_i2_c_device.html#abb9bad3def0eebbc54b05738e5da8823',1,'BaseI2CDevice::readRegisters()'],['../class_e_v_shield_i2_c.html#a43259908f1a8b39305cfea5022455a90',1,'EVShieldI2C::readRegisters()'],['../class_soft_i2c_master.html#ac6c75241a8bd558f78bd606eca55744e',1,'SoftI2cMaster::readRegisters()']]],
   ['readstring',['readString',['../class_base_i2_c_device.html#a462c3c8ff525fdf274953318f8b4ab6d',1,'BaseI2CDevice::readString()'],['../class_e_v_shield_i2_c.html#a8e6812209bba1d40a74b9363f2498ec4',1,'EVShieldI2C::readString()'],['../class_soft_i2c_master.html#abfcb8a7e7873e907f9a82b849bc62534',1,'SoftI2cMaster::readString()']]],
-  ['readvalue',['readValue',['../class_e_v_shield_u_a_r_t.html#acda9ed68fe1385ad8f9252b0264d0fae',1,'EVShieldUART']]],
+  ['readvalue',['readValue',['../class_e_vs___e_v3_sensor_mux.html#acea1491dc89259e4e2c0464fcec20cce',1,'EVs_EV3SensorMux::readValue()'],['../class_e_v_shield_u_a_r_t.html#acda9ed68fe1385ad8f9252b0264d0fae',1,'EVShieldUART::readValue()']]],
   ['reset',['reset',['../class_e_vs___angle_sensor.html#a2acde0c2ad2f19207c52001e8161005c',1,'EVs_AngleSensor::reset()'],['../class_e_vs___n_x_t_m_m_x.html#a8ff1f463c006d9e80f13f36a287a96ab',1,'EVs_NXTMMX::reset()'],['../class_e_vs___n_x_t_servo.html#a7681e5a2b7e4ea7ed1c74e6038cfc8fb',1,'EVs_NXTServo::reset()']]],
   ['resetbumpcount',['resetBumpCount',['../class_e_vs___e_v3_touch.html#a5446f7a2b3ee56ecb262a0542f5eab7b',1,'EVs_EV3Touch']]],
   ['resetcam',['resetCam',['../class_e_vs___n_x_t_cam.html#aed10d71057c7df1846f0bf7547d6adc5',1,'EVs_NXTCam']]],

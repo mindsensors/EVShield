@@ -28,10 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo-with-transparent-bg-w400.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo-with-transparent-bg-w300.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">EVShield
-   &#160;<span id="projectnumber">v1.01</span>
+   &#160;<span id="projectnumber">v1.2</span>
    </div>
    <div id="projectbrief">EVShield Library Reference by mindsensors.com</div>
   </td>
@@ -137,16 +137,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac1ad10ba093e838627df53070a26255f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace1e39ba825a1903b34eab23780f65fc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_vs___n_x_t_servo.html#ace1e39ba825a1903b34eab23780f65fc">getBatteryVoltage</a> ()</td></tr>
 <tr class="separator:ace1e39ba825a1903b34eab23780f65fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac20bb79c2b1977c06a6d25e8c9ec43e8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_vs___n_x_t_servo.html#ac20bb79c2b1977c06a6d25e8c9ec43e8">storeInitial</a> ()</td></tr>
-<tr class="separator:ac20bb79c2b1977c06a6d25e8c9ec43e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a6e2e38e8c5907033bddafb43b45da6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_vs___n_x_t_servo.html#a8a6e2e38e8c5907033bddafb43b45da6">storeInitial</a> (uint8_t number)</td></tr>
+<tr class="separator:a8a6e2e38e8c5907033bddafb43b45da6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7681e5a2b7e4ea7ed1c74e6038cfc8fb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_vs___n_x_t_servo.html#a7681e5a2b7e4ea7ed1c74e6038cfc8fb">reset</a> ()</td></tr>
 <tr class="separator:a7681e5a2b7e4ea7ed1c74e6038cfc8fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9473d6091eaa3ac25da5325363bd1674"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_vs___n_x_t_servo.html#a9473d6091eaa3ac25da5325363bd1674">haltMacro</a> ()</td></tr>
 <tr class="separator:a9473d6091eaa3ac25da5325363bd1674"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bbe55318077bf1eadf6cbab49ac1490"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_vs___n_x_t_servo.html#a6bbe55318077bf1eadf6cbab49ac1490">resumeMacro</a> ()</td></tr>
 <tr class="separator:a6bbe55318077bf1eadf6cbab49ac1490"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59f0699c4910b03bd62b3db8f8748ece"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_vs___n_x_t_servo.html#a59f0699c4910b03bd62b3db8f8748ece">gotoEEPROM</a> ()</td></tr>
-<tr class="separator:a59f0699c4910b03bd62b3db8f8748ece"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1d0c2c79838a2e562ddfe77636148fb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_vs___n_x_t_servo.html#ae1d0c2c79838a2e562ddfe77636148fb">gotoEEPROM</a> (uint8_t position)</td></tr>
+<tr class="separator:ae1d0c2c79838a2e562ddfe77636148fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c04b79441cde46854b9f93ca214d699"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_vs___n_x_t_servo.html#a0c04b79441cde46854b9f93ca214d699">editMacro</a> ()</td></tr>
 <tr class="separator:a0c04b79441cde46854b9f93ca214d699"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24818e5eda8bd0089e087d57f900c48d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_vs___n_x_t_servo.html#a24818e5eda8bd0089e087d57f900c48d">pauseMacro</a> ()</td></tr>
@@ -247,8 +247,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>checkAddress</b> ()</
 <tr class="separator:a56993378a66a702113eef640d8c82ea9 inherit pub_methods_class_soft_i2c_master"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f66140cabee79a0808cbb787c400ede inherit pub_methods_class_soft_i2c_master"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_soft_i2c_master.html#a0f66140cabee79a0808cbb787c400ede">SoftI2cMaster</a> (uint8_t devAddr)</td></tr>
 <tr class="separator:a0f66140cabee79a0808cbb787c400ede inherit pub_methods_class_soft_i2c_master"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa24d152f5c3731e4c2e62727a63308ac inherit pub_methods_class_soft_i2c_master"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_soft_i2c_master.html#aa24d152f5c3731e4c2e62727a63308ac">initProtocol</a> (uint8_t sclPin=NULL, uint8_t sdaPin=NULL)</td></tr>
-<tr class="separator:aa24d152f5c3731e4c2e62727a63308ac inherit pub_methods_class_soft_i2c_master"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab27042aece534bc94e2ca5ff9762dfff inherit pub_methods_class_soft_i2c_master"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_soft_i2c_master.html#ab27042aece534bc94e2ca5ff9762dfff">initProtocol</a> (uint8_t sclPin=(uint8_t) NULL, uint8_t sdaPin=(uint8_t) NULL)</td></tr>
+<tr class="separator:ab27042aece534bc94e2ca5ff9762dfff inherit pub_methods_class_soft_i2c_master"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6c75241a8bd558f78bd606eca55744e inherit pub_methods_class_soft_i2c_master"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_soft_i2c_master.html#ac6c75241a8bd558f78bd606eca55744e">readRegisters</a> (uint8_t startRegister, uint8_t bytes, uint8_t *buf=NULL)</td></tr>
 <tr class="separator:ac6c75241a8bd558f78bd606eca55744e inherit pub_methods_class_soft_i2c_master"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab831e67e1da5f14586bfe2ce6fab68aa inherit pub_methods_class_soft_i2c_master"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_soft_i2c_master.html#ab831e67e1da5f14586bfe2ce6fab68aa">writeRegistersWithLocation</a> (int bytes, uint8_t *buf)</td></tr>
@@ -357,19 +357,20 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>b_initialized<
 
 </div>
 </div>
-<a class="anchor" id="a59f0699c4910b03bd62b3db8f8748ece"></a>
+<a class="anchor" id="ae1d0c2c79838a2e562ddfe77636148fb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">bool EVs_NXTServo::gotoEEPROM </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>position</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>reinitialize the macro enviornment </p>
+<p>Go to given EEPROM position (This command re-initializes the macro environment) </p>
 
 </div>
 </div>
@@ -541,19 +542,20 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>b_initialized<
 
 </div>
 </div>
-<a class="anchor" id="ac20bb79c2b1977c06a6d25e8c9ec43e8"></a>
+<a class="anchor" id="a8a6e2e38e8c5907033bddafb43b45da6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">bool EVs_NXTServo::storeInitial </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>number</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>store current settings of servos to initial default setting and remember when powered on </p>
+<p>store current settings of the given servo to initial default setting and remember when powered on </p>
 
 </div>
 </div>
@@ -567,7 +569,7 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>b_initialized<
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_e_vs___n_x_t_servo.html">EVs_NXTServo</a></li>
-    <li class="footer">Generated on Fri Oct 16 2015 16:24:19 for EVShield by
+    <li class="footer">Generated on Wed Apr 20 2016 15:24:45 for EVShield by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

@@ -33,7 +33,7 @@ var searchData=
   ['getkp',['getKp',['../class_e_vs___line_leader.html#ad5ccfdd0cd8936ab9d9aa59bbd81806f',1,'EVs_LineLeader']]],
   ['getkpfactor',['getKpFactor',['../class_e_vs___line_leader.html#ad386dbffe128a47de15754adc993ef1b',1,'EVs_LineLeader']]],
   ['getminutes',['getMinutes',['../class_e_vs___r_t_c.html#a3b99652d2ca334fd89d49c447287d175',1,'EVs_RTC']]],
-  ['getmode',['getMode',['../class_e_v_shield_u_a_r_t.html#ad920acef2b5f055f4f9e922751e1d0e2',1,'EVShieldUART']]],
+  ['getmode',['getMode',['../class_e_vs___e_v3_sensor_mux.html#a9afc7aebd6a2bc31416ab0f4d98d85d2',1,'EVs_EV3SensorMux::getMode()'],['../class_e_v_shield_u_a_r_t.html#ad920acef2b5f055f4f9e922751e1d0e2',1,'EVShieldUART::getMode()']]],
   ['getmonth',['getMonth',['../class_e_vs___r_t_c.html#aea502a02fc4e559ab00efeacecf2ea38',1,'EVs_RTC']]],
   ['getmotorstatusbyte',['getMotorStatusByte',['../class_e_vs___n_x_t_m_m_x.html#a3a000f09de4a45404e738c6c72936eb4',1,'EVs_NXTMMX']]],
   ['getmotortasksrunningbyte',['getMotorTasksRunningByte',['../class_e_vs___n_x_t_m_m_x.html#aca7dca9ddfd16c3b26ca1c3888aaf27b',1,'EVs_NXTMMX']]],
@@ -64,5 +64,5 @@ var searchData=
   ['getyear',['getYear',['../class_e_vs___r_t_c.html#a384a496dece9ae7b7920b44f84c35c42',1,'EVs_RTC']]],
   ['getyljoy',['getYLJoy',['../class_e_vs___p_s_p_nx.html#aa69f498a21023bb0aeb5628fa3f09767',1,'EVs_PSPNx']]],
   ['getyrjoy',['getYRJoy',['../class_e_vs___p_s_p_nx.html#afa304b80a39d3e93e192a46247cdcac1',1,'EVs_PSPNx']]],
-  ['gotoeeprom',['gotoEEPROM',['../class_e_vs___n_x_t_servo.html#a59f0699c4910b03bd62b3db8f8748ece',1,'EVs_NXTServo']]]
+  ['gotoeeprom',['gotoEEPROM',['../class_e_vs___n_x_t_servo.html#ae1d0c2c79838a2e562ddfe77636148fb',1,'EVs_NXTServo']]]
 ];

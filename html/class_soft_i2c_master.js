@@ -6,7 +6,7 @@ var class_soft_i2c_master =
     [ "getFirmwareVersion", "class_soft_i2c_master.html#a98a396e17232562c58c7b69529ef173d", null ],
     [ "getVendorID", "class_soft_i2c_master.html#a7f8e401b7954d26feffc35dc8b372801", null ],
     [ "getWriteErrorCode", "class_soft_i2c_master.html#afb577969af4dd9ff2dd151995fe0abed", null ],
-    [ "initProtocol", "class_soft_i2c_master.html#aa24d152f5c3731e4c2e62727a63308ac", null ],
+    [ "initProtocol", "class_soft_i2c_master.html#ab27042aece534bc94e2ca5ff9762dfff", null ],
     [ "read", "class_soft_i2c_master.html#a56993378a66a702113eef640d8c82ea9", null ],
     [ "readByte", "class_soft_i2c_master.html#a8748cc831e388dd54dbb1dde1979494b", null ],
     [ "readInteger", "class_soft_i2c_master.html#a4901745d1f01c61103903d4b0f7d69d3", null ],

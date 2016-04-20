@@ -7,6 +7,7 @@ var hierarchy =
         [ "EVs_AngleSensor", "class_e_vs___angle_sensor.html", null ],
         [ "EVs_CurrentMeter", "class_e_vs___current_meter.html", null ],
         [ "EVs_DISTNx", "class_e_vs___d_i_s_t_nx.html", null ],
+        [ "EVs_EV3SensorMux", "class_e_vs___e_v3_sensor_mux.html", null ],
         [ "EVs_LightSensorArray", "class_e_vs___light_sensor_array.html", null ],
         [ "EVs_LineLeader", "class_e_vs___line_leader.html", null ],
         [ "EVs_MagicWand", "class_e_vs___magic_wand.html", null ],

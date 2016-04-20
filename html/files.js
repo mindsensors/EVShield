@@ -7,6 +7,7 @@ var files =
     [ "EVs_EV3Color.h", "_e_vs___e_v3_color_8h_source.html", null ],
     [ "EVs_EV3Gyro.h", "_e_vs___e_v3_gyro_8h_source.html", null ],
     [ "EVs_EV3Infrared.h", "_e_vs___e_v3_infrared_8h_source.html", null ],
+    [ "EVs_EV3SensorMux.h", "_e_vs___e_v3_sensor_mux_8h_source.html", null ],
     [ "EVs_EV3Touch.h", "_e_vs___e_v3_touch_8h_source.html", null ],
     [ "EVs_EV3Ultrasonic.h", "_e_vs___e_v3_ultrasonic_8h_source.html", null ],
     [ "EVs_LightSensorArray.h", "_e_vs___light_sensor_array_8h_source.html", null ],

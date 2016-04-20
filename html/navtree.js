@@ -33,8 +33,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_base_i2_c_device_8h_source.html",
-"class_e_v_shield_i2_c.html#ae8284ef8911b27a117573be11c9de3ef",
-"class_e_vs___r_t_c.html#a3b99652d2ca334fd89d49c447287d175"
+"class_e_v_shield_i2_c.html#addbc8221e77952176e2026318e5c36a4",
+"class_e_vs___pi_light.html#a0bd5c96bb3d6198e589d402725f8262d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
