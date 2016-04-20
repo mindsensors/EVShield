@@ -1,4 +1,4 @@
-EVShield Library<br>
+How to Install EVShield Library<br>
 
 To install, download a ZIP from the github, and unzip it in your arduino/libraries folder.<br>
 Resulting in folder as follows: <b>arduino1.6.8/libraries/EVShield</b>
