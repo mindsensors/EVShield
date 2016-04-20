@@ -39,7 +39,8 @@ void setup()
 
 void loop()
 {
-      multi_color_blink();
+    Serial.println ("into loop: Watch the LED on EVShield ...");
+    multi_color_blink();
 }
 
 void multi_color_blink(){

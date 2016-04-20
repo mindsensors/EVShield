@@ -78,8 +78,8 @@ public:
 	/** get the battery voltage supplied to the NXTServo */
   uint8_t getBatteryVoltage();
 	
-	/** store current settings of servos to initial default setting and remember when powered on */
-  bool storeInitial();
+	/** store current settings of the given servo to initial default setting and remember when powered on */
+  bool storeInitial(uint8_t number);
 	
 	/** reset all servos to default */
   bool reset();
@@ -90,8 +90,8 @@ public:
 	/** resume the onboard macro on the NXTServo */
   bool resumeMacro();
 	
-	/** reinitialize the macro enviornment */
-  bool gotoEEPROM();
+	/** Go to given EEPROM position (This command re-initializes the macro environment) */
+  bool gotoEEPROM(uint8_t position);
 	
 	/** edit the onboard macro */
   bool editMacro();

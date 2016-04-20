@@ -45,9 +45,10 @@ uint8_t EVs_NXTServo::issueCommand(char command)
 	return writeByte(Servo_Command, (uint8_t)command);
 }
 
-bool EVs_NXTServo::storeInitial()
+bool EVs_NXTServo::storeInitial(uint8_t number)
 {
-	return issueCommand('In');
+	issueCommand('I');
+	return issueCommand(number);
 }
 bool EVs_NXTServo::reset()
 {
@@ -63,14 +64,16 @@ bool EVs_NXTServo::resumeMacro()
 	return issueCommand('R');
 }
 
-bool EVs_NXTServo::gotoEEPROM()
+bool EVs_NXTServo::gotoEEPROM(uint8_t position)
 {
-	return issueCommand('Gx');
+	issueCommand('G');
+	issueCommand(position);
 }
 
 bool EVs_NXTServo::editMacro()
 {
-	return issueCommand('Em');
+	issueCommand('E');
+	return issueCommand('m');
 }
 
 bool EVs_NXTServo::pauseMacro()

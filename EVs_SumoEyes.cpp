@@ -82,16 +82,16 @@ char *EVs_SumoEyes::OBZoneToString(SE_Zone ob)
 {
   switch (ob) {
     case SE_None:
-    return "NONE";
+    return (char *) "NONE";
     break;
     case SE_Front:
-    return "FRONT";
+    return (char *) "FRONT";
     break;
     case SE_Left:
-    return "LEFT";
+    return (char *) "LEFT";
     break;
     case SE_Right:
-    return "RIGHT";
+    return (char *) "RIGHT";
     break;
   }
 }
