@@ -1,7 +1,7 @@
 EVShield Library<br>
 
 To install, download a ZIP from the github, and unzip it in your arduino/libraries folder.<br>
-Resulting in folder as follows: <b>arduino1.6.8/libraries/EVShield<b>
+Resulting in folder as follows: <b>arduino1.6.8/libraries/EVShield</b>
 <br>
 <br>
 To start with, open IDE and Browse to Menu: File -> Examples -> EVShield -> EVShield_tests -> print_bank_info<br>
