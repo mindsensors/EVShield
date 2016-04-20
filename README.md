@@ -12,3 +12,6 @@ Compile and download this sketch to your arduino. Open Serial terminal and see t
 <br>
 <br>
 As a next step, follow the examples from EVShield_examples folder.
+<br>
+<br>
+To write your own programs, please refer to online API reference here: http://www.mindsensors.com/reference/EVShield/html/
