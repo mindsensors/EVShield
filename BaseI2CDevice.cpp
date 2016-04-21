@@ -25,8 +25,14 @@
 #include <Wire.h>
 
 extern "C" {
+#if ( ARDUINO == 10608 )
 #include "../../hardware/arduino/avr/libraries/Wire/src/utility/twi.h"
-//#include "../Wire/src/utility/twi.h"
+#elif ( ARDUINO == 10605 )
+#include "../../hardware/arduino/avr/libraries/Wire/utility/twi.h"
+#else
+uint8_t twi_writeTo(uint8_t, uint8_t*, uint8_t, uint8_t, uint8_t);
+#endif
+
 }
 
 // Max I2C message length is 16 bytes.  
