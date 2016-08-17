@@ -33,7 +33,7 @@ typedef enum {
 } MODE_Gyro;
 
 /**
-  @brief This class interfaces with LEGO EV3 Touch sensor attached to EVShield 
+  @brief This class interfaces with LEGO EV3 Gyro sensor attached to EVShield 
 	*/
 class EVs_EV3Gyro : public EVShieldUART
 {

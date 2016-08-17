@@ -34,7 +34,7 @@ typedef enum {
 } MODE_Infrared;
 
 /**
-  @brief This class interfaces with LEGO EV3 Touch sensor attached to EVShield 
+  @brief This class interfaces with LEGO EV3 IR sensor attached to EVShield 
 	*/
 class EVs_EV3Infrared : public EVShieldUART
 {
@@ -47,7 +47,9 @@ public:
     uint16_t readProximity();
 
     /** in mode: MODE_Infrared_Beacon  and MODE_InfraRed_Proximity */
-int8_t readChannelHeading(uint8_t channel);
+    int8_t readChannelHeading(uint8_t channel);
+
+    /** in mode: MODE_InfraRed_Proximity */
     uint8_t readChannelProximity(uint8_t channel);
 
     /** in mode MODE_Infrared_Remote */

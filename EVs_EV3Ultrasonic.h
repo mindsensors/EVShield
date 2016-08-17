@@ -33,7 +33,7 @@ typedef enum {
 } MODE_Sonar;
 
 /**
-  @brief This class interfaces with LEGO EV3 Touch sensor attached to EVShield 
+  @brief This class interfaces with LEGO EV3 Ultrasonic sensor attached to EVShield 
 	*/
 class EVs_EV3Ultrasonic : public EVShieldUART
 {
@@ -41,7 +41,9 @@ public:
     /** initialize the device and tell where it is connected */
     bool init(EVShield * shield, SH_BankPort bp);
 
-    /** get the distance to obstacle (in cm or inches based on the mode.) */
+    /** get the distance to obstacle (in cm or inches based on the mode.)
+        use setMode() to change the mode as you need
+    */
     float getDist();
     
     /** detect other ultrasonic devices */

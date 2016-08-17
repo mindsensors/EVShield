@@ -554,7 +554,7 @@ public:
    @param direction        specifiy the direction to run the motor
    @param speed            the speed value (between 0 and 100)
    @param duration         in seconds
-   @param wait_for_completion    whether this API should wait for competion or not
+   @param wait_for_completion    whether this API should wait for completion or not
    @param next_action      for these motor being operated on
    @return        0 if the operation was finished satisfactorily,
             in case return value is non-zero you should check for the bits for error conditions.
@@ -571,7 +571,7 @@ public:
    @param speed            the speed value (between 0 and 100)
    @param tachometer       the target for the encoder value to achieve.
    @param relative         is the tachometer relative or absolute.
-   @param wait_for_completion    whether this API should wait for competion or not
+   @param wait_for_completion    whether this API should wait for completion or not
    @param next_action      for these motor being operated on
    @return        0 if the operation was finished satisfactorily,
             in case return value is non-zero you should check for the bits for error conditions.
@@ -588,7 +588,7 @@ public:
    @param direction        specifiy the direction to run the motor
    @param speed            the speed value (between 0 and 100)
    @param degrees          The degrees the motor should turn through
-   @param wait_for_completion    whether this API should wait for competion or not
+   @param wait_for_completion    whether this API should wait for completion or not
    @param next_action      for these motor being operated on
    @return        0 if the operation was finished satisfactorily,
             in case return value is non-zero you should check for the bits for error conditions.
@@ -604,7 +604,7 @@ public:
    @param direction        specifiy the direction to run the motor
    @param speed            the speed value (between 0 and 100)
    @param rotations        The rotations the motor should rotate through
-   @param wait_for_completion    whether this API should wait for competion or not
+   @param wait_for_completion    whether this API should wait for completion or not
    @param next_action      for these motor being operated on
    @return        0 if the operation was finished satisfactorily,
             in case return value is non-zero you should check for the bits for error conditions.
