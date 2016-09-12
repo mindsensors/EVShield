@@ -341,8 +341,23 @@ bool EVShieldBank::motorStartBothInSync()
 // Reset the encoder for motor 1 or motor 2
 bool EVShieldBank::motorResetEncoder(SH_Motor which_motor)
 {
-  char code = (which_motor == SH_Motor_1) ? 'r' : 's';
-  return EVShieldIssueCommand(code);
+    char code;
+    switch (which_motor) {
+        case SH_Motor_1:
+            code = 'r';
+            return EVShieldIssueCommand(code);
+        case SH_Motor_2:
+            code = 's';
+            return EVShieldIssueCommand(code);
+        case SH_Motor_Both:
+            code = 'r';
+            EVShieldIssueCommand(code);
+            code = 's';
+            return EVShieldIssueCommand(code);
+        default:
+            return -1;
+            break;
+    }
 }
 
 
