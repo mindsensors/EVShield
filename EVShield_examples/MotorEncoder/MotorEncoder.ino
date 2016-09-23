@@ -69,7 +69,7 @@ loop()
 {
     new_encoder2 = evshield.bank_a.motorGetEncoderPosition(SH_Motor_2);
     new_encoder1 = evshield.bank_a.motorGetEncoderPosition(SH_Motor_1);
-    sprintf (str, "encoder values: 1) %d, 2) %d", new_encoder1, new_encoder2);
+    sprintf (str, "encoder values: 1) %ld, 2) %ld", new_encoder1, new_encoder2);
     Serial.println (str);
     if ( evshield.getButtonState(BTN_LEFT) == true ) {
         Serial.println ("resetting encoders..");
