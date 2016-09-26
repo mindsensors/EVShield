@@ -89,24 +89,35 @@ void EVShield::initProtocols(SH_Protocols protocol)
   char d[10];
   char str[80];
   
-  strcpy(d, bank_a.getDeviceID());
+  strcpy(d, bank_a.getDeviceID());  
   strcpy(v, bank_a.getFirmwareVersion());
   if ( ( strcmp(d, "PiStorms") == 0 && (strcmp(v, "V1.09") >= 0 )) ||
        ( strcmp(d, "EVShld")   == 0 && (strcmp(v, "V1.09") >= 0)) )
   {
-     // firmware is ok for this library
-     initCounter = 6;
+    // firmware is ok for this library
+    initCounter = 6;
   } else {
     ++initCounter;
     if (initCounter == 5){
-    sprintf (str,"ERROR: Version mismatch. Reported Device: %s, Version: %s", d, v);
-    Serial.println(str);
-    Serial.println("V1.09 or later expected");
-    Serial.println("Please upgrade your EVShield Firmware");
+      if (strcmp(d, "PiStorms") == 0 || strcmp(d, "EVShld") == 0) {
+        sprintf (str,"ERROR: Version mismatch. Reported Device: %s, Version: %s", d, v);
+        Serial.println(str);
+        Serial.println("V1.09 or later expected");
+        sprintf (str,"Please upgrade your %s Firmware", strcmp(d, "EVShld") == 0 ? "EVShield" : "PiStorms");
+        Serial.println(str);
+      } else {
+        Serial.println("ERROR: Unsupported device.");
+        Serial.println("EVShield or PiStorms expected.");
+        Serial.println("Please ensure your device is properly connected and functioning properly.");
+        Serial.println("If you are trying to use an NXShield, please use the NXShield library from sourceforge.net/projects/nxshield");
+      }
+      pinMode(13, OUTPUT);
       while (true) { // stop here with red blinking light.
         ledSetRGB(100, 0, 0);
+        digitalWrite(13, HIGH);
         delay(500);
         ledSetRGB(0, 0, 0);
+        digitalWrite(13, LOW);
         delay(500);
       }
     }
