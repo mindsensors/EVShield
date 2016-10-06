@@ -148,14 +148,16 @@ void MsTimer2::_overflow() {
 	}
 }
 
-ISR(TIMER2_OVF_vect) {
-#if defined (__AVR_ATmega168__) || defined (__AVR_ATmega48__) || defined (__AVR_ATmega88__) || defined (__AVR_ATmega328P__) || (__AVR_ATmega1280__)
-	TCNT2 = MsTimer2::tcnt2;
-#elif defined (__AVR_ATmega128__)
-	TCNT2 = MsTimer2::tcnt2;
-#elif defined (__AVR_ATmega8__)
-	TCNT2 = MsTimer2::tcnt2;
-#endif
-	MsTimer2::_overflow();
-}
+#if defined(__AVR__)
+	ISR(TIMER2_OVF_vect) {
+	#if defined (__AVR_ATmega168__) || defined (__AVR_ATmega48__) || defined (__AVR_ATmega88__) || defined (__AVR_ATmega328P__) || (__AVR_ATmega1280__)
+		TCNT2 = MsTimer2::tcnt2;
+	#elif defined (__AVR_ATmega128__)
+		TCNT2 = MsTimer2::tcnt2;
+	#elif defined (__AVR_ATmega8__)
+		TCNT2 = MsTimer2::tcnt2;
+	#endif
+		MsTimer2::_overflow();
+	}
 
+#endif

@@ -41,6 +41,9 @@
   #endif
 
 #endif
+#if defined(ARDUINO_ARC32_TOOLS)
+  #define MODEL_EVSHIELD_D
+#endif
 
 
 /**

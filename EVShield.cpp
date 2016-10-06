@@ -20,7 +20,11 @@
 
 #include "EVShield.h"
 #include "Wire.h"
-#include "MsTimer2.h"
+#if defined(ARDUINO_ARC32_TOOLS)
+  #include "CurieTimerOne.h"
+#else
+  #include "MsTimer2.h"
+#endif
 static void pingEV();
 
 #if defined(__AVR__)
@@ -128,9 +132,13 @@ void EVShield::initProtocols(SH_Protocols protocol)
 
 void EVShield::I2CTimer()
 {
- //TCNT2  = 0; 
- MsTimer2::set(300, pingEV); // 300ms period
- MsTimer2::start();  
+#if defined(ARDUINO_ARC32_TOOLS)
+  CurieTimerOne.start(300000, pingEV); // in microseconds
+#else
+  //TCNT2  = 0; 
+  MsTimer2::set(300, pingEV); // 300ms period
+  MsTimer2::start(); 
+#endif
 }
 
 void EVShield::initLEDTimers()
@@ -751,25 +759,30 @@ int EVShieldBankB::sensorReadRaw(uint8_t which_sensor)
 
 void pingEV()
 {
-    TWCR = (1<<TWINT)|(1<<TWSTA)|(1<<TWEN);
-    while ((TWCR & (1<<TWINT)) == 0);
-    TWDR = 0x34;
-    TWCR = (1<<TWINT)|(1<<TWEN);
-    while ((TWCR & (1<<TWINT)) == 0);
-    TWCR = (1<<TWINT)|(1<<TWSTO)|(1<<TWEN);
-    TCNT2  = 0;//initialize counter value to 0
-    /*
-    if (toggle2)
-    {
-      digitalWrite(13, HIGH);
-      toggle2 = 0;
-    }
-    else
-    {
-      digitalWrite(13, LOW);
-      toggle2 = 1; 
-    }
-    */
+    #if defined(ARDUINO_ARC32_TOOLS)
+        Wire.beginTransmission(0x34);
+        Wire.endTransmission();
+    #else
+        TWCR = (1<<TWINT)|(1<<TWSTA)|(1<<TWEN);
+        while ((TWCR & (1<<TWINT)) == 0);
+        TWDR = 0x34;
+        TWCR = (1<<TWINT)|(1<<TWEN);
+        while ((TWCR & (1<<TWINT)) == 0);
+        TWCR = (1<<TWINT)|(1<<TWSTO)|(1<<TWEN);
+        TCNT2  = 0;//initialize counter value to 0    
+        /*
+        if (toggle2)
+        {
+          digitalWrite(13, HIGH);
+          toggle2 = 0;
+        }
+        else
+        {
+          digitalWrite(13, LOW);
+          toggle2 = 1; 
+        }
+        */
+    #endif
 }
 
 #if defined(__AVR__)
