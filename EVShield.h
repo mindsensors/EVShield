@@ -735,10 +735,10 @@ public:
 
   /**
   Set the colors of LED on the EVShield;
-  The values of red, green, blue are between 0 to 8 (for 8 intensity levels).
-  @param red      Intensity for red color (between 0 and 8)
-  @param green      Intensity for green color (between 0 and 8)
-  @param blue      Intensity for blue color (between 0 and 8)
+  The values of red, green, blue are between 0 to 255.
+  @param red      Intensity for red color (between 0 and 255)
+  @param green      Intensity for green color (between 0 and 255)
+  @param blue      Intensity for blue color (between 0 and 255)
   */
   void ledSetRGB(uint8_t red = 0, uint8_t green = 0, uint8_t blue = 0);
 
