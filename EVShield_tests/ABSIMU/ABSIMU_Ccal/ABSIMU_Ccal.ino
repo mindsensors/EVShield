@@ -42,10 +42,10 @@ void setup()
   char str[256];
 /**  Start serial for output
  */
-  Serial.begin(115200);  // 
-/**  Wait, allowing time to activate the serial monitor
+  Serial.begin(115200);
+/**  Wait until the serial connection is established
  */ 
-  delay(500); // wait, allowing time to activate the serial monitor
+  while (!Serial) ;
 
 /**  Initialize the Hardware I2C protocol for EVShield
  */

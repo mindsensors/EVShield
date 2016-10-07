@@ -38,7 +38,9 @@ Servo myservo11;
 int pos = 0;
 
 void setup()   {  
-  Serial.begin(115200);
+  Serial.begin(115200);       // start serial for output
+  while (!Serial) ;           // wait until the serial connection
+                              // is established
 
 //
 //Initialze EVShield with Hardware I2C protocol.

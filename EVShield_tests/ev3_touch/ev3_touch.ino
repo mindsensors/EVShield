@@ -35,6 +35,8 @@ void setup()
 {
 
     Serial.begin(115200);       // start serial for output
+    while (!Serial) ;           // wait until the serial connection
+                                // is established
     //
     // initialize the shield i2c interface.
     //

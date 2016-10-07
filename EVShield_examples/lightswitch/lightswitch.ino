@@ -48,6 +48,8 @@ setup()
     long timeBefore, timeAfter;
 
     Serial.begin(115200);       // start serial for output
+    while (!Serial) ;           // wait until the serial connection
+                                // is established
 
     Serial.println ("--------------------------------------");
     Serial.println ("Starting EV3 Touch Sensor Light Switch program");

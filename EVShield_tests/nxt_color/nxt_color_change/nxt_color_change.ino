@@ -45,6 +45,8 @@ setup()
     char            str[50];
 
     Serial.begin(115200);       // start serial for output
+    while (!Serial) ;           // wait until the serial connection
+                                // is established
 
     Serial.println ("Starting NXT Color Sensor Color Change Test program");
 

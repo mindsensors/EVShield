@@ -40,8 +40,9 @@ void setup()
 {
   char str[256];
 
-  Serial.begin(115200);  // start serial for output
-  delay(500); // wait, allowing time to activate the serial monitor
+  Serial.begin(115200);       // start serial for output
+  while (!Serial) ;           // wait until the serial connection
+                              // is established
 
   //  Serial.println (__FILE__);
   //  Serial.println ("Initializing the devices ...");

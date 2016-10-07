@@ -27,6 +27,7 @@ EVs_UIModule uim = EVs_UIModule( 7, 8, 9 );
 //NXShieldAGS ags[4];
 void setup(){
   Serial.begin(115200);
+  while (!Serial) ;
   evshield.init(SH_HardwareI2C);
   uim.begin();
   evshield.bank_a.centerLedSetRGB(100,100,0);

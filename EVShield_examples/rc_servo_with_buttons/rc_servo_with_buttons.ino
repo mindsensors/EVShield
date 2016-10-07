@@ -43,6 +43,7 @@ int pos = 0;
 
 void setup()   {  
   Serial.begin(115200);
+  while (!Serial) ;
 
   Ev.init(SH_SoftwareI2C);
   myservo.attach(3);
