@@ -6,6 +6,7 @@ var searchData=
   ['readbyte',['readByte',['../class_base_i2_c_device.html#a427f3ff65f3bed8d26e6697397a16132',1,'BaseI2CDevice::readByte()'],['../class_e_v_shield_i2_c.html#aebddba215ad02257256727432f8d6c52',1,'EVShieldI2C::readByte()'],['../class_soft_i2c_master.html#a8748cc831e388dd54dbb1dde1979494b',1,'SoftI2cMaster::readByte()']]],
   ['readchannelbutton',['readChannelButton',['../class_e_vs___e_v3_infrared.html#a0f2a63402c6bd1e2361e706dfdd83318',1,'EVs_EV3Infrared']]],
   ['readchannelheading',['readChannelHeading',['../class_e_vs___e_v3_infrared.html#ab9c060084e2ab15a78e593d411e27031',1,'EVs_EV3Infrared']]],
+  ['readchannelproximity',['readChannelProximity',['../class_e_vs___e_v3_infrared.html#a9b9e3402b9b0a28afb61057043066071',1,'EVs_EV3Infrared']]],
   ['readcompass',['readCompass',['../class_e_vs___absolute_i_m_u.html#a17244ab1f6414c78bd5158b8e60fd25a',1,'EVs_AbsoluteIMU']]],
   ['readgyro',['readGyro',['../class_e_vs___absolute_i_m_u.html#ac9d08d4dbf62dfcc465b8423290cffc2',1,'EVs_AbsoluteIMU']]],
   ['readimageregisters',['readImageRegisters',['../class_e_vs___n_x_t_cam.html#ad2924a64e8fc0f24c586babe5ee97a8c',1,'EVs_NXTCam']]],
