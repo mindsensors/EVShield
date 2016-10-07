@@ -20,7 +20,7 @@ http://www.openelectrons.com/docs/viewdoc/25
 
 #include <Wire.h>
 #include <EVShield.h>
-#define GLOBAL_DELAY 50
+#define GLOBAL_DELAY 2
 
 /**
   This is a simple example of blinking
@@ -44,35 +44,35 @@ void loop()
 }
 
 void multi_color_blink(){
- for (int i=8; i>=0; i--){
-   if (i<=4) evshield.ledSetRGB(i,4-i,0);
+ for (int i=255; i>=0; i--){
+   if (i<=127) evshield.ledSetRGB(i,127-i,0);
    else    evshield.ledSetRGB(i,0,0);
    delay(GLOBAL_DELAY);
  }
  
- for (int i=5; i<=8; i++){
+ for (int i=128; i<=255; i++){
    evshield.ledSetRGB(0,i,0);
    delay(GLOBAL_DELAY/2);
  }
 
- for (int i=8; i>=0; i--){
-   if (i<=4) evshield.ledSetRGB(0,i,4-i);
+ for (int i=255; i>=0; i--){
+   if (i<=127) evshield.ledSetRGB(0,i,127-i);
    else    evshield.ledSetRGB(0,i,0);
    delay(GLOBAL_DELAY);
  }
 
- for (int i=5; i<=8; i++){
+ for (int i=128; i<=255; i++){
    evshield.ledSetRGB(0,0,i);
    delay(GLOBAL_DELAY/2);
  }
 
- for (int i=8; i>=0; i--){
-   if (i<=4) evshield.ledSetRGB(4-i,0,i);
+ for (int i=255; i>=0; i--){
+   if (i<=127) evshield.ledSetRGB(127-i,0,i);
    else    evshield.ledSetRGB(0,0,i);
    delay(GLOBAL_DELAY);
  }
 
- for (int i=5; i<=8; i++){
+ for (int i=128; i<=255; i++){
    evshield.ledSetRGB(i,0,0);
    delay(GLOBAL_DELAY/2);
  } 
