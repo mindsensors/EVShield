@@ -36,8 +36,8 @@ void setup()
   char            str[80];
 
   Serial.begin(115200);       // start serial for output
-  while (!Serial) ;           // wait until the serial connection
-                              // is established
+  delay(500);                // wait, allowing time to
+                             // activate the serial monitor
 
   //
   // EVShield supports multiple transports

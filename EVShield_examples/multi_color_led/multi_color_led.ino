@@ -31,7 +31,6 @@ EVShield evshield(0x34,0x36);
 void setup()
 {
   Serial.begin(115200);
-  while (!Serial) ;
 
   evshield.init(SH_HardwareI2C);
 

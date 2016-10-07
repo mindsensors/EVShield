@@ -51,8 +51,8 @@ EVs_NXTLight    light1;
 void setup()
 {
   Serial.begin(115200);       // start serial for output
-  while (!Serial) ;           // wait until the serial connection
-                              // is established
+  delay(500);                // wait, allowing time to
+                             // activate the serial monitor
   Serial.println ("Initializing the devices ...");
   //
   // Initialize the protocol 

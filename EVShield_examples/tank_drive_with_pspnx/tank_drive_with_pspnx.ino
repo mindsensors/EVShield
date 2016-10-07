@@ -36,8 +36,8 @@ void
 setup()
 {
     Serial.begin(115200);       // start serial for output
-    while (!Serial) ;           // wait until the serial connection
-                                // is established
+    delay(100);                // wait allowing time to
+                                // activate the serial monitor
 
     long            rotations = 1;  // Define variable rotations and set
                                     // equal to 90
