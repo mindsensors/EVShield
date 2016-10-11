@@ -48,8 +48,11 @@ void setup()
   //
   // Wait until user presses GO button to continue the program
   //
-  Serial.println ("Press LEFT button to continue");
-  evshield.waitForButtonPress(BTN_LEFT);
+  while (!evshield.getButtonState(BTN_GO)) {
+    if (millis() % 1000 < 3) {
+      Serial.println("Press GO button to continue");
+    }
+  }
 
 }
 

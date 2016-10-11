@@ -78,8 +78,11 @@ setup()
     //us1.setMode(MODE_Sonar_Inches);
     us1.setMode(MODE_Sonar_CM);
       
-    Serial.println ("Press GO button to continue");
-    evshield.waitForButtonPress(BTN_GO);
+    while (!evshield.getButtonState(BTN_GO)) {
+        if (millis() % 1000 < 3) {
+            Serial.println("Press GO button to continue");
+        }
+    }
     
     //
     // see if the sensor is pressed.

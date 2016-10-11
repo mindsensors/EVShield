@@ -51,7 +51,11 @@ setup()
     Serial.println ("---------------------------");
     Serial.println ("Press GO button to continue");
     Serial.println ("---------------------------");
-    evshield.waitForButtonPress(BTN_GO);
+    while (!evshield.getButtonState(BTN_GO)) {
+        if (millis() % 1000 < 3) {
+            Serial.println("Press GO button to continue");
+        }
+    }
 
     //
     // reset motors.

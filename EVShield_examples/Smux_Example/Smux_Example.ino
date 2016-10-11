@@ -49,8 +49,11 @@ void setup()
     //
     // Wait until user presses GO button to continue the program
     //
-    Serial.println ("Press GO button to continue");
-    evshield.waitForButtonPress(BTN_GO);
+    while (!evshield.getButtonState(BTN_GO)) {
+        if (millis() % 1000 < 3) {
+            Serial.println("Press GO button to continue");
+        }
+    }
     
     esa1.init( &evshield, SH_BAS1 ); // initializes sensor to correct port on EVshield
     esa2.init( &evshield, SH_BAS1 );
