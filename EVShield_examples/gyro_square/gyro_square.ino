@@ -23,7 +23,7 @@ http://www.openelectrons.com/docs/viewdoc/25
 #include <Wire.h>
 #include <EVShield.h>
 #include <EVShieldAGS.h>
-#include <EV3Gyro.h>
+#include <EVs_EV3Gyro.h>
 
 
 // setup for this example:
@@ -39,7 +39,7 @@ EVShield          evshield(0x34,0x36);
 //
 //  Declare our sensor for use in this program
 //
-EV3Gyro gyro1;
+EVs_EV3Gyro gyro1;
 
 void
 setup()
