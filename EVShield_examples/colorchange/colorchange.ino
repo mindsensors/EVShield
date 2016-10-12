@@ -63,8 +63,11 @@ setup()
     evshield.bank_a.ledSetRGB(255,255,255);
     evshield.bank_b.ledSetRGB(255,255,255);
     
-    Serial.println ("Press GO button to continue");
-    evshield.waitForButtonPress(BTN_GO);
+    while (!evshield.getButtonState(BTN_GO)) {
+        if (millis() % 1000 < 3) {
+            Serial.println("Press GO button to continue");
+        }
+    }
     //
     //  initialize the sensor, and tell where it is connected.
     //

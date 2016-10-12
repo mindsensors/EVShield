@@ -77,8 +77,14 @@ setup()
     
     touch1.init( &evshield, SH_BBS2);
       
-    Serial.println ("Press GO button to continue");
-    evshield.waitForButtonPress(BTN_GO);
+    //
+    // Wait until user presses GO button to continue the program
+    //
+    while (!evshield.getButtonState(BTN_GO)) {
+        if (millis() % 1000 < 3) {
+            Serial.println("Press GO button to continue");
+        }
+    }
     
     //
     // see if the sensor is pressed.

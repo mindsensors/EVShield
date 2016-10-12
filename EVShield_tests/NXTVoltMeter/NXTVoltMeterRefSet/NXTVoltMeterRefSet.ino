@@ -59,8 +59,11 @@ void setup()
 /**  Wait until user presses GO button to continue the program
  */
   Serial.println("Input Reference Voltage");
-  Serial.println ("Press GO to set Reference and show values");
-  evshield.waitForButtonPress(BTN_GO);
+  while (!evshield.getButtonState(BTN_GO)) {
+    if (millis() % 1000 < 3) {
+      Serial.println("Press GO button to continue");
+    }
+  }
 
 /**  Sets the Reference Current to Absolute Current
  */

@@ -53,8 +53,15 @@ void setup()
 
     Serial.println("setup done");
     Serial.println("set LEGO remote to specified channel and push buttons");
-    Serial.println ("Press GO button to continue");
-    evshield.waitForButtonPress(BTN_GO);
+    //
+    // Wait until user presses GO button to continue the program
+    //
+    while (!evshield.getButtonState(BTN_GO)) {
+        if (millis() % 1000 < 3) {
+            Serial.println("Press GO button to continue");
+        }
+    }
+
 
 }
 

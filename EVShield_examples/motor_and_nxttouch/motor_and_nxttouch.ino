@@ -59,11 +59,14 @@ void setup()
   //
   evshield.init( SH_SoftwareI2C );
 
-	//
-	// Wait until user presses GO button to continue the program
-	//
-  Serial.println ("Press GO button to continue");
-	evshield.waitForButtonPress(BTN_GO);
+  //
+  // Wait until user presses GO button to continue the program
+  //
+  while (!evshield.getButtonState(BTN_GO)) {
+    if (millis() % 1000 < 3) {
+      Serial.println("Press GO button to continue");
+    }
+  }
 
   //
   // Initialize the i2c sensors.
