@@ -730,7 +730,7 @@ public:
   1 to brighten/lighten LED with breathing pattern (default).
   2 to brighten/lighten LED with heart beat pattern.
   */
-  void waitForButtonPress(uint8_t btn, uint8_t led_pattern=0);
+  void waitForButtonPress(uint8_t btn, uint8_t led_pattern=1);
   
 
   /**
