@@ -98,16 +98,16 @@ typedef enum {
   #define SDA_BBS2  A15
 
   #define BTN_LEFT  16
-  #if ( ARDUINO == 10612 )
-    #define BTN_GO  113
-  #else
-    #define BTN_GO  15
-  #endif
+  #define BTN_GO  15
   #define BTN_RIGHT 14
   #define LED_RED  16
   #define LED_GREEN  15
   #define LED_BLUE  14
   
+#endif
+
+#if defined(ESP8266)
+  #define BTN_GO  113
 #endif
 
 #endif

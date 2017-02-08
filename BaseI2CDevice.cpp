@@ -33,7 +33,7 @@ extern "C" {
 #include "../../hardware/arduino/avr/libraries/Wire/src/utility/twi.h"
 #elif ( ARDUINO == 10605 )
 #include "../../hardware/arduino/avr/libraries/Wire/utility/twi.h"
-#elif ( ARDUINO == 10612 )
+#elif defined(ESP8266)
 // previously included: ".../hardware/esp8266/2.3.0/cores/esp8266/twi.h"
 #else
 uint8_t twi_writeTo(uint8_t, uint8_t*, uint8_t, uint8_t, uint8_t);
@@ -67,7 +67,7 @@ BaseI2CDevice::BaseI2CDevice(uint8_t i2c_address)
 void BaseI2CDevice::initProtocol()
 {
   if ( b_initialized ) return;
-  #if ( ARDUINO == 10612 )
+  #if defined(ESP8266)
   Wire.begin(D2,D3);
   #else
   Wire.begin();
@@ -302,7 +302,7 @@ bool BaseI2CDevice::checkAddress()
 #if defined(__PIC32MX__)
   x = twi_writeTo(_device_address, txBuffer, 0, 1) == 0;
 #else
-  #if defined(ARDUINO) && ( ARDUINO <= 100 || ARDUINO == 10612 )
+  #if defined(ARDUINO) && ( ARDUINO <= 100 ) || defined(ESP8266)
     x = twi_writeTo(_device_address, txBuffer, 0, 1) == 0;
   #else
     x = twi_writeTo(_device_address, txBuffer, 0, 1, 1) == 0;

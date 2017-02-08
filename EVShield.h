@@ -55,7 +55,7 @@
 #define EVShield_H
 
 #include "SHDefines.h"
-#if ( ARDUINO == 10612 )
+#if defined(ESP8266)
   #include "MindsensorsUI.h"
 #endif
 
@@ -691,7 +691,7 @@ public:
   */
   EVShieldBankB  bank_b;
 
-  #if ( ARDUINO == 10612 )
+  #if defined(ESP8266)
   /** Variable for the PiStorms screen
   */
   MindsensorsUI screen;

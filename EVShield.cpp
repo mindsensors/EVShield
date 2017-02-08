@@ -20,7 +20,7 @@
 
 #include "EVShield.h"
 #include "Wire.h"
-#if ( ARDUINO == 10612 )
+#if defined(ESP8266)
   extern "C" {
     #include "user_interface.h" /* for NodeMCU with ESP2866 timer */
   }
@@ -68,7 +68,7 @@ bool format_bin(uint8_t i, char *s)
 
 
 EVShield::EVShield(uint8_t i2c_address_a, uint8_t i2c_address_b)
-#if ( ARDUINO == 10612 )
+#if defined(ESP8266)
 : screen((void *) this, (SH_BankPort)-1)
 #endif
 {
@@ -144,7 +144,7 @@ void EVShield::initProtocols(SH_Protocols protocol)
 
 void EVShield::I2CTimer()
 {
-#if ( ARDUINO == 10612 )
+#if defined(ESP8266)
   os_timer_setfn(&pingEVtimer, pingEV, NULL);
   os_timer_arm(&pingEVtimer, 300, true); // 300ms period, true to make it repeat;
 #elif defined(ARDUINO_ARC32_TOOLS)
@@ -772,13 +772,13 @@ int EVShieldBankB::sensorReadRaw(uint8_t which_sensor)
   }
 }
 
-#if ( ARDUINO == 10612 )
+#if defined(ESP8266)
 void pingEV(void *pArg)
 #else
 void pingEV()
 #endif
 {
-    #if defined(ARDUINO_ARC32_TOOLS) || ARDUINO == 10612
+    #if defined(ARDUINO_ARC32_TOOLS) || defined(ESP8266)
         Wire.beginTransmission(0x34);
         Wire.endTransmission();
     #else
