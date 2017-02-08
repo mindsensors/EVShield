@@ -67,7 +67,11 @@ BaseI2CDevice::BaseI2CDevice(uint8_t i2c_address)
 void BaseI2CDevice::initProtocol()
 {
   if ( b_initialized ) return;
+  #if ( ARDUINO == 10612 )
+  Wire.begin(D2,D3);
+  #else
   Wire.begin();
+  #endif
   b_initialized = true;
 }
 
