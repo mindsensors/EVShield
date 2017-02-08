@@ -55,6 +55,9 @@
 #define EVShield_H
 
 #include "SHDefines.h"
+#if ( ARDUINO == 10612 )
+  #include "MindsensorsUI.h"
+#endif
 
 // Motor control related constants.
 #define SH_CONTROL_SPEED      0x01
@@ -687,6 +690,12 @@ public:
   /** Variable for the bank_b of EVShield
   */
   EVShieldBankB  bank_b;
+
+  #if ( ARDUINO == 10612 )
+  /** Variable for the PiStorms screen
+  */
+  MindsensorsUI screen;
+  #endif
 
   /** class constructor for EVShield; optional custom i2c addresses may be supplied for both banks */
   EVShield(uint8_t i2c_address_a = SH_Bank_A,
