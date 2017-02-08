@@ -18,6 +18,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+#if defined(ESP8266)
+
 #ifndef MINDSENSORSUI_H
 #define MINDSENSORSUI_H
 
@@ -118,3 +120,5 @@ public:
 };
 
 #endif //MINDSENSORSUI_H
+
+#endif // defined(ESP8266)

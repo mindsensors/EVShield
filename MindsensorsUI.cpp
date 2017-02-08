@@ -18,6 +18,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+#if defined(ESP8266)
+
 #include "MindsensorsUI.h"
 
 #include <stdlib.h> /* for abs */
@@ -296,3 +298,5 @@ void MindsensorsUI::mirrorWriteToSerial(bool enabled) {
 void MindsensorsUI::smartLineWrapping(bool enabled) {
   smartLineWrappingEnabled = enabled;
 }
+
+#endif // defined(ESP8266)
