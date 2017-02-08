@@ -214,7 +214,7 @@ void setEncoderSpeedTimeAndControlInBuffer(
 	uint8_t duration,	// in seconds
 	uint8_t control)	// control flags
 {
-	writeLongToBuffer(buffer + 0, encoder);
+	writeLongToBuffer(buffer + 0, (uint32_t)(int32_t)encoder);
 	buffer[4] = (uint8_t)(int8_t)speed;
 	buffer[5] = duration;
 	buffer[6] = 0;			// command register B
