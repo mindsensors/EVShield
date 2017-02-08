@@ -20,12 +20,21 @@
 
 #include "EVShield.h"
 #include "Wire.h"
-#if defined(ARDUINO_ARC32_TOOLS)
-  #include "CurieTimerOne.h"
+#if ( ARDUINO == 10612 )
+  extern "C" {
+    #include "user_interface.h" /* for NodeMCU with ESP2866 timer */
+  }
+  static void pingEV(void *pArg);
+  os_timer_t pingEVtimer;
 #else
-  #include "MsTimer2.h"
+  #if defined(ARDUINO_ARC32_TOOLS)
+    #include "CurieTimerOne.h"
+  #else
+    #include "MsTimer2.h"
+  #endif
+  static void pingEV();
 #endif
-static void pingEV();
+
 
 #if defined(__AVR__)
 	static void callbackLED();
@@ -132,7 +141,10 @@ void EVShield::initProtocols(SH_Protocols protocol)
 
 void EVShield::I2CTimer()
 {
-#if defined(ARDUINO_ARC32_TOOLS)
+#if ( ARDUINO == 10612 )
+  os_timer_setfn(&pingEVtimer, pingEV, NULL);
+  os_timer_arm(&pingEVtimer, 300, true); // 300ms period, true to make it repeat;
+#elif defined(ARDUINO_ARC32_TOOLS)
   CurieTimerOne.start(300000, pingEV); // in microseconds
 #else
   //TCNT2  = 0; 
@@ -757,7 +769,11 @@ int EVShieldBankB::sensorReadRaw(uint8_t which_sensor)
   }
 }
 
+#if ( ARDUINO == 10612 )
+void pingEV(void *pArg)
+#else
 void pingEV()
+#endif
 {
     #if defined(ARDUINO_ARC32_TOOLS) || ARDUINO == 10612
         Wire.beginTransmission(0x34);
