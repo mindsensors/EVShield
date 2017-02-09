@@ -241,7 +241,7 @@ size_t MindsensorsUI::write(const uint8_t *buffer, size_t size) {
   } else {
       int16_t x1, y1;
       uint16_t w, h;
-      getTextBounds("a", getCursorX(), getCursorY(), &x1, &y1, &w, &h);
+      getTextBounds((char *)"a", getCursorX(), getCursorY(), &x1, &y1, &w, &h);
       uint16_t singleCharacterWidth = w+1;
       
       char *str = (char *)malloc(size);
