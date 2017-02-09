@@ -107,6 +107,7 @@ typedef enum {
 #endif
 
 #if defined(ESP8266)
+  #undef  BTN_GO
   #define BTN_GO  113
 #endif
 
