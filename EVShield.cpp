@@ -68,9 +68,6 @@ bool format_bin(uint8_t i, char *s)
 
 
 EVShield::EVShield(uint8_t i2c_address_a, uint8_t i2c_address_b)
-#if defined(ESP8266)
-: screen((void *) this, (SH_BankPort)-1)
-#endif
 {
   if ( i2c_address_a != SH_Bank_A) bank_a.setAddress(i2c_address_a);
   if ( i2c_address_b != SH_Bank_B) bank_b.setAddress(i2c_address_b);
