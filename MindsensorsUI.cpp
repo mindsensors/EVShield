@@ -241,7 +241,7 @@ size_t MindsensorsUI::write(const uint8_t *buffer, size_t size) {
   } else {
       int16_t x1, y1;
       uint16_t w, h;
-      Adafruit_ILI9341::getTextBounds((char *)"a", Adafruit_ILI9341::getCursorX(), Adafruit_ILI9341::getCursorY(), &x1, &y1, &w, &h);
+      getTextBounds("a", getCursorX(), getCursorY(), &x1, &y1, &w, &h);
       uint16_t singleCharacterWidth = w+1;
       
       char *str = (char *)malloc(size);
@@ -250,7 +250,7 @@ size_t MindsensorsUI::write(const uint8_t *buffer, size_t size) {
       const uint16_t maxWidth = width();
     //const uint16_t singleCharacterWidth // declared and assigned above
                      
-      uint16_t curX = Adafruit_ILI9341::getCursorX();
+      uint16_t curX = getCursorX();
       bool thereHasBeenASpaceOnThisLine = false;
       bool thereHasBeenASecondSpace = false;
       int indexOfLastSpace = 0;
@@ -283,9 +283,9 @@ size_t MindsensorsUI::write(const uint8_t *buffer, size_t size) {
         }
       }
       
-      Adafruit_ILI9341::getTextBounds(str, Adafruit_ILI9341::getCursorX(), Adafruit_ILI9341::getCursorY(), &x1, &y1, &w, &h);
-      if (y1+h >= Adafruit_ILI9341::height())
-        Adafruit_ILI9341::setCursor(0,0);
+      getTextBounds(str, getCursorX(), getCursorY(), &x1, &y1, &w, &h);
+      if (y1+h >= height())
+        setCursor(0,0);
       
       Print::write((const uint8_t *)str, size);
   }
