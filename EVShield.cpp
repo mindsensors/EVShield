@@ -20,6 +20,8 @@
 
 #include "EVShield.h"
 #include "Wire.h"
+#include <algorithm> /* for min and max */
+
 #if defined(ESP8266)
   extern "C" {
     #include "user_interface.h" /* for NodeMCU with ESP2866 timer */
@@ -78,8 +80,31 @@ void EVShield::init(SH_Protocols protocol)
     while (initCounter < 5){
     //Serial.println(initCounter);
     I2CTimer();
-	initProtocols(protocol);    
+	initProtocols(protocol);
    }
+  
+  bank_a.writeByte(SH_S1_MODE, SH_Type_NONE); // set BAS1 type to none so it doesn't interfere with the following i2c communicaiton
+  bank_a.writeByte(SH_COMMAND, SH_PS_TS_LOAD); // copy from permanent memory to temporary memory
+  
+  delay(2); // normally it only takes 2 milliseconds or so to load the values
+  unsigned long timeout = millis() + 1000; // wait for up to a second
+  while (bank_a.readByte(SH_PS_TS_CALIBRATION_DATA_READY) != 1) // wait for ready byte
+  {
+    delay(10);
+    if (millis() > timeout)
+    {
+      Serial.println("Failed to load touchscreen calibration values.");
+    }
+  }
+  
+  x1 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x00);
+  y1 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x02);
+  x2 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x04);
+  y2 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x06);
+  x3 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x08);
+  y3 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x0A);
+  x4 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x0C);
+  y4 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x0E);
 }
 
 void EVShield::initProtocols(SH_Protocols protocol)
@@ -953,4 +978,186 @@ void EVShield::ledHeartBeatPattern() {
     delayMicroseconds(10);
   }
   breathNow ++;
+}
+
+uint16_t EVShield::RAW_X()
+{
+  return bank_a.readInteger(SH_PS_TS_RAWX);
+}
+
+uint16_t EVShield::RAW_Y()
+{
+  return bank_a.readInteger(SH_PS_TS_RAWY);
+}
+
+// helper function to getReading
+double distanceToLine(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2) // some point and two points forming the line
+{
+  // multiply by 1.0 to avoid integer truncation, don't need parentheses because the multiplication operator has left-to-right associativity
+  return 1.0 * abs( (y2-y1)*x0 - (x2-x1)*y0 + x2*y1 - y2*x1 ) / sqrt( pow((y2-y1),2) + pow((x2-x1),2) );
+}
+
+void EVShield::getReading(uint16_t *retx, uint16_t *rety) // returnX, returnY to avoid shadowing local x, y
+{
+  uint16_t x = RAW_X();
+  uint16_t y = RAW_Y();
+
+  if ( x < std::min({x1,x2,x3,x4}) \
+    || x > std::max({x1,x2,x3,x4}) \
+    || y < std::min({y1,y2,y3,y4}) \
+    || y > std::max({y1,y2,y3,y4}) )
+  {
+    *retx = 0;
+    *rety = 0;
+    return;
+  }
+  
+  // careful not to divide by 0
+  if ( y2-y1 == 0 \
+    || x4-x1 == 0 \
+    || y3-y4 == 0 \
+    || x3-x2 == 0 )
+  {
+    *retx = 0;
+    *rety = 0;
+    return;
+  }
+  
+  // http://math.stackexchange.com/a/104595/363240
+  uint16_t dU0 = distanceToLine(x, y, x1, y1, x2, y2) / (y2-y1) * 320;
+  uint16_t dV0 = distanceToLine(x, y, x1, y1, x4, y4) / (x4-x1) * 240;
+
+  uint16_t dU1 = distanceToLine(x, y, x4, y4, x3, y3) / (y3-y4) * 320;
+  uint16_t dV1 = distanceToLine(x, y, x2, y2, x3, y3) / (x3-x2) * 240;
+  
+  // careful not to divide by 0
+  if ( dU0+dU1 == 0 \
+    || dV0+dV1 == 0 )
+  {
+    *retx = 0;
+    *rety = 0;
+    return;
+  }
+  
+  *retx = 320 * dU0/(dU0+dU1);
+  *rety = 240 * dV0/(dV0+dV1);
+}
+
+#if !defined(ESP8266)
+  #warning from EVShield: Touchscreen methods are only supported on the ESP8266 (getTouchscreenValues, TS_X, TS_Y, isTouched, checkButton, getFunctionButton)
+#endif
+
+void EVShield::getTouchscreenValues(uint16_t *x, uint16_t *y)
+{
+  #if defined(ESP8266)
+  const uint8_t tolerance = 5;
+  
+  uint16_t x1, y1;
+  getReading(&x1, &y1);
+  uint16_t x2, y2;
+  getReading(&x2, &y2);
+  
+  if (abs(x2-x1) < tolerance and abs(y2-y1) < tolerance)
+  {
+    *x = x2;
+    *y = y2;
+  } else {
+    *x = 0;
+    *y = 0;
+  }
+  #else
+  return;
+  #endif
+}
+
+uint16_t EVShield::TS_X()
+{
+  #if defined(ESP8266)
+  uint16_t x, y;
+  getTouchscreenValues(&x, &y);
+  return x;
+  #else
+  return 0;
+  #endif
+}
+
+uint16_t EVShield::TS_Y()
+{
+  #if defined(ESP8266)
+  uint16_t x, y;
+  getTouchscreenValues(&x, &y);
+  return y;
+  #else
+  return 0;
+  #endif
+}
+
+bool EVShield::isTouched()
+{
+  #if defined(ESP8266)
+  uint16_t x, y;
+  getTouchscreenValues(&x, &y);
+  return !(x==0 && y==0);
+  #else
+  return false;
+  #endif
+}
+
+bool EVShield::checkButton(uint16_t x, uint16_t y, uint16_t width, uint16_t height)
+{
+  #if defined(ESP8266)
+  uint16_t tsx, tsy; // touch screen x, touch screen y
+  getTouchscreenValues(&tsx, &tsy);
+  
+  if (tsx==0 && tsy==0)
+  {
+    return false;
+  }
+  
+  // 0,0 is top-left corner
+  // if left of right edge, right of left edge, above bottom edge, and below top edge
+  return tsx<=x+width && tsx>=x && tsy<=y+height && tsy>=y;
+  #else
+  return false;
+  #endif
+}
+
+uint8_t EVShield::getFunctionButton()
+{
+  #if defined(ESP8266)
+  uint16_t x = RAW_X();
+  uint16_t xborder;
+  
+  if (x4 > x1)  { // lower values left
+    xborder = std::max(x1, x2); // where the touchscreen ends and the software buttons begin
+    if (!(x < xborder && x > xborder-200))
+      return 0;
+  } else { // greater values left
+    xborder = std::min(x1, x2);
+    if (!(x > xborder && x < xborder+200))
+      return 0;
+  }
+  
+  uint16_t y = RAW_Y(),
+           ymin = std::min(y1, y2),
+           ymax = std::max(y1, y2),
+           yQuarter = (ymax-ymin)/4; // a quarter of the distance between the two y extremes
+  
+  if (y < ymin + 0 * yQuarter)
+    return 0; // too low
+  if (y < ymin + 1 * yQuarter)
+    return 1;
+  if (y < ymin + 2 * yQuarter)
+    return 2;
+  if (y < ymin + 3 * yQuarter)
+    return 3;
+  if (y < ymin + 4 * yQuarter)
+    return 4;
+  if (y >= ymin + 4 * yQuarter)
+    return 0; // too high
+
+  return 0; // some other weird error occured, execution should not reach this point
+  #else
+  return 0;
+  #endif
 }

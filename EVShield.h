@@ -117,6 +117,14 @@
 #define SH_RGB_LED     0xD7
 #define SH_CENTER_RGB_LED     0xDE
 
+#define SH_PS_TS_RAWX  0xE7
+#define SH_PS_TS_RAWY  0xE9
+#define SH_PS_TS_CALIBRATION_DATA_READY 0x70
+#define SH_PS_TS_CALIBRATION_DATA 0x71
+#define SH_PS_TS_SAVE 0x77
+#define SH_PS_TS_LOAD 0x6C
+#define SH_PS_TS_UNLOCK 0x45
+
 /* constants to be used by user programs */
 /**
  * \enum SH_Motor Motor selection related constants
@@ -753,6 +761,42 @@ public:
     Call this function repeatedly to make the pattern.
   */
   void ledHeartBeatPattern();
+  
+  /** read the touchscreen press and write the coordinates to the output parameters
+    @param[out] x x-value of touchscreen press is written to this variable
+    @param[out] y y-value of touchscreen press is written to this variable
+  */
+  void getTouchscreenValues(uint16_t *x, uint16_t *y);
+  
+  /** reads the x-coordinate of the touchscreen press */
+  uint16_t TS_X();
+  
+  /** reads the y-coordinate of the touchscreen press */
+  uint16_t TS_Y();
+  
+  /** detect touchscreen presses and prevents false positives */
+  bool isTouched();
+  
+  bool checkButton(uint16_t x, uint16_t y, uint16_t width, uint16_t height);
+  
+  /** returns 0 if none of the software buttons are touched, or 1-4 if one is. */
+  uint8_t getFunctionButton();
+
+private:
+  /** touchscreen calibration values */
+  uint16_t x1, y1, x2, y2, x3, y3, x4, y4;
+  
+  /** read the raw x-coordinate of the touchscreen press */
+  uint16_t RAW_X();
+  
+  /** read the raw x-coordinate of the touchscreen press */
+  uint16_t RAW_Y();
+  
+  /** get raw touchscreen values, do some math using the calibration values, and write to the output parameters
+    @param[out] x x-value of touchscreen press is written to this variable
+    @param[out] y y-value of touchscreen press is written to this variable
+  */
+  void getReading(uint16_t *x, uint16_t *y);
 };
 
 /** This function formats an integer in binary format.
