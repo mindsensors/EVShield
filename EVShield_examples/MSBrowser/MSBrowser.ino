@@ -15,7 +15,7 @@ void setup1() {
     uim.println("This is setup1 running");
 }
 void loop1() {
-    uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, ILI9340_RED);
+    uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, EVs_UIM_RED);
     if (iteration > 5000) ESP.reset();
 }
 
@@ -23,7 +23,7 @@ void setup2() {
     uim.println("This is setup2 running");
 }
 void loop2() {
-    uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, ILI9340_GREEN);
+    uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, EVs_UIM_GREEN);
     if (iteration > 320*(240-30)) {
         uim.clearScreen();
         iteration = -1;
@@ -34,7 +34,7 @@ void setup3() {
     uim.println("This is setup3 running");
 }
 void loop3() {
-    uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, ILI9340_BLUE);
+    uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, EVs_UIM_BLUE);
 }
 
 
@@ -74,7 +74,7 @@ void setup() {
     });
     ArduinoOTA.onProgress([](unsigned int progress, unsigned int total) {
         int preX = uim.getCursorX();
-        uim.fillRect(preX, 16, 35, 16, ILI9340_BLACK);
+        uim.fillRect(preX, 16, 35, 16, EVs_UIM_BLACK);
         uim.print(progress / (total / 100));
         uim.print("%");
         uim.setCursor(preX, 16);
@@ -97,22 +97,22 @@ void setup() {
     
     uim.setTextSize(4);
     
-    uim.fillRect(35, 30, 60, 60, ILI9340_RED);
+    uim.fillRect(35, 30, 60, 60, EVs_UIM_RED);
     uim.setCursor(35+10, 30+16);
     uim.println("P1");
     
-    uim.fillRect(130, 30, 60, 60, uim.Color565(0,150,0)); //ILI9340_GREEN
+    uim.fillRect(130, 30, 60, 60, uim.Color565(0,200,0)); //EVs_UIM_GREEN
     uim.setCursor(130+8, 30+16);
     uim.println("P2");
     
-    uim.fillRect(225, 30, 60, 60, ILI9340_BLUE);
+    uim.fillRect(225, 30, 60, 60, EVs_UIM_BLUE);
     uim.setCursor(225+8, 30+16);
     uim.println("P3");
     
-    uim.fillRect(0, 120, 320, 2, ILI9340_WHITE);
+    uim.fillRect(0, 120, 320, 2, EVs_UIM_WHITE);
     
-    uim.fillRect(70, 151, 180, 60, ILI9340_WHITE);
-    uim.setTextColor(ILI9340_BLACK, ILI9340_WHITE);
+    uim.fillRect(70, 151, 180, 60, EVs_UIM_WHITE);
+    uim.setTextColor(EVs_UIM_BLACK, EVs_UIM_WHITE);
     uim.setCursor(138, 151+16);
     uim.println("GO");
     
@@ -149,16 +149,16 @@ void changeSelection(int n) {
     const int b = 5; // border width;
     // black-out old border
     int x = 35+(selection-1)*95;
-    uim.fillRect(x-b, 30-b, 60+2*b, b, ILI9340_BLACK); // top
-    uim.fillRect(x-b, 30+60, 60+2*b, b, ILI9340_BLACK); // bottom
-    uim.fillRect(x-b, 30, b, 60, ILI9340_BLACK); // left
-    uim.fillRect(x+60, 30, b, 60, ILI9340_BLACK); // right
+    uim.fillRect(x-b, 30-b, 60+2*b, b, EVs_UIM_BLACK); // top
+    uim.fillRect(x-b, 30+60, 60+2*b, b, EVs_UIM_BLACK); // bottom
+    uim.fillRect(x-b, 30, b, 60, EVs_UIM_BLACK); // left
+    uim.fillRect(x+60, 30, b, 60, EVs_UIM_BLACK); // right
     
     selection = n;
     // draw new border
     x = 35+(selection-1)*95;
-    uim.fillRect(x-b, 30-b, 60+2*b, b, ILI9340_WHITE); // top
-    uim.fillRect(x-b, 30+60, 60+2*b, b, ILI9340_WHITE); // bottom
-    uim.fillRect(x-b, 30, b, 60, ILI9340_WHITE); // left
-    uim.fillRect(x+60, 30, b, 60, ILI9340_WHITE); // right
+    uim.fillRect(x-b, 30-b, 60+2*b, b, EVs_UIM_WHITE); // top
+    uim.fillRect(x-b, 30+60, 60+2*b, b, EVs_UIM_WHITE); // bottom
+    uim.fillRect(x-b, 30, b, 60, EVs_UIM_WHITE); // left
+    uim.fillRect(x+60, 30, b, 60, EVs_UIM_WHITE); // right
 }
