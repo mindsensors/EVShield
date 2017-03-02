@@ -1,7 +1,7 @@
-#include "program2.h"
-
 #include <EVShield.h>
 #include <EVs_UIModule.h>
+
+#include "MSBrowser.h"
 
 void setup2() {
     uim.println("Touchscreen test");
