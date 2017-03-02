@@ -12,7 +12,7 @@ EVs_UIModule uim;
 int iteration = -1;
 
 void setup1() {
-    uim.println("This is setup1 running");
+    uim.println("setup1 has run");
 }
 void loop1() {
     uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, EVs_UIM_RED);
@@ -20,7 +20,7 @@ void loop1() {
 }
 
 void setup2() {
-    uim.println("This is setup2 running");
+    uim.println("setup2 is done");
 }
 void loop2() {
     uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, EVs_UIM_GREEN);
@@ -31,7 +31,7 @@ void loop2() {
 }
 
 void setup3() {
-    uim.println("This is setup3 running");
+    uim.println("setup3 achieved");
 }
 void loop3() {
     uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, EVs_UIM_BLUE);
@@ -80,7 +80,12 @@ void setup() {
         uim.setCursor(preX, 16);
     });
     ArduinoOTA.onError([](ota_error_t error) {
-        uim.printf("\nError[%u]: ", error);
+        uim.setRotation(3);
+        uim.clearScreen();
+        uim.setTextColor(EVs_UIM_WHITE);
+        uim.setCursor(0, 0);
+        uim.setTextSize(2);
+        uim.println("Error during OTA upload!");
              if (error == OTA_AUTH_ERROR)    uim.println("Auth Failed");
         else if (error == OTA_BEGIN_ERROR)   uim.println("Begin Failed");
         else if (error == OTA_CONNECT_ERROR) uim.println("Connect Failed");
@@ -88,6 +93,7 @@ void setup() {
         else if (error == OTA_END_ERROR)     uim.println("End Failed");
     });
     ArduinoOTA.onEnd([]() {
+        uim.println("\nResetting...");
         ESP.reset();
     });
     
