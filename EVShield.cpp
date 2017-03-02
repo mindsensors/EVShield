@@ -106,17 +106,21 @@ void EVShield::init(SH_Protocols protocol)
     if (millis() > timeout)
     {
       Serial.println("Failed to load touchscreen calibration values.");
+      useOldTouchscreen = true;
+      break;
     }
   }
   
-  x1 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x00);
-  y1 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x02);
-  x2 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x04);
-  y2 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x06);
-  x3 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x08);
-  y3 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x0A);
-  x4 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x0C);
-  y4 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x0E);
+  if (!useOldTouchscreen) {
+    x1 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x00);
+    y1 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x02);
+    x2 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x04);
+    y2 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x06);
+    x3 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x08);
+    y3 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x0A);
+    x4 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x0C);
+    y4 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x0E);
+  }
 }
 
 void EVShield::initProtocols(SH_Protocols protocol)
@@ -1036,11 +1040,11 @@ void EVShield::getReading(uint16_t *retx, uint16_t *rety) // returnX, returnY to
   }
   
   // http://math.stackexchange.com/a/104595/363240
-  uint16_t dU0 = distanceToLine(x, y, x1, y1, x2, y2) / (y2-y1) * 320;
-  uint16_t dV0 = distanceToLine(x, y, x1, y1, x4, y4) / (x4-x1) * 240;
+  double dU0 = distanceToLine(x, y, x1, y1, x2, y2) / (y2-y1) * 320;
+  double dV0 = distanceToLine(x, y, x1, y1, x4, y4) / (x4-x1) * 240;
 
-  uint16_t dU1 = distanceToLine(x, y, x4, y4, x3, y3) / (y3-y4) * 320;
-  uint16_t dV1 = distanceToLine(x, y, x2, y2, x3, y3) / (x3-x2) * 240;
+  double dU1 = distanceToLine(x, y, x4, y4, x3, y3) / (y3-y4) * 320;
+  double dV1 = distanceToLine(x, y, x2, y2, x3, y3) / (x3-x2) * 240;
   
   // careful not to divide by 0
   if ( dU0+dU1 == 0 \
@@ -1062,6 +1066,12 @@ void EVShield::getReading(uint16_t *retx, uint16_t *rety) // returnX, returnY to
 void EVShield::getTouchscreenValues(uint16_t *x, uint16_t *y)
 {
   #if defined(ESP8266)
+  if (useOldTouchscreen) {
+    *x = RAW_X();
+    *y = RAW_Y();
+    return;
+  }
+  
   const uint8_t tolerance = 5;
   
   uint16_t x1, y1;
@@ -1085,6 +1095,10 @@ void EVShield::getTouchscreenValues(uint16_t *x, uint16_t *y)
 uint16_t EVShield::TS_X()
 {
   #if defined(ESP8266)
+  if (useOldTouchscreen) {
+    return RAW_X();
+  }
+  
   uint16_t x, y;
   getTouchscreenValues(&x, &y);
   return x;
@@ -1096,6 +1110,9 @@ uint16_t EVShield::TS_X()
 uint16_t EVShield::TS_Y()
 {
   #if defined(ESP8266)
+  if (useOldTouchscreen) {
+    return RAW_Y();
+  }
   uint16_t x, y;
   getTouchscreenValues(&x, &y);
   return y;

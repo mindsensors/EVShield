@@ -792,6 +792,8 @@ private:
   /** read the raw x-coordinate of the touchscreen press */
   uint16_t RAW_Y();
   
+  bool useOldTouchscreen = false;
+  
   /** get raw touchscreen values, do some math using the calibration values, and write to the output parameters
     @param[out] x x-value of touchscreen press is written to this variable
     @param[out] y y-value of touchscreen press is written to this variable
