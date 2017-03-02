@@ -14,47 +14,15 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+#include "MSBrowser.h"
+#include "credentials.h"
+#include "program1.h"
+#include "program2.h"
+#include "program3.h"
+
 #include <EVShield.h>
 #include <EVs_UIModule.h>
 #include <ArduinoOTA.h>
-
-const char* ssid     = "your_WiFi_network";
-const char* password = "letmein";
-const char* uploadPassword = "upload";
-
-EVShield ev;
-EVs_UIModule uim;
-
-int iteration = -1;
-
-void setup1() {
-    uim.println("setup1 has run");
-}
-void loop1() {
-    uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, EVs_UIM_RED);
-    if (iteration > 5000) ESP.reset();
-}
-
-void setup2() {
-    uim.println("setup2 is done");
-}
-void loop2() {
-    uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, EVs_UIM_GREEN);
-    if (iteration > 320*(240-30)) {
-        uim.clearScreen();
-        iteration = -1;
-    }
-}
-
-void setup3() {
-    uim.println("setup3 achieved");
-}
-void loop3() {
-    uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, EVs_UIM_BLUE);
-}
-
-
-
 
 
 void delayWithOTA(unsigned long delayMs) {
