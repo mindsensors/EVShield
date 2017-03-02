@@ -23,6 +23,18 @@
 #include <algorithm> /* for min and max */
 
 #if defined(ESP8266)
+#include <ArduinoOTA.h>
+void delayWithOTA(unsigned long delayMs) {
+  unsigned long timeout = millis() + delayMs;
+  do { // using a do while loop so ArduinoOTA.handle() will be called at least once in delay(0);
+    ArduinoOTA.handle();
+    yield(); // remember to call the *function* yield, not the keyword
+  } while (millis() < timeout);
+}
+#define delay(ms) delayWithOTA(ms)
+#endif
+
+#if defined(ESP8266)
   extern "C" {
     #include "user_interface.h" /* for NodeMCU with ESP2866 timer */
   }
