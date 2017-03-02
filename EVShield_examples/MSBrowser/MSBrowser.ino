@@ -15,7 +15,7 @@ void setup1() {
     uim.println("setup1");
 }
 void loop1() {
-    uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, ILI9340_YELLOW);
+    uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, ILI9340_RED);
     if (iteration > 5000) ESP.reset();
 }
 
@@ -60,8 +60,36 @@ void setup() {
     
     WiFi.begin(ssid, password);
     while (WiFi.status() != WL_CONNECTED) yield();
-    //ArduinoOTA.setPassword(uploadPassword);
+    ArduinoOTA.setPassword(uploadPassword);
     ArduinoOTA.begin();
+    
+    ArduinoOTA.onStart([]() {
+        uim.setRotation(3);
+        uim.clearScreen();
+        uim.setTextColor(EVs_UIM_WHITE);
+        uim.setCursor(0, 0);
+        uim.setTextSize(2);
+        uim.println("Beginning OTA upload!");
+        uim.print("Progress: ");
+    });
+    ArduinoOTA.onProgress([](unsigned int progress, unsigned int total) {
+        int preX = uim.getCursorX();
+        uim.fillRect(preX, 16, 26, 16, ILI9340_BLACK);
+        uim.print(progress / (total / 100));
+        uim.print("%");
+        uim.setCursor(preX, 16);
+    });
+    ArduinoOTA.onError([](ota_error_t error) {
+        uim.printf("\nError[%u]: ", error);
+             if (error == OTA_AUTH_ERROR)    uim.println("Auth Failed");
+        else if (error == OTA_BEGIN_ERROR)   uim.println("Begin Failed");
+        else if (error == OTA_CONNECT_ERROR) uim.println("Connect Failed");
+        else if (error == OTA_RECEIVE_ERROR) uim.println("Receive Failed");
+        else if (error == OTA_END_ERROR)     uim.println("End Failed");
+    });
+    ArduinoOTA.onEnd([]() {
+        ESP.reset();
+    });
     
     ev.init();
     uim.begin();
@@ -90,35 +118,6 @@ void setup() {
     
     selection = 2; // make sure border gets drawn (this is a "change")
     changeSelection(1);
-    
-    ArduinoOTA.onStart([]() {
-        uim.setRotation(3);
-        uim.clearScreen();
-        uim.setTextColor(EVs_UIM_WHITE);
-        uim.setCursor(0, 0);
-        uim.setTextSize(3);
-        uim.println("Beginning OTA upload!");
-        uim.setTextSize(2);
-        uim.print("Progress: ");
-    });
-    ArduinoOTA.onProgress([](unsigned int progress, unsigned int total) {
-        int preX = uim.getCursorX(),
-            preY = uim.getCursorY();
-        uim.fillRect(preX, preY, 26, 16, ILI9340_BLACK);
-        uim.printf("%u%%\r", (progress / (total / 100)));
-        uim.setCursor(preX, preY);
-    });
-    ArduinoOTA.onError([](ota_error_t error) {
-        uim.printf("\nError[%u]: ", error);
-             if (error == OTA_AUTH_ERROR)    uim.println("Auth Failed");
-        else if (error == OTA_BEGIN_ERROR)   uim.println("Begin Failed");
-        else if (error == OTA_CONNECT_ERROR) uim.println("Connect Failed");
-        else if (error == OTA_RECEIVE_ERROR) uim.println("Receive Failed");
-        else if (error == OTA_END_ERROR)     uim.println("End Failed");
-    });
-    ArduinoOTA.onEnd([]() {
-        ESP.reset();
-    });
 }
 
 void loop() {
