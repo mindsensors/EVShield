@@ -12,7 +12,7 @@ EVs_UIModule uim;
 int iteration = -1;
 
 void setup1() {
-    uim.println("setup1");
+    uim.println("This is setup1 running");
 }
 void loop1() {
     uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, ILI9340_RED);
@@ -20,7 +20,7 @@ void loop1() {
 }
 
 void setup2() {
-    uim.println("setup2");
+    uim.println("This is setup2 running");
 }
 void loop2() {
     uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, ILI9340_GREEN);
@@ -31,7 +31,7 @@ void loop2() {
 }
 
 void setup3() {
-    uim.println("setup3");
+    uim.println("This is setup3 running");
 }
 void loop3() {
     uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, ILI9340_BLUE);
@@ -43,7 +43,7 @@ void loop3() {
 
 void delayWithOTA(unsigned long delayMs) {
   unsigned long timeout = millis() + delayMs;
-  do { // using a do while loop so ArduinoOTA.handle() will be called at least once in delay(0);
+  do { // using a do while loop so ArduinoOTA.handle() will be called at least once in the case of delay(0);
     ArduinoOTA.handle();
     yield(); // remember to call the *function* yield, not the keyword
   } while (millis() < timeout);
@@ -74,7 +74,7 @@ void setup() {
     });
     ArduinoOTA.onProgress([](unsigned int progress, unsigned int total) {
         int preX = uim.getCursorX();
-        uim.fillRect(preX, 16, 26, 16, ILI9340_BLACK);
+        uim.fillRect(preX, 16, 35, 16, ILI9340_BLACK);
         uim.print(progress / (total / 100));
         uim.print("%");
         uim.setCursor(preX, 16);
