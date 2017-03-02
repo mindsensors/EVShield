@@ -3,6 +3,7 @@
 //
 // Initial version: 2010-06-07 by Clinton Blackmore
 // Modified for EVShield: 2015-02-16 by Michael Giles
+// Corrected encoder cast: 2017-02-08 by Seth Tenembaum
 // Large parts of the code is ported from the NXC library for the device,
 // written by Deepak Patil.
 

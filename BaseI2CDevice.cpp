@@ -3,6 +3,7 @@
 // This is a base class for devices that use the I2C protocol.
 //
 // 2010-05-31 - Initial version, by Clinton Blackmore
+// Feb 2016  Seth Tenembaum  compatibility with ESP2866 and correct encoder cast
 //
 /*
   This library is free software; you can redistribute it and/or
@@ -302,7 +303,7 @@ bool BaseI2CDevice::checkAddress()
 #if defined(__PIC32MX__)
   x = twi_writeTo(_device_address, txBuffer, 0, 1) == 0;
 #else
-  #if defined(ARDUINO) && ( ARDUINO <= 100 ) || defined(ESP8266)
+  #if (defined(ARDUINO) && ARDUINO <= 100) || defined(ESP8266)
     x = twi_writeTo(_device_address, txBuffer, 0, 1) == 0;
   #else
     x = twi_writeTo(_device_address, txBuffer, 0, 1, 1) == 0;

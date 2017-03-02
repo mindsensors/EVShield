@@ -34,6 +34,7 @@
  * EVShield interface library
  * Copyright (C) 2016 mindsensors.com
  * 12/18/2014  Nitin Patil --  modified to work with EVshield 
+ * Feb 2017  Seth Tenembaum -- modified to work with PiStorms, added touchscreen defines and methods
  *
  * This file is part of EVShield interface library.
  * This library is free software; you can redistribute it and/or

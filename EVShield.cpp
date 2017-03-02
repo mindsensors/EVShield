@@ -4,6 +4,7 @@
 // Large ports of the code is ported from the NXC library for the device,
 // written by Deepak Patil.
 // 12/18/2014  Nitin Patil --  modified to work with EVshield   
+// Feb 2017  Seth Tenembaum -- modified to work with PiStorms
 /*
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -24,7 +25,7 @@
 
 #if defined(ESP8266)
   extern "C" {
-    #include "user_interface.h" /* for NodeMCU with ESP2866 timer */
+    #include "user_interface.h" /* for os_timer on ESP2866 */
   }
   static void pingEV(void *pArg);
   os_timer_t pingEVtimer;
