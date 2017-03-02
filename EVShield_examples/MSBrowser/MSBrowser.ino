@@ -1,0 +1,127 @@
+#include <EVShield.h>
+#include <EVs_UIModule.h>
+#include <ArduinoOTA.h>
+
+const char* ssid     = "your_WiFi_network";
+const char* password = "letmein";
+const char* uploadPassword = "upload";
+
+EVShield ev;
+EVs_UIModule uim;
+
+int iteration = -1;
+
+void setup1() {
+    uim.println("setup1");
+}
+void loop1() {
+    uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, ILI9340_RED);
+    if (iteration > 5000) ESP.reset();
+}
+
+void setup2() {
+    uim.println("setup2");
+}
+void loop2() {
+    uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, ILI9340_GREEN);
+    if (iteration > 320*(240-30)) {
+        uim.clearScreen();
+        iteration = -1;
+    }
+}
+
+void setup3() {
+    uim.println("setup3");
+}
+void loop3() {
+    uim.fillRect(++iteration%320, 30+iteration/320, 1, 1, ILI9340_BLUE);
+}
+
+
+
+
+
+int selection;
+
+void changeSelection(int newProgramSelection);
+
+void setup() {
+    Serial.begin(115200);
+    Serial.println();
+    
+    WiFi.begin(ssid, password);
+    while (WiFi.status() != WL_CONNECTED) yield();
+    //ArduinoOTA.setPassword(uploadPassword);
+    ArduinoOTA.begin();
+    
+    ev.init();
+    uim.begin();
+    uim.clearScreen();
+    
+    uim.setTextSize(4);
+    
+    uim.fillRect(35, 30, 60, 60, ILI9340_RED);
+    uim.setCursor(35+10, 30+16);
+    uim.println("P1");
+    
+    uim.fillRect(130, 30, 60, 60, uim.Color565(0,150,0)); //ILI9340_GREEN
+    uim.setCursor(130+8, 30+16);
+    uim.println("P2");
+    
+    uim.fillRect(225, 30, 60, 60, ILI9340_BLUE);
+    uim.setCursor(225+8, 30+16);
+    uim.println("P3");
+    
+    uim.fillRect(0, 120, 320, 2, ILI9340_WHITE);
+    
+    uim.fillRect(70, 151, 180, 60, ILI9340_WHITE);
+    uim.setTextColor(ILI9340_BLACK, ILI9340_WHITE);
+    uim.setCursor(138, 151+16);
+    uim.println("GO");
+    
+    selection = 2; // make sure border gets drawn (this is a "change")
+    changeSelection(1);
+}
+
+void loop() {
+    if (ev.checkButton( 35, 30, 60, 60)) changeSelection(1);
+    if (ev.checkButton(130, 30, 60, 60)) changeSelection(2);
+    if (ev.checkButton(225, 30, 60, 60)) changeSelection(3);
+    
+    if (ev.checkButton(70, 151, 180, 60)) {
+        uim.clearScreen();
+        uim.setTextSize(2);
+        uim.setTextColor(EVs_UIM_WHITE);
+        uim.setCursor(0, 0);
+        
+             if (selection == 1) setup1();
+        else if (selection == 2) setup2();
+        else if (selection == 3) setup3();
+        
+             if (selection == 1) while(true) { loop1(); delay(1); }
+        else if (selection == 2) while(true) { loop2(); delay(1); }
+        else if (selection == 3) while(true) { loop3(); delay(1); }
+    }
+    
+    delay(10);
+}
+
+void changeSelection(int n) {
+    if (n == selection) return;
+    
+    const int b = 5; // border width;
+    // black-out old border
+    int x = 35+(selection-1)*95;
+    uim.fillRect(x-b, 30-b, 60+2*b, b, ILI9340_BLACK); // top
+    uim.fillRect(x-b, 30+60, 60+2*b, b, ILI9340_BLACK); // bottom
+    uim.fillRect(x-b, 30, b, 60, ILI9340_BLACK); // left
+    uim.fillRect(x+60, 30, b, 60, ILI9340_BLACK); // right
+    
+    selection = n;
+    // draw new border
+    x = 35+(selection-1)*95;
+    uim.fillRect(x-b, 30-b, 60+2*b, b, ILI9340_WHITE); // top
+    uim.fillRect(x-b, 30+60, 60+2*b, b, ILI9340_WHITE); // bottom
+    uim.fillRect(x-b, 30, b, 60, ILI9340_WHITE); // left
+    uim.fillRect(x+60, 30, b, 60, ILI9340_WHITE); // right
+}
