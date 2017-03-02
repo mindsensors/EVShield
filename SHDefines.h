@@ -106,7 +106,7 @@ typedef enum {
   
 #endif
 
-#if defined(ESP8266)
+#if defined(ESP8266) || defined(AVR_NANO)
   // if the go button is pressed, the value will be 1. Otherwise it will be 0.
   #undef  BTN_LEFT
   #define BTN_LEFT  2
