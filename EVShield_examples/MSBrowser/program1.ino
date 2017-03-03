@@ -1,19 +1,25 @@
 #include <EVShield.h>
 #include <EVs_UIModule.h>
+#include <EVs_SumoEyes.h>
+
+EVs_SumoEyes sis1; // SumoEYEs
 
 void setup1() {
-    uim.println("Motor test");
-    //ev.bank_a.motorReset();
-    ev.bank_a.motorRunRotations(SH_Motor_1, 
-                 SH_Direction_Forward,
-                 SH_Speed_Medium,
-                 3,
-                 SH_Completion_Wait_For,
-                 SH_Next_Action_BrakeHold);
-    ev.bank_a.motorStop(SH_Motor_1, SH_Next_Action_Float);
-    ESP.reset();
+    uim.println("SumoEyes sensor test");
+    sis1.init(&ev, SH_BAS1);
+    sis1.setLongRange();
+    
+    uim.setCursor(0, 2*16);
+    uim.print("Sumo Eyes (Range: Long)");
 }
 
 void loop1() {
-    //if (ev.getButtonState(BTN_GO)) ESP.reset();
+    if (ev.getButtonState(BTN_GO)) ESP.reset();
+    
+    SE_Zone obzone = sis1.detectObstacleZone();
+    
+    uim.clearLine(4);
+    uim.clearLine(5);
+    uim.setCursor(0, 3*16);
+    uim.printf("raw value: %d,\nobzone: %d (%s)", sis1.readRaw(), obzone, sis1.OBZoneToString(obzone) );
 }
