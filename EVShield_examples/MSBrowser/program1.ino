@@ -1,25 +1,26 @@
 #include <EVShield.h>
 #include <EVs_UIModule.h>
-#include <EVs_SumoEyes.h>
+#include <EVs_LineLeader.h>
 
-EVs_SumoEyes sis1; // SumoEYEs
+EVs_LineLeader ll;
 
 void setup1() {
     uim.println("SumoEyes sensor test");
-    sis1.init(&ev, SH_BAS1);
-    sis1.setShortRange();
+    ll.init(&ev, SH_BAS1);
     
     uim.setCursor(0, 2*16);
-    uim.print("Sumo Eyes (Range: Short)");
+    uim.println(ll.getFirmwareVersion());
+    uim.println(ll.getDeviceID());
+    uim.println(ll.getVendorID());
 }
 
 void loop1() {
     if (ev.getButtonState(BTN_GO)) ESP.reset();
     
-    SE_Zone obzone = sis1.detectObstacleZone();
-    
-    uim.clearLine(4);
-    uim.clearLine(5);
-    uim.setCursor(0, 3*16);
-    uim.printf("raw value: %d,\nobzone: %d (%s)", sis1.readRaw(), obzone, sis1.OBZoneToString(obzone) );
+    uim.clearLine(6);
+    uim.setCursor(0, 5*16);
+    uint8_t result = ll.getResult();
+    uim.print("sensor array: ");
+    for (uint8_t i = 0; i++; i < 8)
+        uim.print(result && 1 << i);
 }
