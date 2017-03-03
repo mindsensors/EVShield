@@ -35,6 +35,14 @@ int selection;
 
 void changeSelection(int newProgramSelection);
 
+// defined in separate .ino files
+void setup1();
+void setup2();
+void setup3();
+void loop1();
+void loop2();
+void loop3();
+
 void setup() {
     Serial.begin(115200);
     Serial.println();
