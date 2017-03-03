@@ -7,10 +7,10 @@ EVs_SumoEyes sis1; // SumoEYEs
 void setup1() {
     uim.println("SumoEyes sensor test");
     sis1.init(&ev, SH_BAS1);
-    sis1.setLongRange();
+    sis1.setShortRange();
     
     uim.setCursor(0, 2*16);
-    uim.print("Sumo Eyes (Range: Long)");
+    uim.print("Sumo Eyes (Range: Short)");
 }
 
 void loop1() {
