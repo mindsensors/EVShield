@@ -10,8 +10,7 @@ void setup3() {
     uim.println(imu.getFirmwareVersion());
     uim.println(imu.getDeviceID());
     uim.println(imu.getVendorID());
-    uim.println();
-    uim.println("gyro, accel, magneticField");
+    uim.fillRect(0, 16*4, 320, 16, EVs_UIM_WHITE);
 }
 
 void loop3() {
@@ -19,26 +18,12 @@ void loop3() {
     
     gyro mygyro;
     imu.readGyro(mygyro);
-    uim.clearLine(6);
-    uim.setCursor(0, 16*5);
-    uim.printf("x:%d | y:%d | z:%d", mygyro.gx, mygyro.gy, mygyro.gz);
+    int val = 318 * mygyro.gx / 65536;
+    uim.fillRect(1, 16*4+1, val, 14, EVs_UIM_GREEN);
+    uim.fillRect(51, 16*4+1, 318-val, 14, EVs_UIM_BLACK);
+    uim.fillRect(0, 5*16+1, 90, 16, EVs_UIM_BLACK);
+    uim.setCursor(0, 5*16+1);
+    uim.println(mygyro.gx);
     
-    accl myaccl;
-    imu.readAccelerometer(myaccl);
-    uim.clearLine(7);
-    uim.setCursor(0, 16*6);
-    uim.printf("x:%d | y:%d | z:%d", myaccl.tx, myaccl.ty, myaccl.tz);
-    
-    magnetic_field mymgnt;
-    imu.readMagneticField(mymgnt);
-    uim.clearLine(8);
-    uim.setCursor(0, 16*7);
-    uim.printf("x:%d | y:%d | z:%d", mymgnt.mx, mymgnt.my, mymgnt.mz);
-    
-    cmps mycmps;
-    imu.readCompass(mycmps);
-    uim.clearLine(9);
-    uim.clearLine(10);
-    uim.setCursor(0, 16*8);
-    uim.printf("compass: %d\nerror: %d", mycmps.heading, mycmps.error);
+    delay(100);
 }
