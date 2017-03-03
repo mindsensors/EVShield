@@ -16,14 +16,9 @@ void setup3() {
 void loop3() {
     if (ev.getButtonState(BTN_GO)) ESP.reset();
     
-    gyro mygyro;
-    imu.readGyro(mygyro);
-    int val = 318 * mygyro.gx / 65536;
-    uim.fillRect(1, 16*4+1, val, 14, EVs_UIM_GREEN);
-    uim.fillRect(51, 16*4+1, 318-val, 14, EVs_UIM_BLACK);
-    uim.fillRect(0, 5*16+1, 90, 16, EVs_UIM_BLACK);
-    uim.setCursor(0, 5*16+1);
-    uim.println(mygyro.gx);
-    
-    delay(100);
+    accl myaccl;
+    imu.readAccelerometer(myaccl);
+    int val = 318 * myaccl.tx / 256;
+    /*if (val>0)*/ uim.fillRect(1, 16*4+1, val, 14, EVs_UIM_GREEN);
+    if (val < 318) uim.fillRect(val+1, 16*4+1, 318-val-1, 14, EVs_UIM_BLACK);
 }
