@@ -1,11 +1,11 @@
 #include <EVShield.h>
 #include <EVs_UIModule.h>
-#include <EVs_NXTTouch.h>
+#include <EVs_EV3Touch.h>
 
-EVs_NXTTouch myTouch;
+EVs_EV3Touch myTouch;
 
 void setup1() {
-    uim.println("NXT touch sensor test");
+    uim.println("EV3 touch sensor test");
     myTouch.init(&ev, SH_BAS1);
 }
 
@@ -16,4 +16,8 @@ void loop1() {
         uim.writeLine(0, 3, "pressed", true, EVs_UIM_WHITE);
     else
         uim.writeLine(0, 3, "released", true, EVs_UIM_WHITE);
+    
+    uim.clearLine(4);
+    uim.setCursor(0, 3*16);
+    uim.printf("bump count: %u", myTouch.getBumpCount());
 }
