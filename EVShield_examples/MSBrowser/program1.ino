@@ -7,6 +7,7 @@ EVs_LineLeader ll;
 void setup1() {
     uim.println("SumoEyes sensor test");
     ll.init(&ev, SH_BAS1);
+    delay(150); // wait until everything gets initialized
     
     uim.setCursor(0, 2*16);
     uim.printf("firmware: %s\n",  ll.getFirmwareVersion());
