@@ -9,9 +9,9 @@ void setup1() {
     ll.init(&ev, SH_BAS1);
     
     uim.setCursor(0, 2*16);
-    uim.println(ll.getFirmwareVersion());
-    uim.println(ll.getDeviceID());
-    uim.println(ll.getVendorID());
+    uim.printf("firmware: %s\n",  ll.getFirmwareVersion());
+    uim.printf("device ID: %s\n", ll.getDeviceID());
+    uim.printf("vendor ID: %s\n", ll.getVendorID());
 }
 
 void loop1() {
@@ -19,8 +19,8 @@ void loop1() {
     
     uim.clearLine(6);
     uim.setCursor(0, 5*16);
-    uint8_t result = ll.getResult();
+    char s[9];
+    format_bin(ll.getResult(), s);
     uim.print("sensor array: ");
-    for (uint8_t i = 0; i++; i < 8)
-        uim.print(result && 1 << i);
+    uim.println(s);
 }
