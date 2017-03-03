@@ -1,27 +1,19 @@
 #include <EVShield.h>
 #include <EVs_UIModule.h>
-#include <EVs_EV3Infrared.h>
-
-EVs_EV3Infrared myIR;
 
 void setup1() {
-    uim.println("EV3 infrafred sensor test");
-    myIR.init(&ev, SH_BAS1);
-    myIR.setMode(MODE_Infrared_Beacon);
-    
-    uim.setCursor(0, 2*16);
-    uim.print("heading: ");
-    uim.setCursor(0, 5*16);
-    uim.print("proximity: ");
+    uim.println("Motor test");
+    //ev.bank_a.motorReset();
+    ev.bank_a.motorRunRotations(SH_Motor_1, 
+                 SH_Direction_Forward,
+                 SH_Speed_Medium,
+                 3,
+                 SH_Completion_Wait_For,
+                 SH_Next_Action_BrakeHold);
+    ev.bank_a.motorStop(SH_Motor_1, SH_Next_Action_Float);
+    ESP.reset();
 }
 
 void loop1() {
-    if (ev.getButtonState(BTN_GO)) ESP.reset();
-    
-    uim.clearLine(4);
-    uim.setCursor(0, 3*16);
-    uim.println(myIR.readChannelHeading(1));
-    uim.clearLine(7);
-    uim.setCursor(0, 6*16);
-    uim.println(myIR.readChannelProximity(1));
+    //if (ev.getButtonState(BTN_GO)) ESP.reset();
 }
