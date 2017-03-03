@@ -2,8 +2,6 @@
 #include <EVs_UIModule.h>
 #include <EVs_AbsoluteIMU.h>
 
-#include "MSBrowser.h"
-
 EVs_AbsoluteIMU imu;
 
 void setup3() {

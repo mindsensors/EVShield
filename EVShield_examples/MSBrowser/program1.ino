@@ -1,8 +1,6 @@
 #include <EVShield.h>
 #include <EVs_UIModule.h>
 
-#include "MSBrowser.h"
-
 void setup1() {
     uim.println("Button tests");
 }

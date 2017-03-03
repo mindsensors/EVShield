@@ -14,13 +14,13 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include "MSBrowser.h"
-#include "credentials.h"
-
 #include <EVShield.h>
 #include <EVs_UIModule.h>
 #include <ArduinoOTA.h>
+#include "credentials.h"
 
+EVShield ev;
+EVs_UIModule uim;
 
 void delayWithOTA(unsigned long delayMs) {
   unsigned long timeout = millis() + delayMs;
