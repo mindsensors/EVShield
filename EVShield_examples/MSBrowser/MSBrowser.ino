@@ -33,7 +33,7 @@
 #include <EVShield.h>
 #include <EVs_UIModule.h>
 #include <ArduinoOTA.h>
-#include <Fonts/FreeSans9pt7b.h>
+#include <Fonts/FreeSans18pt7b.h>
 #include "credentials.h"
 
 EVShield ev;
@@ -109,14 +109,15 @@ void setup() {
     uim.begin();
     uim.clearScreen();
     
-    uim.setFont(&FreeSans9pt7b);
+    uim.setFont(&FreeSans18pt7b);
+    uim.setTextSize(1);
     
     uim.fillRect(35, 30, 60, 60, EVs_UIM_RED);
-    uim.setCursor(35+9, 30+40);
+    uim.setCursor(35+10, 30+40);
     uim.println("P1");
     
     uim.fillRect(130, 30, 60, 60, uim.Color565(0,160,0)); //EVs_UIM_GREEN (too bright)
-    uim.setCursor(130+7, 30+40);
+    uim.setCursor(130+8, 30+40);
     uim.println("P2");
     
     uim.fillRect(225, 30, 60, 60, EVs_UIM_BLUE);
@@ -127,7 +128,7 @@ void setup() {
     
     uim.fillRect(70, 151, 180, 60, EVs_UIM_WHITE);
     uim.setTextColor(EVs_UIM_BLACK, EVs_UIM_WHITE);
-    uim.setCursor(134, 151+40);
+    uim.setCursor(134, 151+42);
     uim.println("GO");
     
     selection = 2; // make sure border gets drawn (this is a "change")
