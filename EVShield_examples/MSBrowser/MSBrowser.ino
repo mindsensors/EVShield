@@ -33,6 +33,7 @@
 #include <EVShield.h>
 #include <EVs_UIModule.h>
 #include <ArduinoOTA.h>
+#include <Fonts/FreeSans9pt7b.h>
 #include "credentials.h"
 
 EVShield ev;
@@ -74,6 +75,7 @@ void setup() {
         uim.setTextColor(EVs_UIM_WHITE);
         uim.setCursor(0, 0);
         uim.setTextSize(2);
+        uim.setFont();
         uim.println("Beginning OTA upload!");
         uim.print("Progress: ");
     });
@@ -90,6 +92,7 @@ void setup() {
         uim.setTextColor(EVs_UIM_WHITE);
         uim.setCursor(0, 0);
         uim.setTextSize(2);
+        uim.setFont();
         uim.println("Error during OTA upload!");
              if (error == OTA_AUTH_ERROR)    uim.println("Auth Failed");
         else if (error == OTA_BEGIN_ERROR)   uim.println("Begin Failed");
@@ -106,25 +109,25 @@ void setup() {
     uim.begin();
     uim.clearScreen();
     
-    uim.setTextSize(4);
+    uim.setFont(&FreeSans9pt7b);
     
     uim.fillRect(35, 30, 60, 60, EVs_UIM_RED);
-    uim.setCursor(35+10, 30+16);
+    uim.setCursor(35+9, 30+40);
     uim.println("P1");
     
-    uim.fillRect(130, 30, 60, 60, uim.Color565(0,200,0)); //EVs_UIM_GREEN
-    uim.setCursor(130+8, 30+16);
+    uim.fillRect(130, 30, 60, 60, uim.Color565(0,160,0)); //EVs_UIM_GREEN (too bright)
+    uim.setCursor(130+7, 30+40);
     uim.println("P2");
     
     uim.fillRect(225, 30, 60, 60, EVs_UIM_BLUE);
-    uim.setCursor(225+8, 30+16);
+    uim.setCursor(225+8, 30+40);
     uim.println("P3");
     
     uim.fillRect(0, 120, 320, 2, EVs_UIM_WHITE);
     
     uim.fillRect(70, 151, 180, 60, EVs_UIM_WHITE);
     uim.setTextColor(EVs_UIM_BLACK, EVs_UIM_WHITE);
-    uim.setCursor(138, 151+16);
+    uim.setCursor(134, 151+40);
     uim.println("GO");
     
     selection = 2; // make sure border gets drawn (this is a "change")
@@ -139,6 +142,7 @@ void loop() {
     if (ev.checkButton(70, 151, 180, 60)) {
         uim.clearScreen();
         uim.setTextSize(2);
+        uim.setFont();
         uim.setTextColor(EVs_UIM_WHITE);
         uim.setCursor(0, 0);
         
