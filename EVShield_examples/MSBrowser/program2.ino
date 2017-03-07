@@ -1,16 +1,17 @@
+// remember to update credentials.h so the device can connect to your network!
+
 #include <EVShield.h>
 #include <EVs_UIModule.h>
 
 void setup2() {
-    uim.println("Touchscreen test");
+    // ev and uim have already been instantiated, you can just use them now.
+    ev.ledSetRGB(0, 0, 0); // ev = EVShield
+    uim.println("setup2"); // uim = UI Module
 }
+
 void loop2() {
+    // reset to browser when GO is pressed
     if (ev.getButtonState(BTN_GO)) ESP.reset();
     
-    uim.clearLine(3);
-    uim.setCursor(0, 32);
-    uint16_t x, y;
-    ev.getTouchscreenValues(&x, &y);
-    uim.printf("x: %u, y:%u", x, y);
-    delay(8);
+    // your creative code here
 }

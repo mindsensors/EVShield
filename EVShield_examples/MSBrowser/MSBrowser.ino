@@ -14,6 +14,22 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+
+
+// ********************
+// Hello, please don't touch this file! Click on the tabs above to switch
+// and edit program1, program2, or program3.
+// ********************
+
+// Setup your WiFi network name and password in credentials.h,
+// and optionally a password to be required when uploading.
+// Edit program1, program2, program3 with your creative code, then upload.
+// Select the red P1, green P2, or blue P3 and tap GO to run that program.
+
+
+
+
+
 #include <EVShield.h>
 #include <EVs_UIModule.h>
 #include <ArduinoOTA.h>
@@ -47,9 +63,9 @@ void setup() {
     Serial.begin(115200);
     Serial.println();
     
-    WiFi.begin(ssid, password);
+    WiFi.begin(SSID, PASSWORD);
     while (WiFi.status() != WL_CONNECTED) yield();
-    ArduinoOTA.setPassword(uploadPassword);
+    ArduinoOTA.setPassword(UPLOAD_PASSWORD);
     ArduinoOTA.begin();
     
     ArduinoOTA.onStart([]() {

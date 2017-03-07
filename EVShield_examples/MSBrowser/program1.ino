@@ -1,27 +1,17 @@
+// remember to update credentials.h so the device can connect to your network!
+
 #include <EVShield.h>
 #include <EVs_UIModule.h>
-#include <EVs_LineLeader.h>
-
-EVs_LineLeader ll;
 
 void setup1() {
-    uim.println("SumoEyes sensor test");
-    ll.init(&ev, SH_BAS1);
-    delay(150); // wait until everything gets initialized
-    
-    uim.setCursor(0, 2*16);
-    uim.printf("firmware: %s\n",  ll.getFirmwareVersion());
-    uim.printf("device ID: %s\n", ll.getDeviceID());
-    uim.printf("vendor ID: %s\n", ll.getVendorID());
+    // ev and uim have already been instantiated, you can just use them now.
+    ev.ledSetRGB(0, 0, 0); // ev = EVShield
+    uim.println("setup1"); // uim = UI Module
 }
 
 void loop1() {
+    // reset to browser when GO is pressed
     if (ev.getButtonState(BTN_GO)) ESP.reset();
     
-    uim.clearLine(6);
-    uim.setCursor(0, 5*16);
-    char s[9];
-    format_bin(ll.getResult(), s);
-    uim.print("sensor array: ");
-    uim.println(s);
+    // your creative code here
 }
