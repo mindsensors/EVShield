@@ -6,7 +6,7 @@
 void setup1() {
     // ev and uim have already been instantiated, you can just use them now.
     ev.ledSetRGB(0, 0, 0); // ev = EVShield
-    uim.println("Basic drawing and printing\n"); // uim = UI Module
+    uim.println("Text and colors\n"); // uim = UI Module
     
     uim.setTextColor(EVs_UIM_MAGENTA);
     uim.println("You can call .println directly on a UI Module instance!");
