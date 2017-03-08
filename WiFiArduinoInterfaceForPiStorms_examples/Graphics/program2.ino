@@ -30,6 +30,7 @@ void setup2() {
     uim.fillRect(100, 20, 50, 30, EVs_UIM_BLUE);
     
     // see also: File -> Examples -> Adafruit ILI9340 -> graphicstest
+    // https://learn.adafruit.com/adafruit-gfx-graphics-library
 }
 
 void loop2() {
