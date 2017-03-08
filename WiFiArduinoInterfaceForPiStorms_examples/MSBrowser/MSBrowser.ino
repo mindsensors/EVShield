@@ -73,9 +73,9 @@ void setup() {
         uim.setRotation(3);
         uim.clearScreen();
         uim.setTextColor(EVs_UIM_WHITE);
+        uim.setFont();
         uim.setCursor(0, 0);
         uim.setTextSize(2);
-        uim.setFont();
         uim.println("Beginning OTA upload!");
         uim.print("Progress: ");
     });
@@ -90,9 +90,9 @@ void setup() {
         uim.setRotation(3);
         uim.clearScreen();
         uim.setTextColor(EVs_UIM_WHITE);
+        uim.setFont();
         uim.setCursor(0, 0);
         uim.setTextSize(2);
-        uim.setFont();
         uim.println("Error during OTA upload!");
              if (error == OTA_AUTH_ERROR)    uim.println("Auth Failed");
         else if (error == OTA_BEGIN_ERROR)   uim.println("Begin Failed");
@@ -142,10 +142,10 @@ void loop() {
     
     if (ev.checkButton(70, 151, 180, 60)) {
         uim.clearScreen();
-        uim.setTextSize(2);
         uim.setFont();
-        uim.setTextColor(EVs_UIM_WHITE);
         uim.setCursor(0, 0);
+        uim.setTextSize(2);
+        uim.setTextColor(EVs_UIM_WHITE);
         
              if (selection == 1) setup1();
         else if (selection == 2) setup2();
