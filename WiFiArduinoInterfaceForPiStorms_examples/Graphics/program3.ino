@@ -7,6 +7,7 @@
 
 // 0 will skip that pixel, leaving whatever color was there
 // 1 will fill in that pixel with the specified color
+// B indicates a binary literal
 const PROGMEM uint8_t bitmap[] = {
     B11111111,B11111111,
     B10000000,B00000001,

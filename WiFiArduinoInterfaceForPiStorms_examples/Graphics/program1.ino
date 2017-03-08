@@ -30,6 +30,18 @@ void setup1() {
     // EVs_UIM_MAGENTA
     // EVs_UIM_YELLOW
     // EVs_UIM_WHITE
+    
+    // if not specified, the background color will default to black
+    uim.setTextColor(EVs_UIM_YELLOW);
+    // besides .setTextColor, you can also move the cursor
+    uim.setCursor(260, 8);
+    // and set text size
+    uim.setTextSize(1);
+    uim.println("mini text");
+    uim.setCursor(60, 76);
+    uim.setTextSize(3);
+    uim.println("big text");
+    // you can also use fonts, see program3
 }
 
 void loop1() {

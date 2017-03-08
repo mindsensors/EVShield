@@ -28,7 +28,9 @@ void setup2() {
     
     // 100 pixels across, 20 down, rectangle has a width of 50 and a height of 30
     uim.fillRect(100, 20, 50, 30, EVs_UIM_BLUE);
+    // use drawRect instead of filLRect to only draw the border and not fill it in
     
+    // you can draw lines, circles, triangles, and rounded rectangles much the same way
     // see also: File -> Examples -> Adafruit ILI9340 -> graphicstest
     // https://learn.adafruit.com/adafruit-gfx-graphics-library
 }
