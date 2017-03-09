@@ -10,7 +10,13 @@
    <b>Arduino boards:</b>\n
       Uno, Uno R3\n
       Duemilanove\n
-		 
+      Arduino/Genuino 101\n
+ 
+ 
+ <a href="http://www.mindsensors.com/stem-with-robotics/13-pistorms-v2-base-kit-raspberry-pi-brain-for-lego-robot"><b>PiStorms</b></a> and this library can be used with the following board:
+
+   <b>Arduino board:</b>\n
+      Wi-Fi Arduino Interface for PiStorms (ESP8266)
 
  \section getting_started  Getting Started
  If you need help to begin with your first program, please download and review <b>EVShield-AVR-Library-Tutorial.pdf</b>
@@ -728,7 +734,11 @@ public:
 
   
   /**
-  Get the button state of the specific button on EVShield.
+  Get the button state of the specific button on EVShield.<br>
+  When using the Wi-Fi Arduino Interface for PiStorms, there is only a GO button.
+  The PiStorms does not have a left or right button like the EVShield. In this case,
+  the F1 software button will be BTN_LEFT, and F2 will be BTN_RIGHT. If a program
+  asks you to press the left button, instead tap the stylus in the F1 area on screen.
   @param btn      Button to get state for (BTN_GO, BTN_LEFT, BTN_RIGHT)
   @return true or false for specified button on the EVShield 
   */
@@ -765,24 +775,42 @@ public:
   */
   void ledHeartBeatPattern();
   
-  /** read the touchscreen press and write the coordinates to the output parameters
-    @param[out] x x-value of touchscreen press is written to this variable
-    @param[out] y y-value of touchscreen press is written to this variable
+  /**
+  Wi-Fi Arduino Interface for PiStorms only!<br>
+  Read the touchscreen press and write the coordinates to the output parameters.
+  @param x x-value of touchscreen press is written to this variable
+  @param y y-value of touchscreen press is written to this variable
   */
   void getTouchscreenValues(uint16_t *x, uint16_t *y);
   
-  /** reads the x-coordinate of the touchscreen press */
+  /**
+  Wi-Fi Arduino Interface for PiStorms only!<br>
+  Reads the x-coordinate of the touchscreen press
+  */
   uint16_t TS_X();
   
-  /** reads the y-coordinate of the touchscreen press */
+  /**
+  Wi-Fi Arduino Interface for PiStorms only!<br>
+  Reads the y-coordinate of the touchscreen press
+  */
   uint16_t TS_Y();
   
-  /** detect touchscreen presses and prevents false positives */
+  /**
+  Wi-Fi Arduino Interface for PiStorms only!<br>
+  Detect touchscreen presses and prevents false positives.
+  */
   bool isTouched();
   
+  /**
+  Wi-Fi Arduino Interface for PiStorms only!<br>
+  returns true if the specified area of the screen is being touched
+  */
   bool checkButton(uint16_t x, uint16_t y, uint16_t width, uint16_t height);
   
-  /** returns 0 if none of the software buttons are touched, or 1-4 if one is. */
+  /**
+  Wi-Fi Arduino Interface for PiStorms only!<br>
+  returns 0 if none of the software buttons are touched, or 1-4 if one of them is.
+  */
   uint8_t getFunctionButton();
 
 private:
@@ -798,8 +826,8 @@ private:
   bool useOldTouchscreen = false;
   
   /** get raw touchscreen values, do some math using the calibration values, and write to the output parameters
-    @param[out] x x-value of touchscreen press is written to this variable
-    @param[out] y y-value of touchscreen press is written to this variable
+    @param x x-value of touchscreen press is written to this variable
+    @param y y-value of touchscreen press is written to this variable
   */
   void getReading(uint16_t *x, uint16_t *y);
 };
