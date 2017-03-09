@@ -1149,12 +1149,11 @@ uint8_t EVShield::getFunctionButton()
   #if defined(ESP8266) || defined(AVR_NANO)
   if (useOldTouchscreen) {
     uint8_t v = bank_a.readByte(SH_BTN_PRESS);
-    // purposefully using the bitwise AND operator and unsigned constants
-    // if F1 and GO were being pressed, v would be 9, which != 8, so just check that bit
-    if (v & 8u)  return 1;
-    if (v & 16u) return 2;
-    if (v & 24u) return 3;
-    if (v & 40u) return 4;
+    if (v % 2 == 1) v--; // subtract out GO button (1)
+    if (v == 8)  return 1;
+    if (v == 16) return 2;
+    if (v == 24) return 3;
+    if (v == 40) return 4;
     return 0;
   }
   
