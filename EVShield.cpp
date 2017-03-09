@@ -1147,16 +1147,26 @@ bool EVShield::checkButton(uint16_t x, uint16_t y, uint16_t width, uint16_t heig
 uint8_t EVShield::getFunctionButton()
 {
   #if defined(ESP8266) || defined(AVR_NANO)
+  if (useOldTouchscreen) {
+    uint8_t v = bank_a.readByte(SH_BTN_PRESS);
+    if (v == 8)  return 1;
+    if (v == 16) return 2;
+    if (v == 24) return 3;
+    if (v == 40) return 4;
+    return 0;
+  }
+  
+  
   uint16_t x = RAW_X();
   uint16_t xborder;
   
   if (x4 > x1)  { // lower values left
     xborder = std::max(x1, x2); // where the touchscreen ends and the software buttons begin
-    if (!(x < xborder && x > xborder-200))
+    if (!(x < xborder+100 && x > xborder-200))
       return 0;
   } else { // greater values left
     xborder = std::min(x1, x2);
-    if (!(x > xborder && x < xborder+200))
+    if (!(x > xborder-100 && x < xborder+200))
       return 0;
   }
   
