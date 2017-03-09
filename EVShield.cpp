@@ -1056,8 +1056,8 @@ void EVShield::getTouchscreenValues(uint16_t *x, uint16_t *y)
 {
   #if defined(ESP8266) || defined(AVR_NANO)
   if (useOldTouchscreen) {
-    *x = RAW_X();
-    *y = RAW_Y();
+    *x = TS_X();
+    *y = TS_Y();
     return;
   }
   
@@ -1085,7 +1085,11 @@ uint16_t EVShield::TS_X()
 {
   #if defined(ESP8266) || defined(AVR_NANO)
   if (useOldTouchscreen) {
-    return RAW_X();
+    uint16_t oldx = bank_a.readInteger(SH_PS_TS_X);
+    if (oldx > 0 && oldx <= 320)
+      return 320 - oldx;
+    else
+      return 0;
   }
   
   uint16_t x, y;
@@ -1100,7 +1104,7 @@ uint16_t EVShield::TS_Y()
 {
   #if defined(ESP8266) || defined(AVR_NANO)
   if (useOldTouchscreen) {
-    return RAW_Y();
+    return bank_a.readInteger(SH_PS_TS_Y);
   }
   uint16_t x, y;
   getTouchscreenValues(&x, &y);

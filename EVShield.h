@@ -118,6 +118,8 @@
 #define SH_RGB_LED     0xD7
 #define SH_CENTER_RGB_LED     0xDE
 
+#define SH_PS_TS_X  0xE3
+#define SH_PS_TS_Y  0xE5
 #define SH_PS_TS_RAWX  0xE7
 #define SH_PS_TS_RAWY  0xE9
 #define SH_PS_TS_CALIBRATION_DATA_READY 0x70
