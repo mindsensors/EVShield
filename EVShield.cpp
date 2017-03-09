@@ -1163,11 +1163,11 @@ uint8_t EVShield::getFunctionButton()
   
   if (x4 > x1)  { // lower values left
     xborder = std::max(x1, x2); // where the touchscreen ends and the software buttons begin
-    if (!(x < xborder+100 && x > xborder-200))
+    if (!(x < xborder+200 && x > xborder-200))
       return 0;
   } else { // greater values left
     xborder = std::min(x1, x2);
-    if (!(x > xborder-100 && x < xborder+200))
+    if (!(x > xborder-200 && x < xborder+200))
       return 0;
   }
   
@@ -1179,13 +1179,13 @@ uint8_t EVShield::getFunctionButton()
   if (y < ymin + 0 * yQuarter)
     return 0; // too low
   if (y < ymin + 1 * yQuarter)
-    return 1;
-  if (y < ymin + 2 * yQuarter)
-    return 2;
-  if (y < ymin + 3 * yQuarter)
-    return 3;
-  if (y < ymin + 4 * yQuarter)
     return 4;
+  if (y < ymin + 2 * yQuarter)
+    return 3;
+  if (y < ymin + 3 * yQuarter)
+    return 2;
+  if (y < ymin + 4 * yQuarter)
+    return 1;
   if (y >= ymin + 4 * yQuarter)
     return 0; // too high
 
