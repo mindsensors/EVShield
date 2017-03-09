@@ -4,6 +4,8 @@
 #include <EVs_UIModule.h>
 
 #include <Fonts/FreeSerifItalic24pt7b.h>
+// for the included font options, see C:\<you>\Documents\Arduino\libraries\Adafruit_GFX_Library\Fonts
+
 
 // 0 will skip that pixel, leaving whatever color was there
 // 1 will fill in that pixel with the specified color
