@@ -906,10 +906,24 @@ uint32_t callbackLED(uint32_t currentTime)
 #endif
 
 bool EVShield::getButtonState(uint8_t btn) {
+  #if !(defined(ESP8266) || defined(AVR_NANO))
   uint8_t bVal;
   bVal = bank_a.readByte(SH_BTN_PRESS);
 
   return (bVal == btn);
+  #else
+  // return ( (btn == BTN_GO && bank_a.readByte(SH_BTN_PRESS) % 2 == 1) || (btn == BTN_LEFT && getFunctionButton() == 1) || (btn == BTN_RIGHT && getFunctionButton() == 2) );
+  if (btn == BTN_GO) {
+    return bank_a.readByte(SH_BTN_PRESS) % 2 == 1;
+  } else if (btn == BTN_RIGHT || btn == BTN_LEFT) {
+    uint8_t v = getFunctionButton();
+    if (btn == BTN_LEFT  && v == 1) return true;
+    if (btn == BTN_RIGHT && v == 2) return true;
+    return false;
+  } else {
+    return false;
+  }
+  #endif
 }
 
 void EVShield::waitForButtonPress(uint8_t btn, uint8_t led_pattern) {

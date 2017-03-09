@@ -106,13 +106,4 @@ typedef enum {
   
 #endif
 
-#if defined(ESP8266) || defined(AVR_NANO)
-  // if the go button is pressed, the value will be 1. Otherwise it will be 0.
-  #undef  BTN_LEFT
-  #define BTN_LEFT  2
-  // SH_BTN_PRESS will never be 2 or 4, so trying to getButtonState on BTN_LEFT or BTN_RIGHT will always return false
-  #undef  BTN_GO
-  #define BTN_GO  1
-#endif
-
 #endif
