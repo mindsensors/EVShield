@@ -57,7 +57,8 @@ void setup()
   // Initialize the protocol for EVShield
   // It is best to use Hardware I2C (unless you want to use Ultrasonic).
   //
-  evshield.init( SH_SoftwareI2C );
+  //evshield.init( SH_SoftwareI2C );
+  evshield.init(); // the default is SH_HardwareI2C
 
   //
   // Wait until user presses GO button to continue the program
@@ -80,14 +81,6 @@ void setup()
   //
   evshield.bank_a.motorReset();
   evshield.bank_b.motorReset();
-
-  Serial.println("\nEnter a character and press 'Send' to begin");
-  //
-  // wait until user enters a key on serial window.
-  //
-  while (Serial.available() <= 0) {
-    delay(1000);
-  }
 
 }
 
@@ -134,5 +127,3 @@ void loop()
     delay (500);
   }
 }
-
-
