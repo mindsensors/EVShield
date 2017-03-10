@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo-with-transparent-bg-w300.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">EVShield
-   &#160;<span id="projectnumber">v1.2</span>
+   &#160;<span id="projectnumber">v1.3</span>
    </div>
    <div id="projectbrief">EVShield Library Reference by mindsensors.com</div>
   </td>
@@ -110,14 +110,26 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a20e1f0c5ca58e2000949a15101259abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab68a1603b8a32c5b6717890355c01c0e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v_shield.html#ab68a1603b8a32c5b6717890355c01c0e">getButtonState</a> (uint8_t btn)</td></tr>
 <tr class="separator:ab68a1603b8a32c5b6717890355c01c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6551565c91c30c4dcbf3816f45832ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v_shield.html#af6551565c91c30c4dcbf3816f45832ed">waitForButtonPress</a> (uint8_t btn, uint8_t led_pattern=0)</td></tr>
-<tr class="separator:af6551565c91c30c4dcbf3816f45832ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91b5f4b91d6b2c2a16b18cf4e5acf67f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v_shield.html#a91b5f4b91d6b2c2a16b18cf4e5acf67f">waitForButtonPress</a> (uint8_t btn, uint8_t led_pattern=1)</td></tr>
+<tr class="separator:a91b5f4b91d6b2c2a16b18cf4e5acf67f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3a1e13c869f6519e677ca4b5e9809a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v_shield.html#af3a1e13c869f6519e677ca4b5e9809a6">ledSetRGB</a> (uint8_t red=0, uint8_t green=0, uint8_t blue=0)</td></tr>
 <tr class="separator:af3a1e13c869f6519e677ca4b5e9809a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a052e8639e594c1601b5351b273fe20f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v_shield.html#a052e8639e594c1601b5351b273fe20f1">ledBreathingPattern</a> ()</td></tr>
 <tr class="separator:a052e8639e594c1601b5351b273fe20f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a447869699a5b7d2a2f0c3e4b5fdad26f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v_shield.html#a447869699a5b7d2a2f0c3e4b5fdad26f">ledHeartBeatPattern</a> ()</td></tr>
 <tr class="separator:a447869699a5b7d2a2f0c3e4b5fdad26f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1935f6cacf2e7589eb29939707350c03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v_shield.html#a1935f6cacf2e7589eb29939707350c03">getTouchscreenValues</a> (uint16_t *x, uint16_t *y)</td></tr>
+<tr class="separator:a1935f6cacf2e7589eb29939707350c03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9769717dec0052b87b279bfc95669d6b"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v_shield.html#a9769717dec0052b87b279bfc95669d6b">TS_X</a> ()</td></tr>
+<tr class="separator:a9769717dec0052b87b279bfc95669d6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f5f63449cc0c2be3c82af432a6e4269"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v_shield.html#a3f5f63449cc0c2be3c82af432a6e4269">TS_Y</a> ()</td></tr>
+<tr class="separator:a3f5f63449cc0c2be3c82af432a6e4269"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dab2c52bb6151ec4cf6b084528f5aa1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v_shield.html#a2dab2c52bb6151ec4cf6b084528f5aa1">isTouched</a> ()</td></tr>
+<tr class="separator:a2dab2c52bb6151ec4cf6b084528f5aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab208ffdb321c851feb69bf92af603783"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v_shield.html#ab208ffdb321c851feb69bf92af603783">checkButton</a> (uint16_t x, uint16_t y, uint16_t width, uint16_t height)</td></tr>
+<tr class="separator:ab208ffdb321c851feb69bf92af603783"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0b5f7d32e5ceb224ebc92df78297c04"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_e_v_shield.html#ac0b5f7d32e5ceb224ebc92df78297c04">getFunctionButton</a> ()</td></tr>
+<tr class="separator:ac0b5f7d32e5ceb224ebc92df78297c04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -161,6 +173,48 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab208ffdb321c851feb69bf92af603783"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab208ffdb321c851feb69bf92af603783">&sect;&nbsp;</a></span>checkButton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EVShield::checkButton </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Wi-Fi Arduino Interface for PiStorms only!<br />
+ returns true if the specified area of the screen is being touched </p>
+
+</div>
+</div>
 <a id="ab68a1603b8a32c5b6717890355c01c0e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab68a1603b8a32c5b6717890355c01c0e">&sect;&nbsp;</a></span>getButtonState()</h2>
 
@@ -176,13 +230,69 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the button state of the specific button on <a class="el" href="class_e_v_shield.html" title="This class defines methods to access EVShield features. ">EVShield</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Get the button state of the specific button on <a class="el" href="class_e_v_shield.html" title="This class defines methods to access EVShield features. ">EVShield</a>.<br />
+ When using the Wi-Fi Arduino Interface for PiStorms, there is only a GO button. The PiStorms does not have a left or right button like the <a class="el" href="class_e_v_shield.html" title="This class defines methods to access EVShield features. ">EVShield</a>. In this case, the F1 software button will be BTN_LEFT, and F2 will be BTN_RIGHT. If a program asks you to press the left button, instead tap the stylus in the F1 area on screen. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">btn</td><td>Button to get state for (BTN_GO, BTN_LEFT, BTN_RIGHT) </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true or false for specified button on the <a class="el" href="class_e_v_shield.html" title="This class defines methods to access EVShield features. ">EVShield</a> </dd></dl>
+
+</div>
+</div>
+<a id="ac0b5f7d32e5ceb224ebc92df78297c04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0b5f7d32e5ceb224ebc92df78297c04">&sect;&nbsp;</a></span>getFunctionButton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t EVShield::getFunctionButton </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Wi-Fi Arduino Interface for PiStorms only!<br />
+ returns 0 if none of the software buttons are touched, or 1-4 if one of them is. </p>
+
+</div>
+</div>
+<a id="a1935f6cacf2e7589eb29939707350c03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1935f6cacf2e7589eb29939707350c03">&sect;&nbsp;</a></span>getTouchscreenValues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EVShield::getTouchscreenValues </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t *&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Wi-Fi Arduino Interface for PiStorms only!<br />
+ Read the touchscreen press and write the coordinates to the output parameters. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>x-value of touchscreen press is written to this variable </td></tr>
+    <tr><td class="paramname">y</td><td>y-value of touchscreen press is written to this variable </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -270,6 +380,25 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a2dab2c52bb6151ec4cf6b084528f5aa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dab2c52bb6151ec4cf6b084528f5aa1">&sect;&nbsp;</a></span>isTouched()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EVShield::isTouched </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Wi-Fi Arduino Interface for PiStorms only!<br />
+ Detect touchscreen presses and prevents false positives. </p>
+
+</div>
+</div>
 <a id="a052e8639e594c1601b5351b273fe20f1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a052e8639e594c1601b5351b273fe20f1">&sect;&nbsp;</a></span>ledBreathingPattern()</h2>
 
@@ -348,8 +477,46 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af6551565c91c30c4dcbf3816f45832ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6551565c91c30c4dcbf3816f45832ed">&sect;&nbsp;</a></span>waitForButtonPress()</h2>
+<a id="a9769717dec0052b87b279bfc95669d6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9769717dec0052b87b279bfc95669d6b">&sect;&nbsp;</a></span>TS_X()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t EVShield::TS_X </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Wi-Fi Arduino Interface for PiStorms only!<br />
+ Reads the x-coordinate of the touchscreen press </p>
+
+</div>
+</div>
+<a id="a3f5f63449cc0c2be3c82af432a6e4269"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f5f63449cc0c2be3c82af432a6e4269">&sect;&nbsp;</a></span>TS_Y()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t EVShield::TS_Y </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Wi-Fi Arduino Interface for PiStorms only!<br />
+ Reads the y-coordinate of the touchscreen press </p>
+
+</div>
+</div>
+<a id="a91b5f4b91d6b2c2a16b18cf4e5acf67f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91b5f4b91d6b2c2a16b18cf4e5acf67f">&sect;&nbsp;</a></span>waitForButtonPress()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -364,7 +531,7 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>led_pattern</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>led_pattern</em> = <code>1</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -430,8 +597,8 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="_e_v_shield_8h_source.html">EVShield.h</a></li>
-<li>EVShield.cpp</li>
+<li>C:/Program Files (x86)/Arduino-1.6.12/libraries/EVShield/<a class="el" href="_e_v_shield_8h_source.html">EVShield.h</a></li>
+<li>C:/Program Files (x86)/Arduino-1.6.12/libraries/EVShield/EVShield.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -439,7 +606,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_e_v_shield.html">EVShield</a></li>
-    <li class="footer">Generated on Fri Oct 7 2016 12:06:45 for EVShield by
+    <li class="footer">Generated on Fri Mar 10 2017 15:18:46 for EVShield by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.12 </li>
   </ul>
