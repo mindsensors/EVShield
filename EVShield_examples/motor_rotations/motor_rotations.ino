@@ -200,7 +200,11 @@ setup()
                      SH_Next_Action_BrakeHold);
 
     Serial.println("Program Finished");
-
+    
+    // We're done with the motors, reset them so they don't continue 
+    // trying to hold their position (SH_Next_Action_BrakeHold)
+    evshield.bank_a.motorReset();
+    evshield.bank_b.motorReset();
 }
 
 void
@@ -212,4 +216,3 @@ loop()                          // After the setup the LED blinks to show
 		evshield.ledSetRGB(0,0,0);     // turn off the EVShield LED.
     delay(1000);                // wait
 }
-

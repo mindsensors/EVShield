@@ -76,7 +76,13 @@ setup()
     //
     
     touch1.init( &evshield, SH_BBS2);
-      
+    
+    //
+    // reset motors.
+    //
+    evshield.bank_a.motorReset();
+    evshield.bank_b.motorReset();
+    
     //
     // Wait until user presses GO button to continue the program
     //
@@ -173,16 +179,20 @@ loop()
             evshield.ledSetRGB(0,0,0);     // turn off the EVShield LED.
             delay(1000);               // wait
             test = 1;}
-  } 
-  else {
+    } 
+    else {
         //
         // turn off the leds
         //
         evshield.ledSetRGB(0,0,0);
     }
-       //
-    // wait for one second
-    //
-   
+    
+    // if the GO button is pressed, end the program
+    if (evshield.getButtonState(BTN_GO)) {
+        // reset the motors so the don't keep trying to hold their position
+        evshield.bank_a.motorReset();
+        evshield.bank_b.motorReset();
+        // indefinitely do nothing, until the reset button is pressed (on the Arduino) 
+        while (1) ;
+    }
 }
-

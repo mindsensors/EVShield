@@ -199,7 +199,13 @@ void loop()
     }
     last_x = x;
   
+  // if the GO button is pressed, end the program
+  if (evshield.getButtonState(BTN_GO)) {
+    // reset the motors so the don't keep trying to follow the object
+    evshield.bank_a.motorReset();
+    evshield.bank_b.motorReset();
+    // indefinitely do nothing, until the reset button is pressed (on the Arduino) 
+    while (1) ;
+  }
 }
  
-
-
