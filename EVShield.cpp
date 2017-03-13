@@ -21,7 +21,6 @@
 
 #include "EVShield.h"
 #include "Wire.h"
-#include <algorithm> /* for min and max */
 
 #if defined(ESP8266)
   extern "C" {
@@ -1013,10 +1012,10 @@ void EVShield::getReading(uint16_t *retx, uint16_t *rety) // returnX, returnY to
   uint16_t x = RAW_X();
   uint16_t y = RAW_Y();
 
-  if ( x < std::min({x1,x2,x3,x4}) \
-    || x > std::max({x1,x2,x3,x4}) \
-    || y < std::min({y1,y2,y3,y4}) \
-    || y > std::max({y1,y2,y3,y4}) )
+  if ( x < min(x1,min(x2,min(x3,x4))) \
+    || x > max(x1,max(x2,max(x3,x4))) \
+    || y < min(y1,min(y2,min(y3,y4))) \
+    || y > max(y1,max(y2,max(y3,y4))) )
   {
     *retx = 0;
     *rety = 0;
@@ -1164,18 +1163,18 @@ uint8_t EVShield::getFunctionButton()
   uint16_t xborder;
   
   if (x4 > x1)  { // lower values left
-    xborder = std::max(x1, x2); // where the touchscreen ends and the software buttons begin
+    xborder = max(x1, x2); // where the touchscreen ends and the software buttons begin
     if (!(x < xborder+200 && x > xborder-200))
       return 0;
   } else { // greater values left
-    xborder = std::min(x1, x2);
+    xborder = min(x1, x2);
     if (!(x > xborder-200 && x < xborder+200))
       return 0;
   }
   
   uint16_t y = RAW_Y(),
-           ymin = std::min(y1, y2),
-           ymax = std::max(y1, y2),
+           ymin = min(y1, y2),
+           ymax = max(y1, y2),
            yQuarter = (ymax-ymin)/4; // a quarter of the distance between the two y extremes
   
   if (y < ymin + 0 * yQuarter)
