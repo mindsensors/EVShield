@@ -71,9 +71,9 @@ SE_Zone EVs_SumoEyes::detectObstacleZone()
   
   se_value = readRaw();
 
-  if ( isNear(344, 10, se_value) ) return SE_Front;
-  if ( isNear(658, 10, se_value) ) return SE_Left;
-  if ( isNear(424, 10, se_value) ) return SE_Right;
+  if ( isNear(830, 10, se_value) ) return SE_Front;
+  if ( isNear(580, 10, se_value) ) return SE_Left;
+  if ( isNear(487, 10, se_value) ) return SE_Right;
 
   return (SE_None);
 }

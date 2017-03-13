@@ -4,6 +4,7 @@
 // Large ports of the code is ported from the NXC library for the device,
 // written by Deepak Patil.
 // 12/18/2014  Nitin Patil --  modified to work with EVshield   
+// Feb 2017  Seth Tenembaum -- modified to work with PiStorms
 /*
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -20,12 +21,23 @@
 
 #include "EVShield.h"
 #include "Wire.h"
-#if defined(ARDUINO_ARC32_TOOLS)
-  #include "CurieTimerOne.h"
+#include <algorithm> /* for min and max */
+
+#if defined(ESP8266)
+  extern "C" {
+    #include "user_interface.h" /* for os_timer on ESP2866 */
+  }
+  static void pingEV(void *pArg);
+  os_timer_t pingEVtimer;
 #else
-  #include "MsTimer2.h"
+  #if defined(ARDUINO_ARC32_TOOLS)
+    #include "CurieTimerOne.h"
+  #else
+    #include "MsTimer2.h"
+  #endif
+  static void pingEV();
 #endif
-static void pingEV();
+
 
 #if defined(__AVR__)
 	static void callbackLED();
@@ -69,8 +81,35 @@ void EVShield::init(SH_Protocols protocol)
     while (initCounter < 5){
     //Serial.println(initCounter);
     I2CTimer();
-	initProtocols(protocol);    
+	initProtocols(protocol);
    }
+  
+  bank_a.writeByte(SH_S1_MODE, SH_Type_NONE); // set BAS1 type to none so it doesn't interfere with the following i2c communicaiton
+  bank_a.writeByte(SH_COMMAND, SH_PS_TS_LOAD); // copy from permanent memory to temporary memory
+  
+  delay(2); // normally it only takes 2 milliseconds or so to load the values
+  unsigned long timeout = millis() + 1000; // wait for up to a second
+  while (bank_a.readByte(SH_PS_TS_CALIBRATION_DATA_READY) != 1) // wait for ready byte
+  {
+    delay(10);
+    if (millis() > timeout)
+    {
+      Serial.println("Failed to load touchscreen calibration values.");
+      useOldTouchscreen = true;
+      break;
+    }
+  }
+  
+  if (!useOldTouchscreen) {
+    x1 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x00);
+    y1 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x02);
+    x2 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x04);
+    y2 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x06);
+    x3 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x08);
+    y3 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x0A);
+    x4 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x0C);
+    y4 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x0E);
+  }
 }
 
 void EVShield::initProtocols(SH_Protocols protocol)
@@ -132,7 +171,10 @@ void EVShield::initProtocols(SH_Protocols protocol)
 
 void EVShield::I2CTimer()
 {
-#if defined(ARDUINO_ARC32_TOOLS)
+#if defined(ESP8266)
+  os_timer_setfn(&pingEVtimer, pingEV, NULL);
+  os_timer_arm(&pingEVtimer, 300, true); // 300ms period, true to make it repeat;
+#elif defined(ARDUINO_ARC32_TOOLS)
   CurieTimerOne.start(300000, pingEV); // in microseconds
 #else
   //TCNT2  = 0; 
@@ -413,7 +455,7 @@ void evshieldSetEncoderSpeedTimeAndControlInBuffer(
   uint8_t duration,  // in seconds
   uint8_t control)  // control flags
 {
-  writeLongToBuffer(buffer + 0, encoder);
+  writeLongToBuffer(buffer + 0, (uint32_t)(int32_t)encoder);
   buffer[4] = (uint8_t)(int8_t)speed;
   buffer[5] = duration;
   buffer[6] = 0;      // command register B
@@ -757,9 +799,13 @@ int EVShieldBankB::sensorReadRaw(uint8_t which_sensor)
   }
 }
 
+#if defined(ESP8266)
+void pingEV(void *pArg)
+#else
 void pingEV()
+#endif
 {
-    #if defined(ARDUINO_ARC32_TOOLS)
+    #if defined(ARDUINO_ARC32_TOOLS) || defined(ESP8266) || defined(AVR_NANO)
         Wire.beginTransmission(0x34);
         Wire.endTransmission();
     #else
@@ -860,10 +906,16 @@ uint32_t callbackLED(uint32_t currentTime)
 #endif
 
 bool EVShield::getButtonState(uint8_t btn) {
+  #if !(defined(ESP8266) || defined(AVR_NANO))
   uint8_t bVal;
   bVal = bank_a.readByte(SH_BTN_PRESS);
 
   return (bVal == btn);
+  #else
+  return ( (btn == BTN_GO    && bank_a.readByte(SH_BTN_PRESS) % 2)
+        || (btn == BTN_LEFT  && getFunctionButton() == 1)
+        || (btn == BTN_RIGHT && getFunctionButton() == 2)          );
+  #endif
 }
 
 void EVShield::waitForButtonPress(uint8_t btn, uint8_t led_pattern) {
@@ -937,4 +989,210 @@ void EVShield::ledHeartBeatPattern() {
     delayMicroseconds(10);
   }
   breathNow ++;
+}
+
+uint16_t EVShield::RAW_X()
+{
+  return bank_a.readInteger(SH_PS_TS_RAWX);
+}
+
+uint16_t EVShield::RAW_Y()
+{
+  return bank_a.readInteger(SH_PS_TS_RAWY);
+}
+
+// helper function to getReading
+double distanceToLine(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2) // some point and two points forming the line
+{
+  // multiply by 1.0 to avoid integer truncation, don't need parentheses because the multiplication operator has left-to-right associativity
+  return 1.0 * abs( (y2-y1)*x0 - (x2-x1)*y0 + x2*y1 - y2*x1 ) / sqrt( pow((y2-y1),2) + pow((x2-x1),2) );
+}
+
+void EVShield::getReading(uint16_t *retx, uint16_t *rety) // returnX, returnY to avoid shadowing local x, y
+{
+  uint16_t x = RAW_X();
+  uint16_t y = RAW_Y();
+
+  if ( x < std::min({x1,x2,x3,x4}) \
+    || x > std::max({x1,x2,x3,x4}) \
+    || y < std::min({y1,y2,y3,y4}) \
+    || y > std::max({y1,y2,y3,y4}) )
+  {
+    *retx = 0;
+    *rety = 0;
+    return;
+  }
+  
+  // careful not to divide by 0
+  if ( y2-y1 == 0 \
+    || x4-x1 == 0 \
+    || y3-y4 == 0 \
+    || x3-x2 == 0 )
+  {
+    *retx = 0;
+    *rety = 0;
+    return;
+  }
+  
+  // http://math.stackexchange.com/a/104595/363240
+  double dU0 = distanceToLine(x, y, x1, y1, x2, y2) / (y2-y1) * 320;
+  double dV0 = distanceToLine(x, y, x1, y1, x4, y4) / (x4-x1) * 240;
+
+  double dU1 = distanceToLine(x, y, x4, y4, x3, y3) / (y3-y4) * 320;
+  double dV1 = distanceToLine(x, y, x2, y2, x3, y3) / (x3-x2) * 240;
+  
+  // careful not to divide by 0
+  if ( dU0+dU1 == 0 \
+    || dV0+dV1 == 0 )
+  {
+    *retx = 0;
+    *rety = 0;
+    return;
+  }
+  
+  *retx = 320 * dU0/(dU0+dU1);
+  *rety = 240 * dV0/(dV0+dV1);
+}
+
+#if !(defined(ESP8266) || defined(AVR_NANO))
+  #warning from EVShield: Touchscreen methods are only supported on PiStorms (getTouchscreenValues, TS_X, TS_Y, isTouched, checkButton, getFunctionButton)
+#endif
+
+void EVShield::getTouchscreenValues(uint16_t *x, uint16_t *y)
+{
+  #if defined(ESP8266) || defined(AVR_NANO)
+  if (useOldTouchscreen) {
+    *x = TS_X();
+    *y = TS_Y();
+    return;
+  }
+  
+  const uint8_t tolerance = 5;
+  
+  uint16_t x1, y1;
+  getReading(&x1, &y1);
+  uint16_t x2, y2;
+  getReading(&x2, &y2);
+  
+  if (abs(x2-x1) < tolerance and abs(y2-y1) < tolerance)
+  {
+    *x = x2;
+    *y = y2;
+  } else {
+    *x = 0;
+    *y = 0;
+  }
+  #else
+  return;
+  #endif
+}
+
+uint16_t EVShield::TS_X()
+{
+  #if defined(ESP8266) || defined(AVR_NANO)
+  if (useOldTouchscreen) {
+    return bank_a.readInteger(SH_PS_TS_X);
+  }
+  
+  uint16_t x, y;
+  getTouchscreenValues(&x, &y);
+  return x;
+  #else
+  return 0;
+  #endif
+}
+
+uint16_t EVShield::TS_Y()
+{
+  #if defined(ESP8266) || defined(AVR_NANO)
+  if (useOldTouchscreen) {
+    return 240-bank_a.readInteger(SH_PS_TS_Y);
+  }
+  uint16_t x, y;
+  getTouchscreenValues(&x, &y);
+  return y;
+  #else
+  return 0;
+  #endif
+}
+
+bool EVShield::isTouched()
+{
+  #if defined(ESP8266) || defined(AVR_NANO)
+  uint16_t x, y;
+  getTouchscreenValues(&x, &y);
+  return !(x==0 && y==0);
+  #else
+  return false;
+  #endif
+}
+
+bool EVShield::checkButton(uint16_t x, uint16_t y, uint16_t width, uint16_t height)
+{
+  #if defined(ESP8266) || defined(AVR_NANO)
+  uint16_t tsx, tsy; // touch screen x, touch screen y
+  getTouchscreenValues(&tsx, &tsy);
+  
+  if (tsx==0 && tsy==0)
+  {
+    return false;
+  }
+  
+  // 0,0 is top-left corner
+  // if left of right edge, right of left edge, above bottom edge, and below top edge
+  return tsx<=x+width && tsx>=x && tsy<=y+height && tsy>=y;
+  #else
+  return false;
+  #endif
+}
+
+uint8_t EVShield::getFunctionButton()
+{
+  #if defined(ESP8266) || defined(AVR_NANO)
+  if (useOldTouchscreen) {
+    uint8_t v = bank_a.readByte(SH_BTN_PRESS);
+    if (v % 2 == 1) v--; // subtract out GO button (1)
+    if (v == 8)  return 1;
+    if (v == 16) return 2;
+    if (v == 24) return 3;
+    if (v == 40) return 4;
+    return 0;
+  }
+  
+  
+  uint16_t x = RAW_X();
+  uint16_t xborder;
+  
+  if (x4 > x1)  { // lower values left
+    xborder = std::max(x1, x2); // where the touchscreen ends and the software buttons begin
+    if (!(x < xborder+200 && x > xborder-200))
+      return 0;
+  } else { // greater values left
+    xborder = std::min(x1, x2);
+    if (!(x > xborder-200 && x < xborder+200))
+      return 0;
+  }
+  
+  uint16_t y = RAW_Y(),
+           ymin = std::min(y1, y2),
+           ymax = std::max(y1, y2),
+           yQuarter = (ymax-ymin)/4; // a quarter of the distance between the two y extremes
+  
+  if (y < ymin + 0 * yQuarter)
+    return 0; // too low
+  if (y < ymin + 1 * yQuarter)
+    return 4;
+  if (y < ymin + 2 * yQuarter)
+    return 3;
+  if (y < ymin + 3 * yQuarter)
+    return 2;
+  if (y < ymin + 4 * yQuarter)
+    return 1;
+  if (y >= ymin + 4 * yQuarter)
+    return 0; // too high
+
+  return 0; // some other weird error occured, execution should not reach this point
+  #else
+  return 0;
+  #endif
 }

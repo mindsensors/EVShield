@@ -10,7 +10,13 @@
    <b>Arduino boards:</b>\n
       Uno, Uno R3\n
       Duemilanove\n
-		 
+      Arduino/Genuino 101\n
+ 
+ 
+ <a href="http://www.mindsensors.com/stem-with-robotics/13-pistorms-v2-base-kit-raspberry-pi-brain-for-lego-robot"><b>PiStorms</b></a> and this library can be used with the following board:
+
+   <b>Arduino board:</b>\n
+      Wi-Fi Arduino Interface for PiStorms (ESP8266)
 
  \section getting_started  Getting Started
  If you need help to begin with your first program, please download and review <b>EVShield-AVR-Library-Tutorial.pdf</b>
@@ -34,6 +40,7 @@
  * EVShield interface library
  * Copyright (C) 2016 mindsensors.com
  * 12/18/2014  Nitin Patil --  modified to work with EVshield 
+ * Feb 2017  Seth Tenembaum -- modified to work with PiStorms, added touchscreen defines and methods
  *
  * This file is part of EVShield interface library.
  * This library is free software; you can redistribute it and/or
@@ -116,6 +123,16 @@
 #define SH_BTN_PRESS     0xDA
 #define SH_RGB_LED     0xD7
 #define SH_CENTER_RGB_LED     0xDE
+
+#define SH_PS_TS_X  0xE3
+#define SH_PS_TS_Y  0xE5
+#define SH_PS_TS_RAWX  0xE7
+#define SH_PS_TS_RAWY  0xE9
+#define SH_PS_TS_CALIBRATION_DATA_READY 0x70
+#define SH_PS_TS_CALIBRATION_DATA 0x71
+#define SH_PS_TS_SAVE 0x77
+#define SH_PS_TS_LOAD 0x6C
+#define SH_PS_TS_UNLOCK 0x45
 
 /* constants to be used by user programs */
 /**
@@ -717,7 +734,11 @@ public:
 
   
   /**
-  Get the button state of the specific button on EVShield.
+  Get the button state of the specific button on EVShield.<br>
+  When using the Wi-Fi Arduino Interface for PiStorms, there is only a GO button.
+  The PiStorms does not have a left or right button like the EVShield. In this case,
+  the F1 software button will be BTN_LEFT, and F2 will be BTN_RIGHT. If a program
+  asks you to press the left button, instead tap the stylus in the F1 area on screen.
   @param btn      Button to get state for (BTN_GO, BTN_LEFT, BTN_RIGHT)
   @return true or false for specified button on the EVShield 
   */
@@ -753,6 +774,62 @@ public:
     Call this function repeatedly to make the pattern.
   */
   void ledHeartBeatPattern();
+  
+  /**
+  Wi-Fi Arduino Interface for PiStorms only!<br>
+  Read the touchscreen press and write the coordinates to the output parameters.
+  @param x x-value of touchscreen press is written to this variable
+  @param y y-value of touchscreen press is written to this variable
+  */
+  void getTouchscreenValues(uint16_t *x, uint16_t *y);
+  
+  /**
+  Wi-Fi Arduino Interface for PiStorms only!<br>
+  Reads the x-coordinate of the touchscreen press
+  */
+  uint16_t TS_X();
+  
+  /**
+  Wi-Fi Arduino Interface for PiStorms only!<br>
+  Reads the y-coordinate of the touchscreen press
+  */
+  uint16_t TS_Y();
+  
+  /**
+  Wi-Fi Arduino Interface for PiStorms only!<br>
+  Detect touchscreen presses and prevents false positives.
+  */
+  bool isTouched();
+  
+  /**
+  Wi-Fi Arduino Interface for PiStorms only!<br>
+  returns true if the specified area of the screen is being touched
+  */
+  bool checkButton(uint16_t x, uint16_t y, uint16_t width, uint16_t height);
+  
+  /**
+  Wi-Fi Arduino Interface for PiStorms only!<br>
+  returns 0 if none of the software buttons are touched, or 1-4 if one of them is.
+  */
+  uint8_t getFunctionButton();
+
+private:
+  /** touchscreen calibration values */
+  uint16_t x1, y1, x2, y2, x3, y3, x4, y4;
+  
+  /** read the raw x-coordinate of the touchscreen press */
+  uint16_t RAW_X();
+  
+  /** read the raw x-coordinate of the touchscreen press */
+  uint16_t RAW_Y();
+  
+  bool useOldTouchscreen = false;
+  
+  /** get raw touchscreen values, do some math using the calibration values, and write to the output parameters
+    @param x x-value of touchscreen press is written to this variable
+    @param y y-value of touchscreen press is written to this variable
+  */
+  void getReading(uint16_t *x, uint16_t *y);
 };
 
 /** This function formats an integer in binary format.
