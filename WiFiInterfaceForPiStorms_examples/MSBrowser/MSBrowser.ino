@@ -52,11 +52,19 @@ void delayWithOTA(unsigned long delayMs) {
 #define delay(ms) delayWithOTA(ms)
 #endif
 
+#if defined(ARDUINO_AVR_NANO)
+class ESP_reset_Nano_compatibility {
+  public: void reset(){}
+};
+ESP_reset_Nano_compatibility ESP;
+#endif
+
 EVShield ev;
 EVs_UIModule uim;
 
 int selection;
 
+// defined later, at the bottom of this file
 void changeSelection(int newProgramSelection);
 
 // defined in separate .ino files
