@@ -83,6 +83,7 @@ void EVShield::init(SH_Protocols protocol)
 	initProtocols(protocol);
    }
   
+  #if defined(ESP8266) || defined(ARDUINO_AVR_NANO)
   bank_a.writeByte(SH_S1_MODE, SH_Type_NONE); // set BAS1 type to none so it doesn't interfere with the following i2c communicaiton
   bank_a.writeByte(SH_COMMAND, SH_PS_TS_LOAD); // copy from permanent memory to temporary memory
   
@@ -109,6 +110,7 @@ void EVShield::init(SH_Protocols protocol)
     x4 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x0C);
     y4 = bank_a.readInteger(SH_PS_TS_CALIBRATION_DATA + 0x0E);
   }
+  #endif
 }
 
 void EVShield::initProtocols(SH_Protocols protocol)
