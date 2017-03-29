@@ -26,9 +26,8 @@ http://www.openelectrons.com/docs/viewdoc/25
 
 
 // setup for this example:
-// attach external power to evshield.
-// attach NXT Touch Sensor to Port BAS1
-// Open the Serial terminal to view.
+// None, only uses buttons and LEDs built in to the EVShield.
+// Optionally, open the Serial terminal to view logs.
 
 //
 //  Declare shield variable for this program
@@ -92,4 +91,3 @@ loop()
     //
     delay(1000);
 }
-
