@@ -3,6 +3,7 @@
 //
 // Initial version: 2010-06-07 by Clinton Blackmore
 // Modified for EVShield: 2015-02-16 by Michael Giles
+// Corrected encoder cast: 2017-02-08 by Seth Tenembaum
 // Large parts of the code is ported from the NXC library for the device,
 // written by Deepak Patil.
 
@@ -214,7 +215,7 @@ void setEncoderSpeedTimeAndControlInBuffer(
 	uint8_t duration,	// in seconds
 	uint8_t control)	// control flags
 {
-	writeLongToBuffer(buffer + 0, encoder);
+	writeLongToBuffer(buffer + 0, (uint32_t)(int32_t)encoder);
 	buffer[4] = (uint8_t)(int8_t)speed;
 	buffer[5] = duration;
 	buffer[6] = 0;			// command register B

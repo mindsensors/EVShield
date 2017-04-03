@@ -23,7 +23,7 @@ http://www.openelectrons.com/docs/viewdoc/25
 #include <Wire.h>
 #include <EVShield.h>
 //#include <EVShieldAGS.h>
-#include <EV3Touch.h>
+#include <EVs_EV3Touch.h>
 
 
 // setup for this example:
@@ -39,7 +39,7 @@ EVShield          evshield(0x34,0x36);
 //
 //  Declare our sensor for use in this program
 //
-EV3Touch touch1;
+EVs_EV3Touch touch1;
 
 void
 setup()

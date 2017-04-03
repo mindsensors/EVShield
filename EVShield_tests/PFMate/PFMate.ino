@@ -20,7 +20,7 @@ http://www.openelectrons.com/docs/viewdoc/25
 
 #include <Wire.h>
 #include <EVShield.h>
-#include <PFMate.h>
+#include <EVs_PFMate.h>
 
 // setup for this example:
 // attach PFMate to Port BAS1
@@ -35,7 +35,7 @@ EVShield    evshield (0x34 ,0x36);
 // declare the i2c devices used on EVShield(s).
 //
 
-PFMate pfmate (0x48);
+EVs_PFMate pfmate (0x48);
 
 void setup()
 {
