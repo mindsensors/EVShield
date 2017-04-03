@@ -154,13 +154,29 @@ uint8_t	EVShieldUART::setMode(char newMode)
     }
 }
 
+bool	EVShieldUART::isDeviceReady()
+{
+    if ( mp_shield == NULL) return false;
+    switch (m_bp) {
+        case SH_BAS1:
+        case SH_BAS2:
+            return (mp_shield->bank_a.readByte(0x70+m_offset) == 1);
+        case SH_BBS1:
+        case SH_BBS2:
+            return (mp_shield->bank_b.readByte(0x70+m_offset) == 1);
+    }
+
+}
+
+
 bool	EVShieldUART::readAndPrint(uint8_t loc, uint8_t len)
 {
     uint8_t result;
+    Serial.print(" ");
     for (int i=loc; i<loc+len; i++) {
         Serial.print (readLocationByte(i), DEC); Serial.print(" ");
     }
-    Serial.println("");
+    //Serial.println("");
 }
 
 

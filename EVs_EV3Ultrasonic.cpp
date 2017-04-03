@@ -31,6 +31,7 @@ float EVs_EV3Ultrasonic::getDist()
 {
     uint16_t l, m;
     float result;
+    readAndPrint(0x70, 5);
     readAndPrint(0x81+m_offset, 10);
     result = readValue();
     return (result/10);

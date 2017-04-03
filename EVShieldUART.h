@@ -51,6 +51,9 @@ class EVShieldUART
         /** get the mode of the sensor */
         uint8_t	getMode( );
 
+        /** When the device is initially connected (or type is changed) it takes a while for the sensor to negotiate URARt communication with host and be ready to provide readings. This funciton will return True if the sensor is ready, False if it is not ready*/
+        bool isDeviceReady();
+
         /** set the type of the device on this port of the EVShield */
         bool  setType(uint8_t type);
 
