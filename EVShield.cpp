@@ -21,7 +21,6 @@
 
 #include "EVShield.h"
 #include "Wire.h"
-#include <algorithm> /* for min and max */
 
 #if defined(ESP8266)
   extern "C" {
@@ -805,7 +804,7 @@ void pingEV(void *pArg)
 void pingEV()
 #endif
 {
-    #if defined(ARDUINO_ARC32_TOOLS) || defined(ESP8266) || defined(AVR_NANO)
+    #if defined(ARDUINO_ARC32_TOOLS) || defined(ESP8266) || defined(ARDUINO_AVR_NANO)
         Wire.beginTransmission(0x34);
         Wire.endTransmission();
     #else
@@ -906,7 +905,7 @@ uint32_t callbackLED(uint32_t currentTime)
 #endif
 
 bool EVShield::getButtonState(uint8_t btn) {
-  #if !(defined(ESP8266) || defined(AVR_NANO))
+  #if !(defined(ESP8266) || defined(ARDUINO_AVR_NANO))
   uint8_t bVal;
   bVal = bank_a.readByte(SH_BTN_PRESS);
 
@@ -1013,10 +1012,10 @@ void EVShield::getReading(uint16_t *retx, uint16_t *rety) // returnX, returnY to
   uint16_t x = RAW_X();
   uint16_t y = RAW_Y();
 
-  if ( x < std::min({x1,x2,x3,x4}) \
-    || x > std::max({x1,x2,x3,x4}) \
-    || y < std::min({y1,y2,y3,y4}) \
-    || y > std::max({y1,y2,y3,y4}) )
+  if ( x < min(x1,min(x2,min(x3,x4))) \
+    || x > max(x1,max(x2,max(x3,x4))) \
+    || y < min(y1,min(y2,min(y3,y4))) \
+    || y > max(y1,max(y2,max(y3,y4))) )
   {
     *retx = 0;
     *rety = 0;
@@ -1054,13 +1053,13 @@ void EVShield::getReading(uint16_t *retx, uint16_t *rety) // returnX, returnY to
   *rety = 240 * dV0/(dV0+dV1);
 }
 
-#if !(defined(ESP8266) || defined(AVR_NANO))
+#if !(defined(ESP8266) || defined(ARDUINO_AVR_NANO))
   #warning from EVShield: Touchscreen methods are only supported on PiStorms (getTouchscreenValues, TS_X, TS_Y, isTouched, checkButton, getFunctionButton)
 #endif
 
 void EVShield::getTouchscreenValues(uint16_t *x, uint16_t *y)
 {
-  #if defined(ESP8266) || defined(AVR_NANO)
+  #if defined(ESP8266) || defined(ARDUINO_AVR_NANO)
   if (useOldTouchscreen) {
     *x = TS_X();
     *y = TS_Y();
@@ -1089,7 +1088,7 @@ void EVShield::getTouchscreenValues(uint16_t *x, uint16_t *y)
 
 uint16_t EVShield::TS_X()
 {
-  #if defined(ESP8266) || defined(AVR_NANO)
+  #if defined(ESP8266) || defined(ARDUINO_AVR_NANO)
   if (useOldTouchscreen) {
     return bank_a.readInteger(SH_PS_TS_X);
   }
@@ -1104,7 +1103,7 @@ uint16_t EVShield::TS_X()
 
 uint16_t EVShield::TS_Y()
 {
-  #if defined(ESP8266) || defined(AVR_NANO)
+  #if defined(ESP8266) || defined(ARDUINO_AVR_NANO)
   if (useOldTouchscreen) {
     return 240-bank_a.readInteger(SH_PS_TS_Y);
   }
@@ -1118,7 +1117,7 @@ uint16_t EVShield::TS_Y()
 
 bool EVShield::isTouched()
 {
-  #if defined(ESP8266) || defined(AVR_NANO)
+  #if defined(ESP8266) || defined(ARDUINO_AVR_NANO)
   uint16_t x, y;
   getTouchscreenValues(&x, &y);
   return !(x==0 && y==0);
@@ -1129,7 +1128,7 @@ bool EVShield::isTouched()
 
 bool EVShield::checkButton(uint16_t x, uint16_t y, uint16_t width, uint16_t height)
 {
-  #if defined(ESP8266) || defined(AVR_NANO)
+  #if defined(ESP8266) || defined(ARDUINO_AVR_NANO)
   uint16_t tsx, tsy; // touch screen x, touch screen y
   getTouchscreenValues(&tsx, &tsy);
   
@@ -1148,7 +1147,7 @@ bool EVShield::checkButton(uint16_t x, uint16_t y, uint16_t width, uint16_t heig
 
 uint8_t EVShield::getFunctionButton()
 {
-  #if defined(ESP8266) || defined(AVR_NANO)
+  #if defined(ESP8266) || defined(ARDUINO_AVR_NANO)
   if (useOldTouchscreen) {
     uint8_t v = bank_a.readByte(SH_BTN_PRESS);
     if (v % 2 == 1) v--; // subtract out GO button (1)
@@ -1164,18 +1163,18 @@ uint8_t EVShield::getFunctionButton()
   uint16_t xborder;
   
   if (x4 > x1)  { // lower values left
-    xborder = std::max(x1, x2); // where the touchscreen ends and the software buttons begin
+    xborder = max(x1, x2); // where the touchscreen ends and the software buttons begin
     if (!(x < xborder+200 && x > xborder-200))
       return 0;
   } else { // greater values left
-    xborder = std::min(x1, x2);
+    xborder = min(x1, x2);
     if (!(x > xborder-200 && x < xborder+200))
       return 0;
   }
   
   uint16_t y = RAW_Y(),
-           ymin = std::min(y1, y2),
-           ymax = std::max(y1, y2),
+           ymin = min(y1, y2),
+           ymax = max(y1, y2),
            yQuarter = (ymax-ymin)/4; // a quarter of the distance between the two y extremes
   
   if (y < ymin + 0 * yQuarter)

@@ -36,12 +36,11 @@
 
 #include <EVShield.h>
 #include <EVs_UIModule.h>
-#include <ArduinoOTA.h>
 #include <Fonts/FreeSans18pt7b.h>
-#include "credentials.h"
 
-EVShield ev;
-EVs_UIModule uim;
+#if defined(ESP8266)
+#include <ArduinoOTA.h>
+#include "credentials.h"
 
 void delayWithOTA(unsigned long delayMs) {
   unsigned long timeout = millis() + delayMs;
@@ -51,9 +50,21 @@ void delayWithOTA(unsigned long delayMs) {
   } while (millis() < timeout);
 }
 #define delay(ms) delayWithOTA(ms)
+#endif
+
+#if defined(ARDUINO_AVR_NANO)
+class ESP_reset_Nano_compatibility {
+  public: void reset(){}
+};
+ESP_reset_Nano_compatibility ESP;
+#endif
+
+EVShield ev;
+EVs_UIModule uim;
 
 int selection;
 
+// defined later, at the bottom of this file
 void changeSelection(int newProgramSelection);
 
 // defined in separate .ino files
@@ -68,6 +79,7 @@ void setup() {
     Serial.begin(115200);
     Serial.println();
     
+    #if defined(ESP8266)
     WiFi.begin(SSID, PASSWORD);
     while (WiFi.status() != WL_CONNECTED) yield();
     ArduinoOTA.setPassword(UPLOAD_PASSWORD);
@@ -108,6 +120,7 @@ void setup() {
         uim.println("\nResetting...");
         ESP.reset();
     });
+    #endif
     
     ev.init();
     uim.begin();
