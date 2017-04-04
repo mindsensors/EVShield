@@ -994,23 +994,36 @@ void EVShield::ledHeartBeatPattern() {
 
 uint16_t EVShield::RAW_X()
 {
+  #if defined(ESP8266) || defined(ARDUINO_AVR_NANO)
   return bank_a.readInteger(SH_PS_TS_RAWX);
+  #else
+  return 0;
+  #endif
 }
 
 uint16_t EVShield::RAW_Y()
 {
+  #if defined(ESP8266) || defined(ARDUINO_AVR_NANO)
   return bank_a.readInteger(SH_PS_TS_RAWY);
+  #else
+  return 0;
+  #endif
 }
 
 // helper function to getReading
 double distanceToLine(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2) // some point and two points forming the line
 {
+  #if defined(ESP8266) || defined(ARDUINO_AVR_NANO)
   // multiply by 1.0 to avoid integer truncation, don't need parentheses because the multiplication operator has left-to-right associativity
   return 1.0 * abs( (y2-y1)*x0 - (x2-x1)*y0 + x2*y1 - y2*x1 ) / sqrt( pow((y2-y1),2) + pow((x2-x1),2) );
+  #else
+  return 0.0;
+  #endif
 }
 
 void EVShield::getReading(uint16_t *retx, uint16_t *rety) // returnX, returnY to avoid shadowing local x, y
 {
+  #if defined(ESP8266) || defined(ARDUINO_AVR_NANO)
   uint16_t x = RAW_X();
   uint16_t y = RAW_Y();
 
@@ -1053,6 +1066,9 @@ void EVShield::getReading(uint16_t *retx, uint16_t *rety) // returnX, returnY to
   
   *retx = 320 * dU0/(dU0+dU1);
   *rety = 240 * dV0/(dV0+dV1);
+  #else
+  return;
+  #endif
 }
 
 #if !(defined(ESP8266) || defined(ARDUINO_AVR_NANO))
