@@ -29,6 +29,7 @@
 // and optionally a password to be required when uploading.
 // Edit program1, program2, program3 with your creative code, then upload.
 // Select the red P1, green P2, or blue P3 and tap GO to run that program.
+// (make sure you press GO to turn on the PiStorms!)
 
 
 
@@ -78,10 +79,19 @@ void loop3();
 void setup() {
     Serial.begin(115200);
     Serial.println();
+
+    ev.init();
+    uim.begin();
+    uim.clearScreen();
     
     #if defined(ESP8266)
     WiFi.begin(SSID, PASSWORD);
+    uim.print("Searching for WiFi network\"");
+    uim.print(SSID);
+    uim.println("\"...");
+    uim.println("\n(you can change this in   credentials.h)");
     while (WiFi.status() != WL_CONNECTED) yield();
+    uim.println("\nFound!");
     ArduinoOTA.setPassword(UPLOAD_PASSWORD);
     ArduinoOTA.begin();
     
@@ -122,8 +132,6 @@ void setup() {
     });
     #endif
     
-    ev.init();
-    uim.begin();
     uim.clearScreen();
     
     uim.setFont(&FreeSans18pt7b);
