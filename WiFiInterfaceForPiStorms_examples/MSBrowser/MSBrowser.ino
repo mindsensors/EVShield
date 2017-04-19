@@ -79,8 +79,7 @@ void loop3();
 void setup() {
     Serial.begin(115200);
     Serial.println();
-
-    ev.init();
+    
     uim.begin();
     uim.clearScreen();
     
@@ -158,6 +157,8 @@ void setup() {
     
     selection = 2; // make sure border gets drawn (this is a "change")
     changeSelection(1);
+    
+    ev.init();
 }
 
 void loop() {
