@@ -1108,7 +1108,7 @@ uint16_t EVShield::TS_X()
 {
   #if defined(ESP8266) || defined(ARDUINO_AVR_NANO)
   if (useOldTouchscreen) {
-    return bank_a.readInteger(SH_PS_TS_X);
+    return 320-bank_a.readInteger(SH_PS_TS_X);
   }
   
   uint16_t x, y;
@@ -1123,7 +1123,7 @@ uint16_t EVShield::TS_Y()
 {
   #if defined(ESP8266) || defined(ARDUINO_AVR_NANO)
   if (useOldTouchscreen) {
-    return 240-bank_a.readInteger(SH_PS_TS_Y);
+    return bank_a.readInteger(SH_PS_TS_Y);
   }
   uint16_t x, y;
   getTouchscreenValues(&x, &y);
