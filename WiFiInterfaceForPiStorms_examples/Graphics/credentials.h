@@ -2,8 +2,8 @@
 #define MS_CREDENTIALS
 
 // used for uploading OTA (over the air)
-const char* SSID     = "your_WiFi_network";
-const char* PASSWORD = "letmein";
+const char* SSID     = "pistormsclassroom";
+const char* PASSWORD = "pistormsclassroom";
 const char* UPLOAD_PASSWORD = "";
 
 #endif
