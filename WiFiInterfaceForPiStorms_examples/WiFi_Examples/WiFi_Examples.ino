@@ -12,6 +12,10 @@
   You should have received a copy of the GNU Lesser General Public
   License along with this library; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+  
+  History:
+  Date      Author          Comments
+  Mar 2017  Seth Tenembaum  initial
 */
 
 
@@ -25,6 +29,7 @@
 // and optionally a password to be required when uploading.
 // Edit program1, program2, program3 with your creative code, then upload.
 // Select the red P1, green P2, or blue P3 and tap GO to run that program.
+// (make sure you press GO to turn on the PiStorms!)
 
 
 
@@ -32,12 +37,11 @@
 
 #include <EVShield.h>
 #include <EVs_UIModule.h>
-#include <ArduinoOTA.h>
 #include <Fonts/FreeSans18pt7b.h>
-#include "credentials.h"
 
-EVShield ev;
-EVs_UIModule uim;
+#if defined(ESP8266)
+#include <ArduinoOTA.h>
+#include "credentials.h"
 
 void delayWithOTA(unsigned long delayMs) {
   unsigned long timeout = millis() + delayMs;
@@ -47,9 +51,21 @@ void delayWithOTA(unsigned long delayMs) {
   } while (millis() < timeout);
 }
 #define delay(ms) delayWithOTA(ms)
+#endif
+
+#if defined(ARDUINO_AVR_NANO)
+class ESP_reset_Nano_compatibility {
+  public: void reset(){}
+};
+ESP_reset_Nano_compatibility ESP;
+#endif
+
+EVShield ev;
+EVs_UIModule uim;
 
 int selection;
 
+// defined later, at the bottom of this file
 void changeSelection(int newProgramSelection);
 
 // defined in separate .ino files
@@ -64,8 +80,17 @@ void setup() {
     Serial.begin(115200);
     Serial.println();
     
+    uim.begin();
+    uim.clearScreen();
+    
+    #if defined(ESP8266)
     WiFi.begin(SSID, PASSWORD);
+    uim.print("Searching for WiFi network\"");
+    uim.print(SSID);
+    uim.println("\"...");
+    uim.println("\n(you can change this in   credentials.h)");
     while (WiFi.status() != WL_CONNECTED) yield();
+    uim.println("\nFound!");
     ArduinoOTA.setPassword(UPLOAD_PASSWORD);
     ArduinoOTA.begin();
     
@@ -104,9 +129,8 @@ void setup() {
         uim.println("\nResetting...");
         ESP.reset();
     });
+    #endif
     
-    ev.init();
-    uim.begin();
     uim.clearScreen();
     
     uim.setFont(&FreeSans18pt7b);
@@ -133,6 +157,8 @@ void setup() {
     
     selection = 2; // make sure border gets drawn (this is a "change")
     changeSelection(1);
+    
+    ev.init();
 }
 
 void loop() {
