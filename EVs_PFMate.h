@@ -60,38 +60,66 @@
 /**
   @brief This class interfaces with PFMate attached to EVShield 
 	*/
-class EVs_PFMate : public EVShieldI2C
-{
+class EVs_PFMate : public EVShieldI2C {
 public:
-	/** class constructor for PFMate with optional custom i2c address as a parameter */
+	/** 
+	 * Class constructor for PFMate. 
+	 * @param i2c_address Optional custom i2c address. 
+	 */
 	EVs_PFMate(uint8_t i2c_address = 0x48);
 
-	/** issue char command byte to the command register of the PFMate */
-	uint8_t		issueCommand(char command);
+	/** 
+	 * Issues char command byte to the command register of the PFMate.
+	 * @param command The command to be issued.
+	 */
+	uint8_t issueCommand(char command);
 	
-	/** send the data to the PF receiver */
-	bool		sendSignal();
+	/** Sends the data to the PF receiver */
+	bool sendSignal();
 	
-	/** control the PF motors on the channel the receiver is set to, which motors to control, the operation for the motors, and the speed to run them */
-  void		controlMotor(uint8_t channel, uint8_t contol, uint8_t operation, uint8_t speed);
+	/** 
+	 * Controls the PF motors.
+	 * @param channel   The channel the receiver is set to. Inputs: PF_Channel_1, 2, 3, or 4.
+	 * @param control   Which motors to control. Inputs: F_Control_Both, A, or B.
+	 * @param operation The operation for the motors. Inputs: PF_Operation_Forward, Reverse, Float, or Brake
+	 * @param speed     The speed to run them. Inputs: [1, 7] or PF_Speed_Full, Medium, or Slow
+	 */
+	void controlMotor(uint8_t channel, uint8_t contorl, uint8_t operation, uint8_t speed);
 	
-	/** set which channel the PF receiver is on so the PFMate can talk with it */
-	bool		setChannel(uint8_t channel);
+	/** 
+	 * Sets which channel the PF receiver is on, so the PFMate can talk with it.
+	 * @param channel The channel the PF receiver is on.
+	 */
+	bool setChannel(uint8_t channel);
 	
-	/** set which motor to control */
-  bool		setControl(uint8_t contol);
+	/** 
+	 * Sets which motor to control.
+	 * @param control The motor to be controlled.
+	 */
+	bool setControl(uint8_t contol);
 	
-	/** set the operation of motor A */
-	bool		setOperationA(uint8_t operation);
+	/** 
+	 * Sets the operation of motor A.
+	 * @param operation The operation to be set.
+	 */
+	bool setOperationA(uint8_t operation);
 	
-	/** set the operation of motor B */
-	bool		setOperationB(uint8_t operation);
+	/** 
+	 * Sets the operation of motor B.
+	 * @param operation The operation to be set.*/
+	bool setOperationB(uint8_t operation);
 	
-	/** set the speed of motor A */
-	bool		setSpeedA(uint8_t speed);
+	/** 
+	 * Sets the speed of motor A.
+	 * @param speed The speed to be set.
+	 */
+	bool setSpeedA(uint8_t speed);
 	
-	/** set the speed of motor B */
-	bool		setSpeedB(uint8_t speed);
+	/** 
+	* Sets the speed of motor B.
+	* @param speed The speed to be set.
+	*/
+	bool setSpeedB(uint8_t speed);
 };
 
 #endif
