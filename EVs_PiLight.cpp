@@ -1,6 +1,6 @@
 // AbsoluteIMU.cpp
 //
-// This is a class for controlling the PiLight device amde by OpenElectrons.com
+// This is a class for controlling the PiLight device made by OpenElectrons.com
 // See http://www.openelectrons.com/pages/19
 
 // Initial version: 2014-03-17 by Michael Giles
