@@ -73,13 +73,13 @@ public:
 	bool		sendSignal();
 	
 	/** control the PF motors on the channel the receiver is set to, which motors to control, the operation for the motors, and the speed to run them */
-  void		controlMotor(uint8_t channel, uint8_t contol, uint8_t operation, uint8_t speed);
+  void		controlMotor(uint8_t channel, uint8_t control, uint8_t operation, uint8_t speed);
 	
 	/** set which channel the PF receiver is on so the PFMate can talk with it */
 	bool		setChannel(uint8_t channel);
 	
 	/** set which motor to control */
-  bool		setControl(uint8_t contol);
+  bool		setControl(uint8_t control);
 	
 	/** set the operation of motor A */
 	bool		setOperationA(uint8_t operation);
