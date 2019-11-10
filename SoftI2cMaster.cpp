@@ -160,17 +160,17 @@ uint8_t* SoftI2cMaster::readRegisters(uint8_t startRegister, uint8_t bytes, uint
   // issue a start condition, send device address and write direction bit
   if (!start(deviceAddr | I2C_WRITE)) {
 		_error_code = 2;
-	  return false;
+	  return nullptr;
 	}
   // send the start register address  
   if (!write(startRegister)) {
 		_error_code = 1;
-	  return false;
+	  return nullptr;
 	}
   // issue a repeated stop and start condition, send device address and read direction bit  
   if (!restart(deviceAddr | I2C_READ)) {
 		_error_code = 3;
-	  return false;
+	  return nullptr;
 	}
   // read data from the device and store into buffer  
   for (uint8_t i = 0; i < bytes; i++) {
@@ -243,7 +243,7 @@ char* SoftI2cMaster::readString(uint8_t startRegister, uint8_t bytes,
 {
 	char *x;
 	x = (char *) readRegisters(startRegister, bytes, buf);
-	if ( x == false ) {
+	if ( x == nullptr ) {
 	  return (char *) "";
 	}
   return (char *) x;
