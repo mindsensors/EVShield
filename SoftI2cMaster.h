@@ -33,7 +33,8 @@
 // R/W direction bit to OR with address for start or restart
 #define I2C_READ 1
 #define I2C_WRITE 0
-
+#define true 1
+#define false 0
 /**
   @brief This class implements software i2c interface used by EVShield/NXShield on Arduino
 	*/
