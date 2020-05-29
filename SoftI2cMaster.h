@@ -26,15 +26,16 @@
 #include "WProgram.h"
 #endif
 #include <stddef.h>
-
+#undef min
+//inline int min(double a, double b) { return ((a)<(b) ? (a) : (b)); }
+inline double min(double a, double b) { return ((a)<(b) ? (a) : (b)); }
 // delay used to tweek signals
 #define I2C_DELAY_USEC 30
 
 // R/W direction bit to OR with address for start or restart
 #define I2C_READ 1
 #define I2C_WRITE 0
-#define true 1
-#define false 0
+
 /**
   @brief This class implements software i2c interface used by EVShield/NXShield on Arduino
 	*/
