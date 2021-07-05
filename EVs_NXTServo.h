@@ -64,48 +64,73 @@
 #include "EVShieldI2C.h"
 
 /**
-  @brief This class interfaces with NXTServo attached to EVShield 
-	*/
+ * @brief This class interfaces with NXTServo attached to EVShield 
+ */
 class EVs_NXTServo : public EVShieldI2C
 {
 public:
-	/** class constructor for the NXTServo with optional custom i2c address parameter */
+  /** 
+   * Class constructor for the NXTServo 
+   * @param i2c_address An optional custom i2c address parameter 
+  */
   EVs_NXTServo(uint8_t i2c_address = 0xb0);
   
-	/** issue a character command byte to the command register of the NXTServo */
+  /** 
+   * Issue a character command byte to the command register of the NXTServo 
+   * @param command The command to be issued
+   */
   uint8_t issueCommand(char command);
 	
-	/** get the battery voltage supplied to the NXTServo */
+  /** Gets the battery voltage supplied to the NXTServo */
   uint8_t getBatteryVoltage();
 	
-	/** store current settings of the given servo to initial default setting and remember when powered on */
+  /** 
+   * Stores current settings of the given servo to initial default setting and remembers when powered on
+   * @param number The servo that is to be set: Servo_1, Servo_2, Servo_3, ... Servo_8
+   */
   bool storeInitial(uint8_t number);
 	
-	/** reset all servos to default */
+  /** Resets all servos to default */
   bool reset();
 	
-	/** stop the onboard macro on the NXTServo */
+  /** Stops the on-board macro on the NXTServo */
   bool haltMacro();
 	
-	/** resume the onboard macro on the NXTServo */
+  /** Resumes the on-board macro on the NXTServo */
   bool resumeMacro();
 	
-	/** Go to given EEPROM position (This command re-initializes the macro environment) */
+  /** Go to given EEPROM position. 
+   * This command re-initializes the macro environment. 
+   * @param position The EEPROM position.
+   */
   bool gotoEEPROM(uint8_t position);
 	
-	/** edit the onboard macro */
+  /** Edits the onboard macro */
   bool editMacro();
 	
-	/** temporarily pause the running macro */
+  /** Temporarily pauses the running macro */
   bool pauseMacro();
 	
-	/** set the speed of a specified servo */
+  /** 
+   * Sets the speed of a specified servo. 
+   * @param number The servo that is to be set: Servo_1, Servo_2, Servo_3, ... Servo_8
+   * @param speed The speed of the servo
+   */
   bool setSpeed(uint8_t number, uint8_t speed);
 	
-	/** set the position of a specified servo */
+  /** 
+   * Sets the position of a specified servo. 
+   * @param number The servo that is to be set: Servo_1, Servo_2, Servo_3, ... Servo_8
+   * @param position The servo position that is to be set
+   */
   bool setPosition(uint8_t number, uint8_t position);
 	
-	/** run the specified to the specified position at the specified speed */
+  /** 
+   * Run the specified to the specified position at the specified speed 
+   * @param number The servo that is to be set: Servo_1, Servo_2, Servo_3, ... Servo_8
+   * @param position The servo position that is to be set
+   * @param speed The speed of the servo
+   */
   void runServo(uint8_t number, uint8_t position, uint8_t speed);
 
 };
