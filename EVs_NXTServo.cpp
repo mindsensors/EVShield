@@ -28,12 +28,8 @@
 
 #include "EVs_NXTServo.h"
 
-
-
 EVs_NXTServo::EVs_NXTServo(uint8_t i2c_address)
-: EVShieldI2C(i2c_address)
-{
-}
+: EVShieldI2C(i2c_address) {}
 
 uint8_t EVs_NXTServo::getBatteryVoltage()
 {
@@ -90,48 +86,43 @@ bool EVs_NXTServo::setPosition(uint8_t number, uint8_t position)
 	return writeByte((uint8_t) number, (uint8_t) position);
 }
 
-void EVs_NXTServo::runServo(uint8_t number,			    // Servo_1, 2, 3, ..., 8
-						uint8_t position,			// [500,2500] Servo_Default
-						uint8_t speed)		     	// [0, inf] or Speed_Full
+// Macro handles creating calls to setPosition and setSpeed using a number as its input
+// don't remove the \, they're what allows multi-line macros.
+#define SET_SERVO(MNumber) {\
+	setPosition(Servo_Position_ ## MNumber, position);\
+	setSpeed(Servo_Speed_ ## MNumber, speed);\
+}
+
+/* number = Servo_1, 2, 3, ..., 8
+ * position = [500, 2500] Servo_Default
+ * [0, inf] or Speed_Full
+ */
+void EVs_NXTServo::runServo(uint8_t number, uint8_t position, uint8_t speed)
 {
-	if (number == Servo_1) 
-	{
-	setPosition(Servo_Position_1, position);
-	setSpeed(Servo_Speed_1, speed);
-	}
-	else if (number == Servo_2) 
-	{
-	setPosition(Servo_Position_2, position);
-	setSpeed(Servo_Speed_2, speed);
-	}
-	else if (number == Servo_3) 
-	{
-	setPosition(Servo_Position_3, position);
-	setSpeed(Servo_Speed_3, speed);
-	}
-	else if (number == Servo_4) 
-	{
-	setPosition(Servo_Position_4, position);
-	setSpeed(Servo_Speed_4, speed);
-	}
-	else if (number == Servo_5) 
-	{
-	setPosition(Servo_Position_5, position);
-	setSpeed(Servo_Speed_5, speed);
-	}
-	else if (number == Servo_6) 
-	{
-	setPosition(Servo_Position_6, position);
-	setSpeed(Servo_Speed_6, speed);
-	}
-	else if (number == Servo_7) 
-	{
-	setPosition(Servo_Position_7, position);
-	setSpeed(Servo_Speed_7, speed);
-	}
-	else if (number == Servo_8) 
-	{
-	setPosition(Servo_Position_8, position);
-	setSpeed(Servo_Speed_8, speed);
+	switch (number) {
+	case Servo_1:
+		SET_SERVO(1);
+		break;
+	case Servo_2:
+		SET_SERVO(2);
+		break;
+	case Servo_3:
+		SET_SERVO(3);
+		break;
+	case Servo_4:
+		SET_SERVO(4);
+		break;
+	case Servo_5:
+		SET_SERVO(5);
+		break;
+	case Servo_6:
+		SET_SERVO(6);
+		break;
+	case Servo_7:
+		SET_SERVO(7);
+		break;
+	case Servo_8:
+		SET_SERVO(8);
+		break;
 	}
 }
