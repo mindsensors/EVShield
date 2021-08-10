@@ -32,7 +32,10 @@ http://www.openelectrons.com/docs/viewdoc/25
 // declare the EVShield(s) attached to your Arduino.
 //
 EVShield    evshield(0x34,0x36);
-
+ byte forward = 1;
+  byte reverse = 0;
+  byte brake = 1;
+  byte float1 = 0;
 //
 // declare the i2c devices used on EVShield(s).
 //
@@ -102,7 +105,7 @@ void loop()
 /**  Displays Device ID of sensor
  */
   strcpy(aa, mmx.getDeviceID() );
-  sprintf (str, "Device ID: %s", aa); Encoder value of motor 1
+  sprintf (str, "Device ID: %s", aa); //Encoder value of motor 1
   Serial.println(str);
 /**  Gets and displays Vendor ID of sensor
  */
