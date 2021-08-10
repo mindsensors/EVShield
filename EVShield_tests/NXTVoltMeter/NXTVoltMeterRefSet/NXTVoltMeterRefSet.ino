@@ -88,7 +88,7 @@ void loop()
   Serial.println(str);
 /**  Displays Relative Voltage value
  */  
-  rvolt =vim.getRVoltage();
+  rvolt =vm.getRVoltage();
   sprintf (str, "VMeter: Relative Voltage:  %d",  rvolt);
   Serial.println(str);
 /**  Displays Reference Voltage value
