@@ -58,7 +58,7 @@ void setup()
 
 /**  Set timeout to save power
 */
-  pilyt.setTimeout1(7);.
+  pilyt.setTimeout1(7);
 
 /**  Wait until user presses GO button to continue the program
  */
