@@ -96,7 +96,7 @@ void loop()
     Serial.println("Hold over Black and press RIGHT button to continue.");
     evshield.waitForButtonPress(BTN_RIGHT);
     ll.calibrateBlack();
-    delay(100)
+    delay(100);
     Serial.println("LineLeader Calibrated!");
     test = 2;
 }
