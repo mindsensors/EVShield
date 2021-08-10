@@ -73,7 +73,7 @@ void loop()
 {
   char aa[80];        
   char str[256];         //sets length of character string
- 
+ int test=1; 
 while(test ==1 ){  
 /**  Displays Firmware Version of sensor
 */
@@ -98,7 +98,7 @@ while(test ==1 ){
 /**  Store values for servo(s) as neutral values.
 */
   nservo.storeInitial(1);
-  delay(1000)
+  delay(1000);
   test = 2;
   Serial.println( "New value stored" );
   Serial.println( "-------------" );
