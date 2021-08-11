@@ -79,7 +79,7 @@ void EVShield::init(SH_Protocols protocol)
 {
     while (initCounter < 5){
     //Serial.println(initCounter);
-    I2CTimer();
+    if (!protocol )I2CTimer();
 	initProtocols(protocol);
    }
   
