@@ -27,7 +27,7 @@ EVs_LineLeader	KEYWORD1
 EVs_NXTCam	KEYWORD1
 EVs_NXTColor	KEYWORD1
 EVs_NXTLight	KEYWORD1
-EVs_NXTMMX		KEYWORD1
+EVs_NXTMMX	KEYWORD1
 EVs_NXTServo	KEYWORD1
 EVs_NXTTouch	KEYWORD1
 EVs_PFMate	KEYWORD1
@@ -61,7 +61,7 @@ EVShieldAGS	KEYWORD2
 EVShieldBank	KEYWORD2
 EVShieldBankB	KEYWORD2
 EVShieldI2C	KEYWORD2
-OBZoneToString		KEYWORD2
+OBZoneToString	KEYWORD2
 SoftI2cMaster	KEYWORD2
 _buffer	KEYWORD2
 adpaOff	KEYWORD2
@@ -89,7 +89,7 @@ directMode	KEYWORD2
 disableTracking	KEYWORD2
 editMacro	KEYWORD2
 enableTracking	KEYWORD2
-energize		KEYWORD2
+energize	KEYWORD2
 getAddress	KEYWORD2
 getAngle	KEYWORD2
 getAverage	KEYWORD2
@@ -143,12 +143,12 @@ getWriteErrorCode	KEYWORD2
 getXAccl	KEYWORD2
 getXLJoy	KEYWORD2
 getXRJoy	KEYWORD2
-getXTilt		KEYWORD2
+getXTilt	KEYWORD2
 getYAccl	KEYWORD2
 getYear	KEYWORD2
 getYLJoy	KEYWORD2
 getYRJoy	KEYWORD2
-getYTilt		KEYWORD2
+getYTilt	KEYWORD2
 getZAccl	KEYWORD2
 getZTilt	KEYWORD2
 gotoEEPROM	KEYWORD2
@@ -204,10 +204,10 @@ readChannelHeading	KEYWORD2
 readChannelProximity	KEYWORD2
 readChannelButton	KEYWORD2
 readColor	KEYWORD2
-readButtonValue		KEYWORD2
+readButtonValue	KEYWORD2
 readByte	KEYWORD2
 readCapacityUsed	KEYWORD2
-readElapsedTime		KEYWORD2
+readElapsedTime	KEYWORD2
 readImageRegisters	KEYWORD2
 readInteger	KEYWORD2
 readLong	KEYWORD2
@@ -254,7 +254,7 @@ setControl	KEYWORD2
 setDigitalMode	KEYWORD2
 setEncoderPID	KEYWORD2
 setEncoderSpeedTimeAndControl	KEYWORD2
-setEncoderTarget		KEYWORD2
+setEncoderTarget	KEYWORD2
 setKd	KEYWORD2
 setKdFactor	KEYWORD2
 setKi	KEYWORD2
@@ -262,7 +262,7 @@ setKiFactor	KEYWORD2
 setKp	KEYWORD2
 setKpFactor	KEYWORD2
 setLongRange	KEYWORD2
-setMode		KEYWORD2
+setMode	KEYWORD2
 setModifier	KEYWORD2
 setOperationA	KEYWORD2
 setOperationB	KEYWORD2
@@ -458,7 +458,7 @@ EVs_PSPNx_XLeftJoystick	LITERAL1
 EVs_PSPNx_XRightJoystick	LITERAL1
 EVs_PSPNx_YLeftJoystick	LITERAL1
 EVs_PSPNx_YRightJoystick	LITERAL1
-EVs_RTC_Day_of_Month		LITERAL1
+EVs_RTC_Day_of_Month	LITERAL1
 EVs_RTC_Day_of_Week	LITERAL1
 EVs_RTC_H	LITERAL1
 EVs_RTC_Hours	LITERAL1
@@ -553,7 +553,7 @@ SH_Motor_2	LITERAL1
 SH_Motor_Both	LITERAL1
 SH_Move_Absolute	LITERAL1
 SH_Move_Relative	LITERAL1
-SH_Next_Action		LITERAL1
+SH_Next_Action	LITERAL1
 SH_Next_Action_Brake	LITERAL1
 SH_Next_Action_BrakeHold	LITERAL1
 SH_Next_Action_Float	LITERAL1
