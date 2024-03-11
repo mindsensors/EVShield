@@ -67,6 +67,7 @@ int EVShieldAGS::readRaw()
       return mp_shield->bank_b.sensorReadRaw(SH_S2);
       break;
   }
+ return 0;
 }
 
 bool EVShieldAGS::init(EVShield * shield, SH_BankPort bp)
