@@ -60,6 +60,7 @@ bool EVShieldUART::setType(uint8_t type)
             return mp_shield->bank_b.sensorSetType(SH_S2, type);
 
     }
+   return 0;
 }
 
 bool EVShieldUART::writeLocation(uint8_t loc, uint8_t data)
@@ -156,6 +157,7 @@ uint8_t	EVShieldUART::setMode(char newMode)
         case SH_BBS2:
             return mp_shield->bank_b.writeByte(0x81+m_offset, (uint8_t) newMode);
     }
+   return 0;
 }
 
 bool	EVShieldUART::isDeviceReady()
