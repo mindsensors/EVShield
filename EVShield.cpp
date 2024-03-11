@@ -534,6 +534,7 @@ uint8_t EVShieldBank::motorWaitUntilTimeDone(SH_Motor which_motors)
     delay (50);
     s = motorIsTimeDone(which_motors);  // fixed.
   }
+return 0;	
 }
 
 // True when a command based on using the motor encoder completes
@@ -578,6 +579,7 @@ uint8_t EVShieldBank::motorWaitUntilTachoDone(SH_Motor which_motors)
     delay (50);
     s = motorIsTachoDone(which_motors);
   }
+return 0;	
 }
 
 
