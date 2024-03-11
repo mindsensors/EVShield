@@ -76,6 +76,7 @@ bool EVShieldUART::writeLocation(uint8_t loc, uint8_t data)
             return mp_shield->bank_b.writeByte(loc, data);
 
     }
+  return true;
 }
 
 int16_t EVShieldUART::readLocationInt(uint8_t loc)
@@ -92,6 +93,7 @@ int16_t EVShieldUART::readLocationInt(uint8_t loc)
             return mp_shield->bank_b.readInteger(loc);
 
     }
+  return 0;
 }
 
 uint8_t EVShieldUART::readLocationByte(uint8_t loc)
@@ -108,6 +110,7 @@ uint8_t EVShieldUART::readLocationByte(uint8_t loc)
             return mp_shield->bank_b.readByte(loc);
 
     }
+  return 0;
 }
 
 bool EVShieldUART::init(EVShield * shield, SH_BankPort bp)
@@ -138,6 +141,7 @@ uint8_t	EVShieldUART::getMode( )
         case SH_BBS2:
             return mp_shield->bank_b.readByte(0x81+m_offset);
     }
+  return 0;
 }
 
 
