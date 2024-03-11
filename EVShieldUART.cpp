@@ -177,6 +177,7 @@ bool	EVShieldUART::readAndPrint(uint8_t loc, uint8_t len)
         Serial.print (readLocationByte(i), DEC); Serial.print(" ");
     }
     //Serial.println("");
+  return true;
 }
 
 
