@@ -25,6 +25,7 @@ bool EVs_EV3Ultrasonic::init(EVShield * shield, SH_BankPort bp)
 {
     EVShieldUART::init(shield, bp);
     EVShieldUART::setType(SH_Type_EV3);
+    return true;
 }
 
 float EVs_EV3Ultrasonic::getDist()
