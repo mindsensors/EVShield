@@ -25,6 +25,7 @@ bool EVs_EV3Infrared::init(EVShield * shield, SH_BankPort bp)
 {
     EVShieldUART::init(shield, bp);
     EVShieldUART::setType(SH_Type_EV3);
+    return true;
 }
 
 uint16_t EVs_EV3Infrared::readProximity()
