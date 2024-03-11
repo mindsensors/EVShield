@@ -66,6 +66,7 @@ bool format_bin(uint8_t i, char *s)
     }
     b = b>>1;
   }
+	return true;
 }
 
 
