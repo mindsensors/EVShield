@@ -45,5 +45,5 @@ int EVs_EV3Gyro::setRef()
 {
     
     ref = readValue();
-    return ref
+    return ref;
 }   
