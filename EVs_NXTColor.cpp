@@ -75,6 +75,7 @@ bool EVs_NXTColor::setType(uint8_t type)
             return mp_shield->bank_b.sensorSetType(SH_S2, type);
 
     }
+  return true;
 }
 
 uint8_t EVs_NXTColor::readValue()
