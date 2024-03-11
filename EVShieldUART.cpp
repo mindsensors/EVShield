@@ -169,6 +169,7 @@ bool	EVShieldUART::isDeviceReady()
         case SH_BBS2:
             return (mp_shield->bank_b.readByte(0x70+m_offset) == 1);
     }
+  return 0;
 
 }
 
