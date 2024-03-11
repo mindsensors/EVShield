@@ -24,6 +24,7 @@
 bool EVs_SumoEyes::init(EVShield * shield, SH_BankPort bp)
 {
   EVShieldAGS::init(shield, bp);
+  return true;
 }
   
 
