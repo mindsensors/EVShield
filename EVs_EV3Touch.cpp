@@ -25,6 +25,7 @@ bool EVs_EV3Touch::init(EVShield * shield, SH_BankPort bp)
 {
     EVShieldUART::init(shield, bp);
     EVShieldUART::setType(SH_Type_EV3_SWITCH);
+    return true;
 }
 
 bool EVs_EV3Touch::isPressed()
