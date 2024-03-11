@@ -92,6 +92,7 @@ uint8_t EVs_NXTColor::readValue()
         val = (mp_shield->bank_b.readByte((0x70 + m_offset)));
         return (val*100)/255;
     }
+  return 0;
 }
 
 uint8_t EVs_NXTColor::readColor()
@@ -113,4 +114,5 @@ uint8_t EVs_NXTColor::readColor()
         case SH_BBS2:
         return (mp_shield->bank_b.readByte((0x70 + m_offset)));
     }
+  return 0;
 }
