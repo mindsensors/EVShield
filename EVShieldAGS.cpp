@@ -46,6 +46,7 @@ bool EVShieldAGS::setType(uint8_t type)
       return mp_shield->bank_b.sensorSetType(SH_S2, type);
       break;
   }
+ return true;
 }
 
 int EVShieldAGS::readRaw()
