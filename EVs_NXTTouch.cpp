@@ -25,6 +25,7 @@ bool EVs_NXTTouch::init(EVShield * shield, SH_BankPort bp)
 {
     EVShieldAGS::init(shield, bp);
     EVShieldAGS::setType(SH_Type_ANALOG);
+    return true;	
 }
 
 bool EVs_NXTTouch::isPressed()
