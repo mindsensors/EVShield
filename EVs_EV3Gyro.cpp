@@ -27,6 +27,7 @@ bool EVs_EV3Gyro::init(EVShield * shield, SH_BankPort bp)
 {
     EVShieldUART::init(shield, bp);
     EVShieldUART::setType(SH_Type_EV3);
+    return true;
 }
 
 int EVs_EV3Gyro::getAngle()
@@ -44,4 +45,5 @@ int EVs_EV3Gyro::setRef()
 {
     
     ref = readValue();
+    return ref
 }   
