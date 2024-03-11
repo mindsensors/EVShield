@@ -24,6 +24,7 @@
 bool EVs_NXTLight::init(EVShield * shield, SH_BankPort bp)
 {
 	EVShieldAGS::init(shield, bp);
+	return true;
 }
   
 bool EVs_NXTLight::setReflected()
