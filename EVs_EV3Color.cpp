@@ -32,7 +32,7 @@ float EVs_EV3Color::getVal()
 {
     uint16_t l, m;
     float result;
-    readAndPrint(0x81+m_offset, 10);
+    //readAndPrint(0x81+m_offset, 10);
     result = readValue();
     return (result);
 }
